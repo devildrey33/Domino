@@ -1,0 +1,38 @@
+<!-- 
+    Domino ThreeJS creado por Josep Antoni Bover Comas el 16/01/2019
+
+        Indice
+
+        Vista por defecto en el Laboratorio de pruebas  
+		devildrey33_Lab->Opciones->Vista = Filas;
+
+        Ultima modificación el 16/01/2019
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+        <title>Domino Three.js</title>
+        <!-- Estilos CSS para el objeto canvas -->
+        <link rel='stylesheet' href='/CSS/ObjetoCanvas.css' />        
+        <link rel='stylesheet' href='/CSS/Domino.css' />        
+                
+        <!-- Three.JS -->
+        <script src="/JS/three.min.js"></script>
+
+        <!-- ObjetoCanvas similar al ObjetoBanner para testear Banners -->
+        <script src="/JS/ObjetoCanvas.js"></script>
+        <script src="/JS/ObjetoAnimacion.js"></script>
+
+        <script src="/JS/Domino_Texturas.js"></script>        
+        <script src="/JS/Domino_Ficha.js"></script>        
+        <script src="/JS/DominoThree.js"></script>        
+    </head>
+    <body>
+        <div id='Empezar' class='MarcoCanvas' onclick='Domino.Empezar()'>Empezar!</div>
+        <div id='Msg1' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 1 -->
+        <div id='Msg2' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 2 -->
+        <div id='Msg3' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 3 -->
+        <div id='Msg4' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 4 -->
+    </body>
+</html>

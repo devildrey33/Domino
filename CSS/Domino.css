@@ -1,0 +1,81 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16-ene-2019, 20:09:35
+    Author     : devildrey33
+*/
+
+#Empezar {
+    position:fixed;
+    border:1px solid #000;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+/*    background:rgba(0, 0, 200, 0.8);
+    color:#FFF;
+    text-shadow:1px 1px 1px #000;
+    border-radius:8px;*/
+    padding:20px;
+    font-size:48px;
+    z-index:1000;
+    cursor: pointer;    
+    border:2px solid transparent;
+/*    transition:0.4s;*/
+}
+
+#Empezar:hover {
+    background-color: rgba(37,35,40, 0.9);
+/*    color :rgb(234, 80, 78);*/
+    border:2px solid rgb(234, 80, 78);
+}
+
+
+#Msg1, #Msg2, #Msg3, #Msg4 {
+    position:fixed;
+    font-size:24px;
+    transition:0.4s ease-out;
+}
+
+#Msg1 {
+    bottom:-20%;    
+    left:50%;
+    transform: translate(-50%, 0%);    
+}
+
+#Msg1[MsgVisible="true"] {
+    bottom:2%;
+}
+
+#Msg2 {
+    right:-20%;
+    top:50%;
+    transform: translate(0%, -50%);    
+}
+
+#Msg2[MsgVisible="true"] {
+    right:2%;
+}
+
+#Msg3 {
+    top:-20%;
+    left:50%;
+    transform: translate(-50%, 0%);
+}
+
+#Msg3[MsgVisible="true"] {
+    top:2%;
+}
+
+#Msg4 {
+    left:-20%;
+    top:50%;
+    transform: translate(0%, -50%);    
+}
+
+#Msg4[MsgVisible="true"] {
+    left:2%;
+}
+
