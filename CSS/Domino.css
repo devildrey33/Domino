@@ -35,7 +35,7 @@ and open the template in the editor.
 
 #Msg1, #Msg2, #Msg3, #Msg4 {
     position:fixed;
-    font-size:24px;
+    font-size:32px;
     transition:0.4s ease-out;
 }
 

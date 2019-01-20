@@ -30,11 +30,13 @@ var Animaciones = new ObjetoAnimacion;
 
 
 var Domino_Ficha = function() {
-    this.Valores  = [ 0, 0 ];
-    this.Ficha    = new THREE.Object3D();
-    this.Hover    = false;
-    this.Colocada = false;
-    this.Escala   = 1.0;
+    this.Valores    = [ 0, 0 ];
+    this.Ficha      = new THREE.Object3D();
+    this.Hover      = 0;                    // puede ser 0, 1, 2
+    this.Colocada   = false;                // La ficha se ha colocado
+    this.Escala     = 1.0;                  // Escala para la ficha (para el efecto hover)
+    this.Direccion  = "nada";               // Puede ser nada, izquierda, derecha, arriba, abajo, y centro
+    this.Rama       = "nada";               // Puede ser nada, izq, y der
     
     // Hay que especificar un valor de 0 a 27 con el tipo de ficha
     // Devuelve el grupo de objetos que forman la ficha listo para aladir a la escena
@@ -107,12 +109,8 @@ var Domino_Ficha = function() {
 //        this.Bola.position.set(0.0, 0.0, 0.05);
         this.Ficha.add(this.Bola);
         
-        
+        // Roto la ficha para que quede de cara
         this.Ficha.rotation.x = -Math.PI / 2;
-        //this.Ficha.rotation.z = Math.PI / 2;
-        this.RotarV();
-        
-//        if (this.Valores[0] === this.Valores[1]) this.Vertical = true;
         
         return this.Ficha;
     };
@@ -133,10 +131,32 @@ var Domino_Ficha = function() {
         
         this.Hover = Hover;
         
-        if (Hover === true) {
+        if (typeof(Domino.Partida.FichaDerecha.ValorLibre) === "undefined") return;
+        
+        // Doble posibilidad
+        if ((Domino.Partida.FichaDerecha.ValorLibre()   === this.Valores[0] || Domino.Partida.FichaDerecha.ValorLibre()   === this.Valores[1]) &&   // Si el valor libre derecho coincide con algun valor de la ficha
+            (Domino.Partida.FichaIzquierda.ValorLibre() === this.Valores[0] || Domino.Partida.FichaIzquierda.ValorLibre() === this.Valores[1]) &&   // Si el valor libre izquierdo coincide con algun valor de la ficha
+            (Hover > 0) &&                                                                                                                          // Si la ficha está hover
+            (Domino.Partida.FichaIzquierda.ValorLibre() !== Domino.Partida.FichaDerecha.ValorLibre())) {                                            // Si la rama izquierda y la rama derecha no tienen el mismo valor libre
+            if (Hover === 1) {
+                this.Cara1.material = Texturas.MaterialCaraR;
+                this.Cara2.material = Texturas.MaterialCara;
+            }
+            else if (Hover === 2) {
+                this.Cara1.material = Texturas.MaterialCara;
+                this.Cara2.material = Texturas.MaterialCaraR;
+            }
+        }
+        else {
+            this.Cara1.material = Texturas.MaterialCara;                
+            this.Cara2.material = Texturas.MaterialCara;                            
+        }
+        
+        // Está hover
+        if (Hover > 0) {
             this.AniHover = Animaciones.CrearAnimacion([
-                    { Paso : { Escala : this.Escala, y : this.Ficha.position.y   } },
-                    { Paso : { Escala : 1.2, y : 0.5  }, Tiempo : 300, FuncionTiempo : FuncionesTiempo.Lineal }
+                    { Paso : { Escala : this.Escala, y : this.Ficha.position.y } },
+                    { Paso : { Escala : 1.2,         y : 0.5                   }, Tiempo : 300, FuncionTiempo : FuncionesTiempo.Lineal }
             ], { FuncionActualizar : function(Valores) { 
                     //this.Ficha.position.y = Valores.y;
                     this.Ficha.scale.set(Valores.Escala, Valores.Escala, Valores.Escala);
@@ -146,7 +166,7 @@ var Domino_Ficha = function() {
         else {
             this.AniHover = Animaciones.CrearAnimacion([
                     { Paso : { Escala : this.Escala, y : this.Ficha.position.y   } },
-                    { Paso : { Escala : 1.0, y : 0.0  }, Tiempo : 300, FuncionTiempo : FuncionesTiempo.Lineal }
+                    { Paso : { Escala : 1.0,         y : 0.0                     }, Tiempo : 300, FuncionTiempo : FuncionesTiempo.Lineal }
             ], { FuncionActualizar : function(Valores) { 
                     //this.Ficha.position.y = Valores.y;
                     this.Ficha.scale.set(Valores.Escala, Valores.Escala, Valores.Escala);
@@ -157,64 +177,269 @@ var Domino_Ficha = function() {
         this.AniHover.Iniciar();
     };
     
-    // Hace una animación para colocar la ficha en el tablero
-    // RotZ :
-    //      - 0             : horizontal mirando a la izquierda (cara1, cara2)
-    //      - Math.PI / 2   : vertical
-    //      - Mathi.PI      : horizontal mirando a la derecha   (cara2, cara1)
-    this.Colocar = function(PosX, PosZ, RotZ, nFuncionTerminar) {
-        if (typeof(this.AniHover) !== "undefined") {
-            this.AniHover.Terminar();
+    
+    
+    this.Colocar = function(FichaOrigen) {
+        var Ret = { PosX : 0, PosZ : -2, RotZ : 0 };
+        // Es la primera ficha (6 doble)
+        if (FichaOrigen === false) {
+            this.Direccion = "centro";
+            Ret.RotZ = Math.PI / 2;
+            window.ContadorDerecha      = 0;
+            window.ContadorIzquierda    = 0;
+            window.FinContadorIzquierda = 5;
+            window.FinContadorDerecha   = 5;
         }
-        if (typeof(this.AniColocar) !== "undefined") {
-            this.AniColocar.Terminar();
+        else {
+            // Miro la dirección de la ficha origen
+            switch (FichaOrigen.Direccion) {
+                case "centro" :
+                    // Si las dos ramas están libres, elijo uno al azar
+                    if (FichaOrigen === Domino.Partida.FichaIzquierda && FichaOrigen === Domino.Partida.FichaDerecha) {
+                        if (RandInt() === 0)  { 
+                            Ret = this.BuscarPosIzq(FichaOrigen);
+                            this.Direccion = "izquierda";
+                            this.Rama = "izquierda";
+                        }
+                        else {
+                            Ret = this.BuscarPosDer(FichaOrigen);
+                            this.Direccion = "derecha";
+                            this.Rama = "derecha";
+                        }
+                    }
+                    else { // Solo hay una rama libre
+                        if (FichaOrigen === Domino.Partida.FichaIzquierda) {
+                            Ret = this.BuscarPosIzq(FichaOrigen);
+                            this.Direccion = "izquierda";
+                            this.Rama = "izquierda";                            
+                        }
+                        else {
+                            Ret = this.BuscarPosDer(FichaOrigen);
+                            this.Direccion = "derecha";
+                            this.Rama = "derecha";                            
+                        }
+                    }
+                    break;
+                    
+                case "izquierda" :
+                    if (FichaOrigen.Rama === "izquierda") {
+                        // Correción para las fichas dobles si se llega al final de la izquierda
+/*                        if (window.ContadorIzquierda === window.FinContadorIzquierda && this.FichaDoble() === true) {
+                            window.FinContadorIzquierda++;
+                        }*/
+                        
+                        if (window.ContadorIzquierda !== 5) {
+                            Ret = this.BuscarPosIzq(FichaOrigen);
+                            this.Direccion = "izquierda";
+                        }
+                        else if (window.ContadorIzquierda === window.FinContadorIzquierda) {
+                            Ret = this.BuscarPosInf(FichaOrigen);
+                            this.Direccion = "abajo";
+                        }
+                    }
+                    else {
+                        Ret = this.BuscarPosIzq(FichaOrigen);
+                        this.Direccion = "izquierda";
+                    }                        
+                    this.Rama = (FichaOrigen.Rama !== "nada") ? FichaOrigen.Rama : "izquierda";                                                
+                    break;
+                    
+                case "derecha" :
+                    if (FichaOrigen.Rama === "derecha") {
+                        // Correción para las fichas dobles si se llega al final de la derecha
+/*                        if (window.ContadorDerecha === window.FinContadorDerecha && this.FichaDoble() === true) {
+                            window.FinContadorDerecha++;
+                        }*/
+                            
+                        if (window.ContadorDerecha !== 5) {
+                            Ret = this.BuscarPosDer(FichaOrigen);
+                            this.Direccion = "derecha";
+                        }
+                        else if (window.ContadorDerecha === window.FinContadorDerecha) {
+                            Ret = this.BuscarPosSup(FichaOrigen);
+                            this.Direccion = "arriba";
+                        }
+                    }
+                    else {
+                        Ret = this.BuscarPosDer(FichaOrigen);
+                        this.Direccion = "derecha";
+                    }                        
+                    this.Rama = (FichaOrigen.Rama !== "nada") ? FichaOrigen.Rama : "derecha";                                                
+                    break;
+                    
+                case "abajo" :
+                    Ret = this.BuscarPosInfDer(FichaOrigen);
+                    this.Rama = "izquierda";
+                    this.Direccion = "derecha";
+                    break;
+                
+                case "arriba" :
+                    Ret = this.BuscarPosSupIzq(FichaOrigen);
+                    this.Direccion = "izquierda";
+                    this.Rama = "derecha";
+                    break;
+                
+            }
+            // Incremento el contador de la rama actual
+            if (this.Rama === "izquierda") {
+                window.ContadorIzquierda ++;                
+//                Domino.Partida.FichaIzquierda = this;
+            }
+            else {
+                window.ContadorDerecha ++;
+//                Domino.Partida.FichaDerecha = this;
+            }
+            
+            if (this.Direccion === "nada") {
+                putaputaputa();
+            }
+            
+            console.log("Colocar : r : " + this.Rama + ", d : " + this.Direccion + ", Pos:[" + Ret.PosX + ", " + Ret.PosZ + ", " + Ret.RotZ + "]");
         }
         
+        
+        // Termino las posibles animaciones en curso
+        if (typeof(this.AniHover) !== "undefined")    this.AniHover.Terminar();        
+        if (typeof(this.AniColocar) !== "undefined")  this.AniColocar.Terminar();
+        
+        
         this.Colocada = true;
-        this.FT = nFuncionTerminar;
-        // Rotación
-        //var RotZ = (Vertical === true) ? RotZ = Math.PI / 2 : 0.0;
-
+        
         this.AniColocar = Animaciones.CrearAnimacion([
                 { Paso : { Escala : this.Escala,    x : this.Ficha.position.x,  z : this.Ficha.position.z,  rz : this.Ficha.rotation.z  } },
-                { Paso : { Escala : 1.0,            x : PosX,                   z : PosZ,                   rz : RotZ  }, Tiempo : 400, FuncionTiempo : FuncionesTiempo.SinInOut }
+                { Paso : { Escala : 1.0,            x : Ret.PosX,               z : Ret.PosZ,               rz : Ret.RotZ  }, Tiempo : 400, FuncionTiempo : FuncionesTiempo.SinInOut }
             ], {
-//            FuncionTerminado  : nFuncionTerminar,
             FuncionActualizar : function(Valores) { 
-                //this.Ficha.position.y = Valores.y;
                 this.Ficha.scale.set(Valores.Escala, Valores.Escala, Valores.Escala);
                 this.Escala = Valores.Escala;
                 this.Ficha.position.set(Valores.x, this.Ficha.position.y, Valores.z);
                 this.Ficha.rotation.z = Valores.rz;
+            }.bind(this),
+            FuncionTerminado : function() {
+                if (this.Rama === "nada") {
+                    Domino.Partida.FichaIzquierda = this;
+                    Domino.Partida.FichaDerecha   = this;                
+                }
+                else if (this.Rama === "izquierda") Domino.Partida.FichaIzquierda = this;
+                else                                Domino.Partida.FichaDerecha   = this;
+                    
             }.bind(this)
             
         });            
-        
-        setTimeout(nFuncionTerminar, 1000);
-        
         this.AniColocar.Iniciar();
+        
     };
     
-    // devuelve true si está invertido (para las fichas verticales devuelve false)
-    this.Invertido = function() {
-      if (this.Ficha.rotation.z !== 0 && this.Vertical() === false)  return true;
-      return false;
-    };
     
-    this.ValorIzq = function() {
-        if (this.Ficha.rotation.z !== 0) return this.Valores[1];
-        else                             return this.Valores[0];
-    };
-
-    this.ValorDer = function() {
-        if (this.Ficha.rotation.z !== 0) return this.Valores[0];
-        else                             return this.Valores[1];
-    };
     
-    this.Vertical = function() {
+    this.FichaDoble = function() {
         if (this.Valores[0] == this.Valores[1]) return true;
         return false;
     };
+
+
+    this.ValorLibre = function() {
+        switch (this.Direccion) {
+            // solo para el 6 doble
+            case "centro"       : return this.Valores[0];       
+            // Si está rotado 180 grados es el valor 1, si no es el valor 0
+            case "izquierda"    : return (this.Ficha.rotation.z === Math.PI) ? this.Valores[1] :  this.Valores[0];
+            case "derecha"      : return (this.Ficha.rotation.z === Math.PI) ? this.Valores[0] :  this.Valores[1];
+            case "arriba"       : return (this.Ficha.rotation.z === Math.PI / 2) ? this.Valores[1] : this.Valores[0];
+            case "abajo"        : return (this.Ficha.rotation.z === Math.PI / 2) ? this.Valores[0] : this.Valores[1];
+        }
+        return -1;
+    };
+    
+
+    this.BuscarPosIzq = function(FichaDesde) {
+        var Ret = { PosX : 0, PosZ : FichaDesde.Ficha.position.z, RotZ : 0 };
+        if (this.FichaDoble() === true) { 
+            Ret.RotZ = Math.PI / 2;
+            Ret.PosX = FichaDesde.Ficha.position.x - 1.5;
+        }
+        else {
+            if (this.Valores[0] === FichaDesde.ValorLibre()) Ret.RotZ = Math.PI;
+            Ret.PosX = (FichaDesde.FichaDoble() === true && FichaDesde.Ficha.rotation.z !== 0) ? FichaDesde.Ficha.position.x - 1.5 : FichaDesde.Ficha.position.x - 2.0;            
+        }
+        return Ret;
+    };
+
+    this.BuscarPosDer = function(FichaDesde) {
+        var Ret = { PosX : 0, PosZ : FichaDesde.Ficha.position.z, RotZ : 0 };
+        if (this.FichaDoble() === true) { 
+            Ret.RotZ = Math.PI / 2;
+            Ret.PosX = FichaDesde.Ficha.position.x + 1.5;
+        }
+        else {
+            if (this.Valores[1] === FichaDesde.ValorLibre()) Ret.RotZ = Math.PI;
+            Ret.PosX = (FichaDesde.FichaDoble() === true && FichaDesde.Ficha.rotation.z !== 0) ? FichaDesde.Ficha.position.x + 1.5 : FichaDesde.Ficha.position.x + 2.0;            
+        }
+        return Ret;        
+    };
+    
+    this.BuscarPosSup = function(FichaDesde) {
+        var Ret = { PosX : 0, PosZ : FichaDesde.Ficha.position.z, RotZ : 0 };
+        if (this.Valores[0] === FichaDesde.ValorLibre()) Ret.RotZ = Math.PI / 2;
+        else                                             Ret.RotZ = Math.PI + (Math.PI / 2);
+        if (FichaDesde.FichaDoble() === true) {
+            Ret.PosX = FichaDesde.Ficha.position.x;            
+            Ret.PosZ = FichaDesde.Ficha.position.z - 2.0;            
+        }
+        else {
+            Ret.PosX = FichaDesde.Ficha.position.x + 0.5;
+            Ret.PosZ = FichaDesde.Ficha.position.z - 1.5;            
+        }
+        return Ret;
+    };
+    
+    this.BuscarPosSupIzq = function(FichaDesde) {
+        var Ret = { PosX : 0, PosZ : FichaDesde.Ficha.position.z, RotZ : 0 };
+        if (this.FichaDoble() === true) {
+            Ret.PosX = FichaDesde.Ficha.position.x;
+            Ret.PosZ = FichaDesde.Ficha.position.z - 1.5;
+            Ret.RotZ = 0.0;
+        }
+        else {
+            if (this.Valores[0] === FichaDesde.ValorLibre()) Ret.RotZ = Math.PI;
+            else                                             Ret.RotZ = 0;
+            Ret.PosX = FichaDesde.Ficha.position.x - 0.5;
+            Ret.PosZ = FichaDesde.Ficha.position.z - 1.5;
+        }
+        return Ret;        
+    };
+    
+    this.BuscarPosInf  = function(FichaDesde) {
+        var Ret = { PosX : 0, PosZ : FichaDesde.Ficha.position.z, RotZ : 0 };
+        if (this.Valores[0] === FichaDesde.ValorLibre()) Ret.RotZ = Math.PI + (Math.PI / 2);
+        else                                             Ret.RotZ = Math.PI / 2;
+        if (FichaDesde.FichaDoble() === true) {
+            Ret.PosX = FichaDesde.Ficha.position.x;            
+            Ret.PosZ = FichaDesde.Ficha.position.z + 2.0;            
+        }
+        else {
+            Ret.PosX = FichaDesde.Ficha.position.x - 0.5;
+            Ret.PosZ = FichaDesde.Ficha.position.z + 1.5;            
+        }
+        return Ret;        
+    };
+    
+    this.BuscarPosInfDer  = function(FichaDesde) {
+        var Ret = { PosX : 0, PosZ : FichaDesde.Ficha.position.z, RotZ : 0 };
+        if (this.FichaDoble() === true) {
+            Ret.PosX = FichaDesde.Ficha.position.x;
+            Ret.PosZ = FichaDesde.Ficha.position.z + 1.5;
+            Ret.RotZ = 0.0;
+        }
+        else {
+            if (this.Valores[0] === FichaDesde.ValorLibre()) Ret.RotZ = 0;
+            else                                             Ret.RotZ = Math.PI;
+            Ret.PosX = FichaDesde.Ficha.position.x + 0.5;
+            Ret.PosZ = FichaDesde.Ficha.position.z + 1.5;
+        }
+        return Ret;        
+    };
+
 
 };
 

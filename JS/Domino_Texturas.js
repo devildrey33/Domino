@@ -115,9 +115,10 @@ var Domino_Texturas = function() {
         }
         
         
-        this.MaterialBase = new THREE.MeshPhongMaterial({ color: 0x111111, specular : 0x555555, transparent : false, opacity:1.0, shininess : 200 });
-        this.MaterialCara = new THREE.MeshPhongMaterial({ color: 0xFFFFFF, specular : 0xFFFFFF, transparent : false, opacity:1.0, shininess : 200 });
+        this.MaterialBase  = new THREE.MeshPhongMaterial({ color: 0x111111, specular : 0x555555, transparent : false, opacity:1.0, shininess : 200 });
+        this.MaterialCara  = new THREE.MeshPhongMaterial({ color: 0xFFFFFF, specular : 0xFFFFFF, transparent : false, opacity:1.0, shininess : 200 });
+        this.MaterialCaraR = new THREE.MeshPhongMaterial({ color: 0xFFEE94, specular : 0xFFEE94, transparent : false, opacity:1.0, shininess : 200 });
     }
 }
 
-var Texturas = new Domino_Texturas();
+Texturas = new Domino_Texturas();
