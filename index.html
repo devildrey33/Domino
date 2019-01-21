@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-        <title>Domino Three.js</title>
+        <title>Domino Three.js 1.0</title>
         <!-- Estilos CSS para el objeto canvas -->
         <link rel='stylesheet' href='./CSS/ObjetoCanvas.css' />        
         <link rel='stylesheet' href='./CSS/Domino.css' />        
@@ -26,11 +26,44 @@
 
         <script src="./JS/Domino_Texturas.js"></script>        
         <script src="./JS/Domino_Ficha.js"></script>        
+        <script src="./JS/Domino_UI.js"></script>        
         <script src="./JS/Domino_Partida.js"></script>        
         <script src="./JS/Domino.js"></script>        
     </head>
     <body>
-        <div id='Empezar' class='MarcoCanvas' onclick='Domino.Partida.Empezar()'>Empezar!</div>
+        <div id='MarcoEmpezar' class='MarcoCanvas'>
+            <h3>Bienvenido a Domino Three 1.0</h3>
+            <button id="BotonEmpezar">Empezar!</button>
+            <p class="Puntos">Puntos para terminar la partida</p>
+            <div class="Puntos">
+                <button id="Puntos100">100</button>
+                <button id="Puntos200">200</button>
+                <button id="Puntos300" class="PuntosMarcados">300</button>
+                <button id="Puntos400">400</button>
+                <button id="Puntos500">500</button>
+                <button id="Puntos600">600</button>
+            </div>
+        </div>
+        
+        <div id ="MarcoPartida" class='MarcoCanvas'> 
+<!--            <table id="TablaDatos">
+                <tr>
+                    <td id="Partida">Partida 1</td>
+                    <td id="Turno">Turno 1</td>
+                    <td id="Jugador">Jugador 1</td>
+                </tr>                
+            </table> -->
+            
+            <div id="TalbaDatos">
+                <div id="Partida">Partida 1</div>
+                <div id="Turno">Turno 0</div>
+                <div id="Jugador">Jugador 1</div>
+            </div>
+            <div id="Historial">
+                
+            </div>
+        </div>
+        
         <div id='Msg1' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 1 -->
         <div id='Msg2' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 2 -->
         <div id='Msg3' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 3 -->

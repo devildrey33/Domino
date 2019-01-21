@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 16/01/2019
+        Ultima modificación el 20/01/2019
 */
 
 // Constructor
@@ -108,16 +108,18 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
         
         // Inicio las texturas del domino
         Texturas.Iniciar();
-        setTimeout(this.Partida.CrearFichas.bind(this.Partida), 100);
 
         this.CrearLuces();
+        
+        UI.Iniciar();
 //        this.Camara.Rotar();
+        setTimeout(this.Partida.CrearFichas.bind(this.Partida), 10);
     },
     
     
     CrearLuces : function() {
         // Luz direccional
-        this.DirLight = new THREE.DirectionalLight( 0xfff1e0, 0.241 );
+        this.DirLight = new THREE.DirectionalLight( 0xfff1e0, 0.281 );
         this.DirLight.position.set( 0, 40, -30 ); //.normalize();
 //        this.DirLight.position.multiplyScalar( 20 );
         this.DirLight.castShadow = true;
@@ -180,7 +182,7 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
     
     ComprobarMouse  : function() {
         if (this.MouseMovido === false) return;
-        if (typeof(this.Partida.Jugador[0]) === "undefined") return;
+        if (typeof(this.Partida.Ficha[0]) === "undefined") return;
         
         this.RayCaster.setFromCamera(this.PosMouse, this.Camara);
         var intersects = this.RayCaster.intersectObjects( this.Escena.children, true );        
@@ -190,10 +192,10 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
         // Compruebo si hay que hacer hover en alguna de las fichas del jugador 1
         for (var i = 0; i < intersects.length; i++ ) {
             for (var f = 0; f < 7; f++) {
-                if (intersects[i].object === this.Partida.Ficha[this.Partida.Jugador[0][f]].Cara1 && this.Partida.Ficha[this.Partida.Jugador[0][f]].Colocada === false) {
+                if (intersects[i].object === this.Partida.Ficha[f].Cara1 && this.Partida.Ficha[f].Colocada === false) {
                     Hover[f] = 1;
                 }
-                if (intersects[i].object === this.Partida.Ficha[this.Partida.Jugador[0][f]].Cara2 && this.Partida.Ficha[this.Partida.Jugador[0][f]].Colocada === false) {
+                if (intersects[i].object === this.Partida.Ficha[f].Cara2 && this.Partida.Ficha[f].Colocada === false) {
                     Hover[f] = 2;
                 }
             }        
@@ -201,8 +203,8 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
         
         // Miro si hay algun cambio respecto los hovers
         for (var f = 0; f < 7; f++) {
-            if (Hover[f] !== this.Partida.Ficha[this.Partida.Jugador[0][f]].Hover) {
-                this.Partida.Ficha[this.Partida.Jugador[0][f]].AsignarHover(Hover[f]);
+            if (Hover[f] !== this.Partida.Ficha[f].Hover) {
+                this.Partida.Ficha[f].AsignarHover(Hover[f]);
             }
         }
         

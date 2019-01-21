@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 16/01/2019
+        Ultima modificación el 20/01/2019
 */
 
 /* 

@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : devildrey33
 */
 
-#Empezar {
+#MarcoEmpezar {
     position:fixed;
     border:1px solid #000;
     top:50%;
@@ -18,25 +18,68 @@ and open the template in the editor.
     color:#FFF;
     text-shadow:1px 1px 1px #000;
     border-radius:8px;*/
-    padding:20px;
-    font-size:48px;
+    padding:0px 10px 10px 10px;
     z-index:1000;
-    cursor: pointer;    
     border:2px solid transparent;
+    font-size:24px;
 /*    transition:0.4s;*/
 }
 
-#Empezar:hover {
+/*#Empezar:hover {
     background-color: rgba(37,35,40, 0.9);
-/*    color :rgb(234, 80, 78);*/
     border:2px solid rgb(234, 80, 78);
+}*/
+
+#MarcoEmpezar > button {
+    font-size:48px;
+    padding:10px;
+    display:table;
+    margin:auto;
 }
 
+.Puntos {
+    display:table;
+    margin:9px auto 0px auto;
+}
+
+.Puntos > button {
+    margin:2px;
+    font-size:20px;
+}
+
+button {
+    border:1px solid #000;
+    cursor: pointer;    
+    color:#FFFFFF;
+    background: rgba(37,35,40, 1.0);    
+    transition:0.4s;
+}
+
+button:hover {
+    background-color: rgb(234, 80, 78);
+    /*border:1px solid rgb(234, 80, 78);    */
+}
+
+.PuntosMarcados {
+    background-color: rgb(214, 60, 58);
+}
 
 #Msg1, #Msg2, #Msg3, #Msg4 {
     position:fixed;
     font-size:32px;
     transition:0.4s ease-out;
+}
+
+#Msg1[ColorFondo="rojo"], #Msg2[ColorFondo="rojo"], #Msg3[ColorFondo="rojo"], #Msg4[ColorFondo="rojo"] {
+    background-color: rgb(214, 60, 58) !important;
+}
+
+#Msg1[ColorFondo="negro"], #Msg2[ColorFondo="negro"], #Msg3[ColorFondo="negro"], #Msg4[ColorFondo="negro"] {
+    background-color: rgba(37,35,40, 0.6) !important;
+}
+
+#Msg1[ColorFondo="verde"], #Msg2[ColorFondo="verde"], #Msg3[ColorFondo="verde"], #Msg4[ColorFondo="verde"] {
+    background-color: rgb(60, 214, 58) !important;
 }
 
 #Msg1 {
@@ -79,3 +122,53 @@ and open the template in the editor.
     left:2%;
 }
 
+#MarcoPartida {
+    width:250px;
+    position:fixed;
+    top:-100%;
+    right:0%;
+    transition:0.4s;
+    z-index:1000;
+}
+
+#MarcoPartida[Visible="true"] {
+    top:0%;
+}
+
+#MarcoPartida > #TablaDatos {
+    width:100%;
+}
+
+#MarcoPartida #Turno, #MarcoPartida #Jugador, #MarcoPartida #Partida {
+    padding:4px;
+    display:inline-block;
+    width:calc(31% - 8px);
+    margin:0px;
+}
+
+#Historial {
+    display:inline-block;
+    width: 100%;
+    min-height : 200px;
+    max-height : 200px;
+    overflow-y:scroll;
+    border:1px solid #000;
+    margin:4px;
+    padding:2px;
+}
+
+.Historial_negro {
+    color:#FFF;
+    padding:2px;
+}
+
+.Historial_verde {
+    color : rgb(60, 214, 58);
+    padding:2px;
+}
+
+.Historial_rojo {
+    padding:2px;
+    color: rgb(255, 0, 0);
+    text-shadow:1px 1px 1px #888;
+}
