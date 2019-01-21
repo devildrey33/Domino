@@ -1,11 +1,12 @@
 /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 16-ene-2019, 20:09:35
-    Author     : devildrey33
+    Domino ThreeJS creado por Josep Antoni Bover Comas el 16/01/2019
+
+        CSS para el Dominó
+
+        Vista por defecto en el Laboratorio de pruebas  
+		devildrey33_Lab->Opciones->Vista = Filas;
+
+        Ultima modificación el 21/01/2019
 */
 
 #MarcoEmpezar {
@@ -148,12 +149,12 @@ button:hover {
 
 #Historial {
     display:inline-block;
-    width: 100%;
+    width: calc(100% - 4px);
     min-height : 200px;
     max-height : 200px;
     overflow-y:scroll;
     border:1px solid #000;
-    margin:4px;
+/*    margin:4px;*/
     padding:2px;
 }
 
@@ -169,6 +170,6 @@ button:hover {
 
 .Historial_rojo {
     padding:2px;
-    color: rgb(255, 0, 0);
-    text-shadow:1px 1px 1px #888;
+    color: orange;
+    /*text-shadow:1px 1px 1px #888;*/
 }

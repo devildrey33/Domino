@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 20/01/2019
+        Ultima modificación el 21/01/2019
 */
 
 var Domino_Partida = function() {    
@@ -14,7 +14,7 @@ var Domino_Partida = function() {
 //    this.Jugador          = [];     // TODO por eliminar
     this.JugadorActual    = 0;    // Jugador del turno actual
     this.TurnoActual      = 0; 
-    
+    this.Partida          = 0;
     this.FichaIzquierda   = { };
     this.FichaDerecha     = { };
     
@@ -22,6 +22,7 @@ var Domino_Partida = function() {
     this.Ficha            = [];
     this.TiempoTurno      = 1000;
     this.TimerMsg         = [ 0, 0, 0, 0 ];
+    this.PartidaTerminada = false;
     //this.Domino           = nDomino;
     
     this.CrearFichas = function() {
@@ -64,6 +65,10 @@ var Domino_Partida = function() {
         UI.OcultarEmpezar();   
         // Muestro el menu con los datos de la partida actual
         UI.MostrarPartida();
+        
+        this.Partida ++;
+        this.PartidaTerminada = false;
+        
         // Borro el historial de fichas
         document.getElementById("Historial").innerHTML = "";
         
@@ -125,8 +130,13 @@ var Domino_Partida = function() {
     
     // Función que ejecuta un turno
     this.Turno = function() {
+        if (this.PartidaTerminada === true) return;
 
         console.log("Turno : " + this.TurnoActual);
+        
+        document.getElementById("Partida").innerHTML = "Partida " + this.Partida;
+        document.getElementById("Turno").innerHTML   = "Turno "   + this.TurnoActual;
+        document.getElementById("Jugador").innerHTML = "Jugador " + (this.JugadorActual + 1);
         
 //        this.AnimarLuz(this.JugadorActual);
         
@@ -136,7 +146,8 @@ var Domino_Partida = function() {
             for (var i = 0; i < 7; i ++) {
                 if (this.Ficha[(this.JugadorActual * 7) + i].Valores[0] === 6 && this.Ficha[(this.JugadorActual * 7) + i].Valores[1] === 6) {
                     this.Ficha[(this.JugadorActual * 7) + i].Colocar(false);
-                    setTimeout(function() { this.Turno(); }.bind(this), this.TiempoTurno);
+                    setTimeout(function() { this.Turno(); }.bind(this), this.TiempoTurno);                    
+                    this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[(this.JugadorActual * 7) + i].Valores[0] + " | " + this.Ficha[(this.JugadorActual * 7) + i].Valores[1]);
                 }
             }
             
@@ -170,12 +181,11 @@ var Domino_Partida = function() {
                     var Rnd = 0;//RandInt(this.Posibilidades.length -1, 0);
                     if (Posibilidades[0].Rama === "izquierda") { 
                         this.Ficha[Posibilidades[0].Pos].Colocar(this.FichaIzquierda);
-                        this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[Posibilidades[0].Pos].Valores[0] + " | " + this.Ficha[Posibilidades[0].Pos].Valores[1]);                        
                     }
                     else {
                         this.Ficha[Posibilidades[0].Pos].Colocar(this.FichaDerecha);
-                        this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[Posibilidades[0].Pos].Valores[0] + " | " + this.Ficha[Posibilidades[0].Pos].Valores[1]);
                     }                    
+                    this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[Posibilidades[0].Pos].Valores[0] + " | " + this.Ficha[Posibilidades[0].Pos].Valores[1]);                        
 //                    if (this.Ficha[Posibilidades[0].Pos].Rama === "izquierda") this.FichaIzquierda = Posibilidades[0].Pos;
 //                    else                                                       this.FichaDerecha = Posibilidades[0].Pos;
                     
@@ -212,6 +222,7 @@ var Domino_Partida = function() {
     };
     
     this.Terminada = function() {
+        if (this.PartidaTerminada === true) return true;
         // Compruebo que el jugador actual no tenga 0 fichas
         var Colocadas = 0;
         for (i = 0; i < 7; i++) {
@@ -222,15 +233,22 @@ var Domino_Partida = function() {
             this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) +  " gana la partida!", "verde");
             //document.getElementById("Empezar").style.display = "block";
             UI.MostrarEmpezar();
+            this.PartidaTerminada = true;
             return true;
         }
         // Todos los jugadores han pasado
         if (this.Pasado === 4) {
+            var J = (this.JugadorActual + 1) - 1;
+            if (J < 1) J = 4;
+            this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) +  " ha bloqueado la partida!", "verde");
             //this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) +  " gana la partida!");
             //document.getElementById("Empezar").style.display = "block";
             UI.MostrarEmpezar();
+            this.PartidaTerminada = true;
             return true;            
         }        
+        
+        return false;
     };
     
     // Función para mostrar un mensaje especifico para un jugador
@@ -243,8 +261,10 @@ var Domino_Partida = function() {
         this.TimerMsg[Jugador] = setTimeout(function(J) { document.getElementById("Msg" + (J + 1)).setAttribute("MsgVisible", "false"); this.TimerMsg[J] = 0; }.bind(this, Jugador), this.TiempoTurno * 2);
         Msg.innerHTML = Texto;               
         
-        document.getElementById("Historial").innerHTML = document.getElementById("Historial").innerHTML + "<div class='Historial_" + ColorFondo + "'>" + Texto + "</div>";
-        document.getElementById("Historial").scrollTo(0, document.getElementById("Historial").width);
+        
+        var Historial = document.getElementById("Historial");
+        Historial.innerHTML = Historial.innerHTML + "<div class='Historial_" + ColorFondo + "'>" + Texto + "</div>";
+        Historial.scrollTo(0, Historial.scrollHeight);
     };
     
     // Coloca la ficha presionada por el jugador (si es posible)
@@ -280,7 +300,7 @@ var Domino_Partida = function() {
                     if (nPos !== -1) {
                         console.log ("Jugador1 tira " + this.Ficha[i].Valores[0] + " | " + this.Ficha[i].Valores[1]);
                         this.Ficha[i].Colocar(nPos);
-                        this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + nPos.Valores[0] + " | " + nPos.Valores[1]);                        
+                        this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[i].Valores[0] + " | " + this.Ficha[i].Valores[1]);                        
                         
                         // Compruebo si se ha terminado la partida
                         if (this.Terminada() === true) return;
