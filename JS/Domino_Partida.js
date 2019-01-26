@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 21/01/2019
+        Ultima modificación el 26/01/2019
 */
 
 var Domino_Partida = function() {    
@@ -14,7 +14,7 @@ var Domino_Partida = function() {
 //    this.Jugador          = [];     // TODO por eliminar
     this.JugadorActual    = 0;    // Jugador del turno actual
     this.TurnoActual      = 0; 
-    this.Partida          = 0;
+    this.Mano             = 0;
     this.FichaIzquierda   = { };
     this.FichaDerecha     = { };
     
@@ -22,7 +22,9 @@ var Domino_Partida = function() {
     this.Ficha            = [];
     this.TiempoTurno      = 1000;
     this.TimerMsg         = [ 0, 0, 0, 0 ];
-    this.PartidaTerminada = false;
+    this.ManoTerminada    = false;
+    this.PuntosEquipo1    = 0; // 
+    this.PuntosEquipo2    = 0;
     //this.Domino           = nDomino;
     
     this.CrearFichas = function() {
@@ -48,7 +50,7 @@ var Domino_Partida = function() {
         }        
     };    
     
-    // Función que devuelve el jugador que empieza la partida
+    // Función que devuelve el jugador que empieza la mano
     this.JugadorInicio = function() {
         // Miro que jugador empieza
         for (this.JugadorActual = 0; this.JugadorActual < 4; this.JugadorActual++) {
@@ -60,14 +62,26 @@ var Domino_Partida = function() {
         }        
     };
     
-    this.Empezar = function() {
+    this.Empezar = function() {        
+        this.Mano = 0;
+        this.PuntosEquipo1 = 0;
+        this.PuntosEquipo2 = 0;
+        this.Continuar();
+    };
+    
+    this.Continuar = function() {
         // Oculto el menu para empezar la partida
         UI.OcultarEmpezar();   
-        // Muestro el menu con los datos de la partida actual
-        UI.MostrarPartida();
+        // Oculto el menu para continuar la siguiente mano (desde una victoria)
+        UI.OcultarContinuar();           
+        // Oculto el menu para continuar la siguiente mano (desde un empate)
+        UI.OcultarEmpate();   
         
-        this.Partida ++;
-        this.PartidaTerminada = false;
+        // Muestro el menu con los datos de la mano actual
+        UI.MostrarDatosMano();
+        
+        this.Mano ++;
+        this.ManoTerminada = false;
         
         // Borro el historial de fichas
         document.getElementById("Historial").innerHTML = "";
@@ -100,7 +114,7 @@ var Domino_Partida = function() {
         // Coloco las fichas del jugador 1 y 3
         for (i = 0; i < 7; i++) {
             this.Ficha[i].RotarV();
-            this.Ficha[i].Ficha.position.set(-4.5 + (1.5 * i), 0, 5.5);
+            this.Ficha[i].Ficha.position.set(-4.5 + (1.5 * i), 0, 6.0);
             this.Ficha[14 + i].RotarV();
             this.Ficha[14 + i].Ficha.position.set(-4.5 + (1.5 * i), 0, -12);
         }
@@ -130,13 +144,13 @@ var Domino_Partida = function() {
     
     // Función que ejecuta un turno
     this.Turno = function() {
-        if (this.PartidaTerminada === true) return;
+        if (this.ManoTerminada === true) return;
 
         console.log("Turno : " + this.TurnoActual);
         
-        document.getElementById("Partida").innerHTML = "Partida " + this.Partida;
-        document.getElementById("Turno").innerHTML   = "Turno "   + this.TurnoActual;
-        document.getElementById("Jugador").innerHTML = "Jugador " + (this.JugadorActual + 1);
+        document.getElementById("Mano").innerHTML = this.Mano;
+        document.getElementById("Turno").innerHTML   = this.TurnoActual;
+        document.getElementById("Jugador").innerHTML = (this.JugadorActual + 1);
         
 //        this.AnimarLuz(this.JugadorActual);
         
@@ -147,7 +161,7 @@ var Domino_Partida = function() {
                 if (this.Ficha[(this.JugadorActual * 7) + i].Valores[0] === 6 && this.Ficha[(this.JugadorActual * 7) + i].Valores[1] === 6) {
                     this.Ficha[(this.JugadorActual * 7) + i].Colocar(false);
                     setTimeout(function() { this.Turno(); }.bind(this), this.TiempoTurno);                    
-                    this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[(this.JugadorActual * 7) + i].Valores[0] + " | " + this.Ficha[(this.JugadorActual * 7) + i].Valores[1]);
+                    this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[(this.JugadorActual * 7) + i].Valores[1] + " | " + this.Ficha[(this.JugadorActual * 7) + i].Valores[0]);
                 }
             }
             
@@ -185,12 +199,12 @@ var Domino_Partida = function() {
                     else {
                         this.Ficha[Posibilidades[0].Pos].Colocar(this.FichaDerecha);
                     }                    
-                    this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[Posibilidades[0].Pos].Valores[0] + " | " + this.Ficha[Posibilidades[0].Pos].Valores[1]);                        
+                    this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[Posibilidades[0].Pos].Valores[1] + " | " + this.Ficha[Posibilidades[0].Pos].Valores[0]);
 //                    if (this.Ficha[Posibilidades[0].Pos].Rama === "izquierda") this.FichaIzquierda = Posibilidades[0].Pos;
 //                    else                                                       this.FichaDerecha = Posibilidades[0].Pos;
                     
 //                    Posibilidades[Rnd].Colocar();
-                    console.log("Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[Posibilidades[0].Pos].Valores[0] + " | " + this.Ficha[Posibilidades[0].Pos].Valores[1]);
+                    console.log("Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[Posibilidades[0].Pos].Valores[1] + " | " + this.Ficha[Posibilidades[0].Pos].Valores[0]);
                     setTimeout(function() { this.Turno(); }.bind(this), this.TiempoTurno);
                 }
                 // Turno del jugador
@@ -207,8 +221,8 @@ var Domino_Partida = function() {
             }
         }
         
-        // Compruebo si se ha terminado la partida
-        if (this.Terminada() === true) return;
+        // Compruebo si se ha terminado la mano
+        if (this.ComprobarManoTerminada() === true) return;
         
         this.TurnoActual ++;
         this.JugadorActual ++;
@@ -221,34 +235,83 @@ var Domino_Partida = function() {
         }        
     };
     
-    this.Terminada = function() {
-        if (this.PartidaTerminada === true) return true;
+    this.ComprobarManoTerminada = function() {
+        if (this.ManoTerminada === true) return true;
         // Compruebo que el jugador actual no tenga 0 fichas
-        var Colocadas = 0;
+        var Colocadas = 0, Equipo = "1";
         for (i = 0; i < 7; i++) {
             if (this.Ficha[(this.JugadorActual * 7) + i].Colocada === true) Colocadas ++;
         }
         
         if (Colocadas === 7) {
-            this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) +  " gana la partida!", "verde");
-            //document.getElementById("Empezar").style.display = "block";
-            UI.MostrarEmpezar();
-            this.PartidaTerminada = true;
-            return true;
+            this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) +  " gana la mano!", "verde");
+            this.ManoTerminada = true;            
+            // Cuento los puntos y muestro los valores
+            var Puntos = 0;
+            for (i = 0; i < 4; i++) {
+                Puntos += this.ContarPuntos(i);
+            }
+            Equipo = (this.JugadorActual === 0 || this.JugadorActual === 2) ? "1" : "2";
+            if (Equipo === "1") this.PuntosEquipo1 += Puntos;
+            else                this.PuntosEquipo2 += Puntos;
+            document.getElementById("Equipo1").innerHTML = this.PuntosEquipo1;
+            document.getElementById("Equipo2").innerHTML = this.PuntosEquipo2;
+            
+            UI.MostrarContinuar(Equipo, Puntos);                        
         }
         // Todos los jugadores han pasado
         if (this.Pasado === 4) {
-            var J = (this.JugadorActual + 1) - 1;
-            if (J < 1) J = 4;
-            this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) +  " ha bloqueado la partida!", "verde");
-            //this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) +  " gana la partida!");
-            //document.getElementById("Empezar").style.display = "block";
-            UI.MostrarEmpezar();
-            this.PartidaTerminada = true;
-            return true;            
+            var J = (this.JugadorActual + 1) + 1;
+            if (J > 4) J = 1;
+//            this.MostrarMensaje(this.JugadorActual, "Jugador" + J +  " ha bloqueado la mano!", "verde");
+            this.ManoTerminada = true;                        
+            // http://www.ludoteka.com/domino.html
+            // Por cierre o tranca:     cuando ninguno de los 4 jugadores puede seguir colocando ninguna de sus fichas. 
+            //                          En este caso se suman los puntos de las fichas que no han sido jugadas por ambos jugadores de cada pareja, 
+            //                          ganando aquella que totalice una suma menor. En caso de empate, la mano no cuenta a efectos de puntuación.
+            var P1 = this.ContarPuntos(0), P2 = this.ContarPuntos(1), P3 = this.ContarPuntos(2), P4 = this.ContarPuntos(3);
+            if ((P1 + P3) === (P2 + P4)) { // EMPATE (no se contabiliza nada)
+                UI.MostrarEmpate(P1, P2, P3, P4);
+            }
+            else {
+                if ((P1 + P3) < (P2 + P4)) { // Gana el equipo 1
+                    this.PuntosEquipo1 += (P1 + P2 + P3 + P4);
+                    Equipo = "1";
+                }
+                else if ((P1 + P3) > (P2 + P4)) { // Gana el equipo 2
+                    this.PuntosEquipo2 += (P1 + P2 + P3 + P4);
+                    Equipo = "2";
+                }
+                UI.MostrarEmpate(P1, P2, P3, P4);
+            }
+
+            document.getElementById("Equipo1").innerHTML = this.PuntosEquipo1;
+            document.getElementById("Equipo2").innerHTML = this.PuntosEquipo2;
         }        
+
+        if (this.ManoTerminada === true) {
+            if (this.PuntosEquipo1 >= UI.PuntuacionPorPartida || this.PuntosEquipo2 >= UI.PuntuacionPorPartida) { // Se ha terminado la partida
+                // Oculto el menu para continuar la siguiente mano (desde una victoria)
+                UI.OcultarContinuar();           
+                // Oculto el menu para continuar la siguiente mano (desde un empate)
+                UI.OcultarEmpate();                   
+                
+                UI.MostrarGanador((this.PuntosEquipo1 >= this.PuntosEquipo2) ? 1 : 2);
+            }
+            return true;
+        }
         
         return false;
+    };
+    
+    this.ContarPuntos = function(Jugador) {
+        var Total = 0;
+        for (var i = 0; i < 7; i++) {
+            if (this.Ficha[(Jugador * 7) + i].Colocada === false) {
+                Total += (this.Ficha[(Jugador * 7) + i].Valores[0] + this.Ficha[(Jugador * 7) + i].Valores[1]);
+            }
+        }
+        return Total;
     };
     
     // Función para mostrar un mensaje especifico para un jugador
@@ -302,8 +365,8 @@ var Domino_Partida = function() {
                         this.Ficha[i].Colocar(nPos);
                         this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[i].Valores[0] + " | " + this.Ficha[i].Valores[1]);                        
                         
-                        // Compruebo si se ha terminado la partida
-                        if (this.Terminada() === true) return;
+                        // Compruebo si se ha terminado la mano
+                        if (this.ComprobarManoTerminada() === true) return;
                         
                         this.TurnoActual ++;
                         this.JugadorActual ++;

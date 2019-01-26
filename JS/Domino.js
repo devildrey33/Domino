@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 20/01/2019
+        Ultima modificación el 26/01/2019
 */
 
 // Constructor
@@ -26,8 +26,11 @@ var DominoThree = function() {
         'CapturaEjemplo'            : ""                 // Captura de pantalla para el ejemplo a "NuevoCanvas2D.png" se le añadirá "https://devildrey33.es/Web/Graficos/250x200_"
     }) === false) { return false; }
     
+    // VERSIÓN DEL JUEGO A MANO
+    document.getElementById("VersionDomino").innerHTML = "0.93";
+    
     // Se ha creado el canvas, inicio los valores de la animación ... 
-    this.Iniciar();
+    this.Iniciar();    
     
     // Esconde la ventana que informa al usuario de que se está cargando la animación. (REQUERIDO)
     this.Cargando(false);
@@ -198,6 +201,9 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
                 if (intersects[i].object === this.Partida.Ficha[f].Cara2 && this.Partida.Ficha[f].Colocada === false) {
                     Hover[f] = 2;
                 }
+                if (intersects[i].object === this.Partida.Ficha[f].Bola && this.Partida.Ficha[f].Colocada === false) {
+                    Hover[f] = 3;
+                }                
             }        
         }
         

@@ -6,10 +6,10 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 21/01/2019
+        Ultima modificación el 26/01/2019
 */
 
-#MarcoEmpezar {
+#MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado {
     position:fixed;
     border:1px solid #000;
     top:50%;
@@ -23,6 +23,7 @@
     z-index:1000;
     border:2px solid transparent;
     font-size:24px;
+    display:none;
 /*    transition:0.4s;*/
 }
 
@@ -31,7 +32,7 @@
     border:2px solid rgb(234, 80, 78);
 }*/
 
-#MarcoEmpezar > button {
+#BotonEmpezar, #BotonContinuar, #BotonContinuar2 {
     font-size:48px;
     padding:10px;
     display:table;
@@ -123,7 +124,7 @@ button:hover {
     left:2%;
 }
 
-#MarcoPartida {
+/*#MarcoPartida {
     width:250px;
     position:fixed;
     top:-100%;
@@ -138,24 +139,44 @@ button:hover {
 
 #MarcoPartida > #TablaDatos {
     width:100%;
+}*/
+
+#DatosJuego {
+    margin:0px;
+    display:none;    
+    width:10em;
+    font-size:1.5em;
 }
 
-#MarcoPartida #Turno, #MarcoPartida #Jugador, #MarcoPartida #Partida {
+/*#DatosJuego #Turno, #DatosJuego #Jugador, #DatosJuego #Partida {
     padding:4px;
     display:inline-block;
     width:calc(31% - 8px);
     margin:0px;
+}*/
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #777;
+    margin: 0.4em 0;
+    padding: 0; 
 }
 
 #Historial {
-    display:inline-block;
-    width: calc(100% - 4px);
-    min-height : 200px;
-    max-height : 200px;
+    display:none;
+    width: 15em;
+    right:0px;
+/*    min-height : 15em;
+    max-height : 200px;*/
+    height:15em;
     overflow-y:scroll;
     border:1px solid #000;
 /*    margin:4px;*/
     padding:2px;
+    margin:0px;
+    font-size:1em;
 }
 
 .Historial_negro {
@@ -172,4 +193,43 @@ button:hover {
     padding:2px;
     color: orange;
     /*text-shadow:1px 1px 1px #888;*/
+}
+
+#Historial::-webkit-scrollbar {
+    width:0.5em;
+}
+
+/*#Historial::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}*/
+
+#Historial::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+/*  outline: 1px solid slategrey; */
+}
+
+#DatosJuego[Visible="true"], #Historial[Visible="true"] {
+    display:block;
+}
+
+
+.Empate_Victoria {
+    color:rgb(57, 255, 20);
+}
+
+.Empate_Derrota {
+    color:rgb(235, 106, 14);
+}
+
+#MarcoEmpate > table {
+    margin:auto;
+}
+
+#MarcoEmpate > p, #MarcoEmpate > h1 {
+    display: table;
+    margin:auto;
+}
+
+#DatosJuego td { 
+    text-align:right;
 }

@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 20/01/2019
+        Ultima modificación el 26/01/2019
 */
 
 /* 
@@ -126,7 +126,8 @@ var Domino_Ficha = function() {
        
     this.AsignarHover = function(Hover) {
         if (typeof(this.AniHover) !== "undefined") {
-            this.AniHover.Terminar();
+            if (this.AniHover.Terminado() === false) return;
+//            this.AniHover.Terminar();
         }
         
         this.Hover = Hover;
@@ -155,20 +156,20 @@ var Domino_Ficha = function() {
         // Está hover
         if (Hover > 0) {
             this.AniHover = Animaciones.CrearAnimacion([
-                    { Paso : { Escala : this.Escala, y : this.Ficha.position.y } },
-                    { Paso : { Escala : 1.2,         y : 0.5                   }, Tiempo : 300, FuncionTiempo : FuncionesTiempo.Lineal }
+                    { Paso : { Escala : this.Escala, z : 6.0 } },
+                    { Paso : { Escala : 1.2,         z : 5.6                   }, Tiempo : 300, FuncionTiempo : FuncionesTiempo.Lineal }
             ], { FuncionActualizar : function(Valores) { 
-                    //this.Ficha.position.y = Valores.y;
+//                    this.Ficha.position.z = Valores.z;
                     this.Ficha.scale.set(Valores.Escala, Valores.Escala, Valores.Escala);
                     this.Escala = Valores.Escala;
             }.bind(this) });
         }
         else {
             this.AniHover = Animaciones.CrearAnimacion([
-                    { Paso : { Escala : this.Escala, y : this.Ficha.position.y   } },
-                    { Paso : { Escala : 1.0,         y : 0.0                     }, Tiempo : 300, FuncionTiempo : FuncionesTiempo.Lineal }
+                    { Paso : { Escala : this.Escala, z : 5.6   } },
+                    { Paso : { Escala : 1.0,         z : 6.0                     }, Tiempo : 300, FuncionTiempo : FuncionesTiempo.Lineal }
             ], { FuncionActualizar : function(Valores) { 
-                    //this.Ficha.position.y = Valores.y;
+  //                  this.Ficha.position.z = Valores.z;
                     this.Ficha.scale.set(Valores.Escala, Valores.Escala, Valores.Escala);
                     this.Escala = Valores.Escala;
             }.bind(this) });            

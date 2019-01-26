@@ -1,6 +1,6 @@
 /* Objeto para crear animaciones de tiempo creado por Josep Antoni Bover.
  *  Creado el 25/08/2016
- *  Ultima modificación el 27/08/2017
+ *  Ultima modificación el 26/01/2019
  * */
 
 
@@ -203,6 +203,11 @@ var ObjetoAnimacion_Animacion = function(ArrayPasos, Opciones, Padre, nTransicio
         }
         this._Terminado = false;
     };
+    
+    // Guarrada... pero no la vull liar.. 2mb
+    this.Terminado = function() { 
+        return this._Terminado;
+    }
     
     /* Asigna los valores iniciales de la animación a las variables y ejecuta la primera FuncionActualizar */
     this.AsignarValoresIniciales = function() {

@@ -6,13 +6,13 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 21/01/2019
+        Ultima modificación el 26/01/2019
 -->
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-        <title>Dominó Three.js 1.00</title>
+        <title>Dominó Three.js</title>
         <!-- Estilos CSS para el objeto canvas -->
         <link rel='stylesheet' href='./CSS/ObjetoCanvas.css' />        
         <link rel='stylesheet' href='./CSS/Domino.css' />        
@@ -31,8 +31,9 @@
         <script src="./JS/Domino.js"></script>        
     </head>
     <body>
+        <!-- Marco para empezar partida -->
         <div id='MarcoEmpezar' class='MarcoCanvas'>
-            <h3>Bienvenido a Dominó 1.00</h3>
+            <h1>Bienvenido a Dominó <span id="VersionDomino">0.00</span></h1>
             <button id="BotonEmpezar">Empezar!</button>
             <p class="Puntos">Puntos para terminar la partida</p>
             <div class="Puntos">
@@ -45,24 +46,101 @@
             </div>
         </div>
         
-        <div id ="MarcoPartida" class='MarcoCanvas'> 
-<!--            <table id="TablaDatos">
+        <!-- Victoria de un equipo (un jugador se ha quedado sin fichas) -->
+        <div id="MarcoContinuar"  class='MarcoCanvas'>
+            <h3>El <b>Equipo <span id="PG_Equipo">x</span></b> ha ganado! y suma <span id ="PG_Puntos">x</span> puntos.</h3>
+            <button id="BotonContinuar">Continuar</button>
+        </div>
+        
+        <!-- Marco para mostrar los datos del Empate -->
+        <div id="MarcoEmpate" class='MarcoCanvas'>
+            <h1>EMPATE!</h1>
+            <p>El equipo que sume menos puntos gana, en caso de empate no hay puntos para nadie.</p>
+            <table>
+                <tr id ="ME_E1" class="Empate_Victoria">
+                    <td id="ME_J1">Jugador 1</td>
+                    <td>:</td>
+                    <td id="ME_P1">x</td>
+                    <td id="ME_J3">Jugador 3</td>
+                    <td>:</td>
+                    <td id="ME_P3">x</td>
+                    <td>=</td>
+                    <td id="ME_P13">x</td>
+                </tr>
+                <tr id ="ME_E2" class="Empate_Derrota">
+                    <td id="ME_J2" >Jugador 2</td>
+                    <td>:</td>
+                    <td id="ME_P2">x</td>
+                    <td id="ME_J4">Jugador 4</td>
+                    <td>:</td>
+                    <td id="ME_P4">x</td>
+                    <td>=</td>
+                    <td id="ME_P24">x</td>
+                </tr>                
+            </table>
+            <!-- Texto para la victoria por puntos despues de un bloqueo (al quedarse todos los jugadores sin posibilidad de tirar, antes de quedarse sin fichas) -->
+            <p id="TxtVictoria">Ha ganado el Equipo <span id="TxtVictoriaEquipo">x</span>, y suma <span id="TxtVictoriaPuntos"></span> puntos.</p>
+            <!-- Texto para el empate, al quedarse todos los jugadores sin poder tirar, y que los dos equipos sumen los mismos puntos -->
+            <p id="TxtEmpate">EMPATE, no se reparten puntos</p>
+            <br />
+            <button id="BotonContinuar2">Continuar</button>
+        </div>
+        
+        <!-- Marco para cuando se termina la parida -->
+        <div id="MarcoTerminado" class='MarcoCanvas'>
+            <h1>Partida TERMINADA</h1>
+            <p>El Equipo <span id="EquipoGanador"></span> ha ganado la partida con <span id="PuntosGanador"></span> puntos.</p>
+            <button id="BotonTerminar">Terminar</button>
+        </div>
+        
+        <div class='MarcoCanvas' id="Historial">
+            
+        </div>
+        
+        <div class='MarcoCanvas' id="DatosJuego">
+            <table>
+                <tr>
+                    <td>Mano</td>
+                    <td>:</td>
+                    <td id="Mano">0</td>
+                </tr>
+                <tr>
+                    <td>Turno</td>
+                    <td>:</td>
+                    <td id="Turno">0</td>
+                </tr>
+                <tr>
+                    <td>Jugador</td>
+                    <td>:</td>
+                    <td id="Jugador">0</td>
+                </tr>                
+            </table>
+            <hr />
+            <table>
+                <tr>
+                    <td>Equipo 1</td>
+                    <td>:</td>
+                    <td id="Equipo1">0 / 300</td>
+                </tr>
+                <tr>
+                    <td>Equipo 2</td>
+                    <td>:</td>
+                    <td id="Equipo2">0 / 300</td>
+                </tr>
+            </table>
+        </div>
+
+        
+<!--        <div id ="MarcoPartida" class='MarcoCanvas'> 
+            <table id="TablaDatos">
                 <tr>
                     <td id="Partida">Partida 1</td>
                     <td id="Turno">Turno 1</td>
                     <td id="Jugador">Jugador 1</td>
                 </tr>                
-            </table> -->
+            </table>
             
-            <div id="TalbaDatos">
-                <div id="Partida">Partida 1</div>
-                <div id="Turno">Turno 0</div>
-                <div id="Jugador">Jugador 1</div>
-            </div>
-            <div id="Historial">
-                
-            </div>
-        </div>
+        </div> -->
         
         <div id='Msg1' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 1 -->
         <div id='Msg2' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 2 -->
