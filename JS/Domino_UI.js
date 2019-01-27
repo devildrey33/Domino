@@ -27,6 +27,11 @@ var Domino_UI = function() {
             Domino.Partida.Continuar();
         };
         
+        document.getElementById("BotonTerminar").onclick = function() {
+            UI.OcultarGanador();
+            UI.MostrarEmpezar();
+        };
+        
         // Botones con las puntuaciones máximas
         for (var i = 1; i < 7; i++) {
             document.getElementById("Puntos" + i * 100).onclick = function(Pos) {
@@ -116,12 +121,30 @@ var Domino_UI = function() {
         document.getElementById("Historial").setAttribute("Visible", "false");
     };
     
-    this.MostrarGanador = function ()  {
-        
+    this.MostrarGanador = function (Equipo, Puntos)  {
+        document.getElementById("MarcoTerminado").style.display = "block";
+        document.getElementById("EquipoGanador").innerHTML = Equipo;
+        document.getElementById("PuntosGanador").innerHTML = Puntos;
     };
     
     this.OcultarGanador = function ()  {
-        
+        document.getElementById("MarcoTerminado").style.display = "none";        
+    };
+    
+    this.MostrarVictoria = function() {
+/*        var v = document.getElementById("Victoria");
+        if (v !== null) {
+            v.parentNode.removeChild(v);
+        }*/
+        document.getElementById("VictoriaDerrota").innerHTML = "<div id='Victoria'><img src='./SVG/Partida.svg#Ganada' /></div>";
+    };
+    
+    this.MostrarDerrota = function() {
+/*        var d = document.getElementById("Derrota");
+        if (d !== null) {
+            d.parentNode.removeChild(d);
+        }*/
+        document.getElementById("VictoriaDerrota").innerHTML = "<div id='Derrota'><img src='./SVG/Partida.svg#Perdida' /></div>";        
     };
     
     // Función para mostrar un mensaje especifico para un jugador

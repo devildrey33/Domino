@@ -115,6 +115,9 @@ var Domino_Ficha = function() {
         return this.Ficha;
     };
     
+    this.RotarBocaAbajo = function() {
+        this.Ficha.rotation.x = Math.PI / 2;
+    };
     
     this.RotarV = function() {
         this.Ficha.rotation.z = Math.PI / 2;
@@ -307,14 +310,15 @@ var Domino_Ficha = function() {
         this.Colocada = true;
         
         this.AniColocar = Animaciones.CrearAnimacion([
-                { Paso : { Escala : this.Escala,    x : this.Ficha.position.x,  z : this.Ficha.position.z,  rz : this.Ficha.rotation.z  } },
-                { Paso : { Escala : 1.0,            x : Ret.PosX,               z : Ret.PosZ,               rz : Ret.RotZ  }, Tiempo : 400, FuncionTiempo : FuncionesTiempo.SinInOut }
+                { Paso : { Escala : this.Escala,    x : this.Ficha.position.x,  z : this.Ficha.position.z,  rx : this.Ficha.rotation.x, rz : this.Ficha.rotation.z  } },
+                { Paso : { Escala : 1.0,            x : Ret.PosX,               z : Ret.PosZ,               rx : -Math.PI / 2, rz : Ret.RotZ  }, Tiempo : 400, FuncionTiempo : FuncionesTiempo.SinInOut }
             ], {
             FuncionActualizar : function(Valores) { 
                 this.Ficha.scale.set(Valores.Escala, Valores.Escala, Valores.Escala);
                 this.Escala = Valores.Escala;
                 this.Ficha.position.set(Valores.x, this.Ficha.position.y, Valores.z);
                 this.Ficha.rotation.z = Valores.rz;
+                this.Ficha.rotation.x = Valores.rx;
             }.bind(this),
             FuncionTerminado : function() {
                 if (this.Rama === "nada") {

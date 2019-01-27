@@ -207,7 +207,7 @@ var ObjetoAnimacion_Animacion = function(ArrayPasos, Opciones, Padre, nTransicio
     // Guarrada... pero no la vull liar.. 2mb
     this.Terminado = function() { 
         return this._Terminado;
-    }
+    };
     
     /* Asigna los valores iniciales de la animación a las variables y ejecuta la primera FuncionActualizar */
     this.AsignarValoresIniciales = function() {

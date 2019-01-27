@@ -43,7 +43,7 @@
                 <button id="Puntos400">400</button>
                 <button id="Puntos500">500</button>
                 <button id="Puntos600">600</button>
-            </div>
+            </div>            
         </div>
         
         <!-- Victoria de un equipo (un jugador se ha quedado sin fichas) -->
@@ -89,7 +89,7 @@
         <!-- Marco para cuando se termina la parida -->
         <div id="MarcoTerminado" class='MarcoCanvas'>
             <h1>Partida TERMINADA</h1>
-            <p>El Equipo <span id="EquipoGanador"></span> ha ganado la partida con <span id="PuntosGanador"></span> puntos.</p>
+            <p>El Equipo <span id="EquipoGanador">x</span> ha ganado la partida con <span id="PuntosGanador">x</span> puntos.</p>
             <button id="BotonTerminar">Terminar</button>
         </div>
         
@@ -120,16 +120,15 @@
                 <tr>
                     <td>Equipo 1</td>
                     <td>:</td>
-                    <td id="Equipo1">0 / 300</td>
+                    <td id="Equipo1">0</td>
                 </tr>
                 <tr>
                     <td>Equipo 2</td>
                     <td>:</td>
-                    <td id="Equipo2">0 / 300</td>
+                    <td id="Equipo2">0</td>
                 </tr>
             </table>
         </div>
-
         
 <!--        <div id ="MarcoPartida" class='MarcoCanvas'> 
             <table id="TablaDatos">
@@ -146,5 +145,10 @@
         <div id='Msg2' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 2 -->
         <div id='Msg3' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 3 -->
         <div id='Msg4' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 4 -->
+        
+        <div id="VictoriaDerrota">
+    <!--    <div id="Victoria"><img src="./SVG/Partida.svg#Ganada" /></div>
+        <div id="Derrota"><img src="./SVG/Partida.svg#Perdida" /></div> -->
+        </div>
     </body>
 </html>

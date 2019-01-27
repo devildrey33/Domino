@@ -70,12 +70,22 @@ var Domino_Partida = function() {
     };
     
     this.Continuar = function() {
+        
         // Oculto el menu para empezar la partida
         UI.OcultarEmpezar();   
         // Oculto el menu para continuar la siguiente mano (desde una victoria)
         UI.OcultarContinuar();           
         // Oculto el menu para continuar la siguiente mano (desde un empate)
         UI.OcultarEmpate();   
+        
+        // Se ha terminado la partida
+        if (this.PuntosEquipo1 >= UI.PuntuacionPorPartida || this.PuntosEquipo2 >= UI.PuntuacionPorPartida) {
+            var Equipo = (this.PuntosEquipo1 >= this.PuntosEquipo2) ? "1" : "2";
+            UI.MostrarGanador(Equipo, (this.PuntosEquipo1 >= this.PuntosEquipo2) ? this.PuntosEquipo1 : this.PuntosEquipo2 );
+            if (Equipo === "1") UI.MostrarVictoria();
+            else                UI.MostrarDerrota();
+            return;
+        }
         
         // Muestro el menu con los datos de la mano actual
         UI.MostrarDatosMano();
@@ -116,14 +126,17 @@ var Domino_Partida = function() {
             this.Ficha[i].RotarV();
             this.Ficha[i].Ficha.position.set(-4.5 + (1.5 * i), 0, 6.0);
             this.Ficha[14 + i].RotarV();
+            this.Ficha[14 + i].RotarBocaAbajo();
             this.Ficha[14 + i].Ficha.position.set(-4.5 + (1.5 * i), 0, -12);
         }
         
         // Coloco las fichas del jugador 2 y 4
         for (i = 0; i < 7; i++) {
             this.Ficha[7 + i].RotarH();
+            this.Ficha[7 + i].RotarBocaAbajo();
             this.Ficha[7 + i].Ficha.position.set(15, 0, -6.5 + (1.5 * i));
             this.Ficha[21 + i].RotarH();
+            this.Ficha[21 + i].RotarBocaAbajo();
             this.Ficha[21 + i].Ficha.position.set(-15, 0, -6.5 + (1.5 * i));
         }
         
@@ -148,9 +161,11 @@ var Domino_Partida = function() {
 
         console.log("Turno : " + this.TurnoActual);
         
-        document.getElementById("Mano").innerHTML = this.Mano;
+        document.getElementById("Mano").innerHTML    = this.Mano;
         document.getElementById("Turno").innerHTML   = this.TurnoActual;
         document.getElementById("Jugador").innerHTML = (this.JugadorActual + 1);
+        document.getElementById("Equipo1").innerHTML = this.PuntosEquipo1;
+        document.getElementById("Equipo2").innerHTML = this.PuntosEquipo2;
         
 //        this.AnimarLuz(this.JugadorActual);
         
@@ -161,7 +176,8 @@ var Domino_Partida = function() {
                 if (this.Ficha[(this.JugadorActual * 7) + i].Valores[0] === 6 && this.Ficha[(this.JugadorActual * 7) + i].Valores[1] === 6) {
                     this.Ficha[(this.JugadorActual * 7) + i].Colocar(false);
                     setTimeout(function() { this.Turno(); }.bind(this), this.TiempoTurno);                    
-                    this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[(this.JugadorActual * 7) + i].Valores[1] + " | " + this.Ficha[(this.JugadorActual * 7) + i].Valores[0]);
+//                    this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[(this.JugadorActual * 7) + i].Valores[1] + " | " + this.Ficha[(this.JugadorActual * 7) + i].Valores[0]);
+                    this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : <img src='./SVG/Domino.svg#Ficha_6-6' />");                    
                 }
             }
             
@@ -199,7 +215,8 @@ var Domino_Partida = function() {
                     else {
                         this.Ficha[Posibilidades[0].Pos].Colocar(this.FichaDerecha);
                     }                    
-                    this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[Posibilidades[0].Pos].Valores[1] + " | " + this.Ficha[Posibilidades[0].Pos].Valores[0]);
+//                    this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[Posibilidades[0].Pos].Valores[1] + " | " + this.Ficha[Posibilidades[0].Pos].Valores[0]);
+                    this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : <img src='./SVG/Domino.svg#Ficha_" + this.Ficha[Posibilidades[0].Pos].Valores[1] + "-" + this.Ficha[Posibilidades[0].Pos].Valores[0] +"' />");
 //                    if (this.Ficha[Posibilidades[0].Pos].Rama === "izquierda") this.FichaIzquierda = Posibilidades[0].Pos;
 //                    else                                                       this.FichaDerecha = Posibilidades[0].Pos;
                     
@@ -235,6 +252,13 @@ var Domino_Partida = function() {
         }        
     };
     
+/*    this.SiguienteJugador = function () {
+        this.JugadorActual ++;
+        if (this.JugadorActual > 3) {
+            this.JugadorActual = 0;
+        }        
+    }*/
+    
     this.ComprobarManoTerminada = function() {
         if (this.ManoTerminada === true) return true;
         // Compruebo que el jugador actual no tenga 0 fichas
@@ -252,11 +276,18 @@ var Domino_Partida = function() {
                 Puntos += this.ContarPuntos(i);
             }
             Equipo = (this.JugadorActual === 0 || this.JugadorActual === 2) ? "1" : "2";
-            if (Equipo === "1") this.PuntosEquipo1 += Puntos;
-            else                this.PuntosEquipo2 += Puntos;
+            if (Equipo === "1") {
+                this.PuntosEquipo1 += Puntos;
+                UI.MostrarVictoria();
+            }
+            else {
+                this.PuntosEquipo2 += Puntos;
+                UI.MostrarDerrota();
+            }
             document.getElementById("Equipo1").innerHTML = this.PuntosEquipo1;
             document.getElementById("Equipo2").innerHTML = this.PuntosEquipo2;
             
+//            if (this.PuntosEquipo1 >= UI.PuntuacionPorPartida || this.PuntosEquipo2 >= UI.PuntuacionPorPartida) UI.MostrarGanador(Equipo, (Equipo === "1") ? this.PuntosEquipo1 : this.PuntosEquipo2);
             UI.MostrarContinuar(Equipo, Puntos);                        
         }
         // Todos los jugadores han pasado
@@ -277,27 +308,31 @@ var Domino_Partida = function() {
                 if ((P1 + P3) < (P2 + P4)) { // Gana el equipo 1
                     this.PuntosEquipo1 += (P1 + P2 + P3 + P4);
                     Equipo = "1";
+                    UI.MostrarVictoria();
                 }
                 else if ((P1 + P3) > (P2 + P4)) { // Gana el equipo 2
                     this.PuntosEquipo2 += (P1 + P2 + P3 + P4);
                     Equipo = "2";
+                    UI.MostrarDerrota();
                 }
                 UI.MostrarEmpate(P1, P2, P3, P4);
+                
             }
 
             document.getElementById("Equipo1").innerHTML = this.PuntosEquipo1;
             document.getElementById("Equipo2").innerHTML = this.PuntosEquipo2;
+            
         }        
 
         if (this.ManoTerminada === true) {
-            if (this.PuntosEquipo1 >= UI.PuntuacionPorPartida || this.PuntosEquipo2 >= UI.PuntuacionPorPartida) { // Se ha terminado la partida
+/*            if (this.PuntosEquipo1 >= UI.PuntuacionPorPartida || this.PuntosEquipo2 >= UI.PuntuacionPorPartida) { // Se ha terminado la partida
                 // Oculto el menu para continuar la siguiente mano (desde una victoria)
                 UI.OcultarContinuar();           
                 // Oculto el menu para continuar la siguiente mano (desde un empate)
                 UI.OcultarEmpate();                   
                 
-                UI.MostrarGanador((this.PuntosEquipo1 >= this.PuntosEquipo2) ? 1 : 2);
-            }
+                UI.MostrarGanador((this.PuntosEquipo1 >= this.PuntosEquipo2) ? "1" : "2", (this.PuntosEquipo1 >= this.PuntosEquipo2) ? this.PuntosEquipo1 : this.PuntosEquipo2 );
+            }*/
             return true;
         }
         
@@ -334,6 +369,15 @@ var Domino_Partida = function() {
     this.JugadorColocar = function() {
 //        var Rama = "izquierda";
         if (this.JugadorActual === 0) {
+            
+            // Miro que no se este colocando una ficha
+            for (var f = 0; f < this.Ficha.length; f++) {
+                if (typeof(this.Ficha[f].AniColocar) !== "undefined") {
+                    if (this.Ficha[f].AniColocar.Terminado() === false)
+                        return;
+                }
+            }
+            
             for (var i = 0; i < 7; i++) {
                 if (this.Ficha[i].Hover > 0 && this.Ficha[i].Colocada === false) {
                     // Si la ficha se puede colocar en las dos ramas
@@ -343,12 +387,12 @@ var Domino_Partida = function() {
                         (this.FichaIzquierda.ValorLibre() !== this.FichaDerecha.ValorLibre())) {
                         
                         if (this.Ficha[i].Hover === 1) {
-                            if (this.Ficha[i].Valores[0] == this.FichaIzquierda.ValorLibre()) nPos = this.FichaIzquierda;  
-                            else                                                              nPos = this.FichaDerecha;    
+                            if (this.Ficha[i].Valores[0] === this.FichaIzquierda.ValorLibre()) nPos = this.FichaIzquierda;  
+                            else                                                               nPos = this.FichaDerecha;    
                         }
                         else if (this.Ficha[i].Hover === 2) {
-                            if (this.Ficha[i].Valores[1] == this.FichaIzquierda.ValorLibre()) nPos = this.FichaIzquierda;  
-                            else                                                              nPos = this.FichaDerecha;    
+                            if (this.Ficha[i].Valores[1] === this.FichaIzquierda.ValorLibre()) nPos = this.FichaIzquierda;  
+                            else                                                               nPos = this.FichaDerecha;    
                         }
                     }
                     else { // la ficha solo se puede colocar en una rama
@@ -363,7 +407,7 @@ var Domino_Partida = function() {
                     if (nPos !== -1) {
                         console.log ("Jugador1 tira " + this.Ficha[i].Valores[0] + " | " + this.Ficha[i].Valores[1]);
                         this.Ficha[i].Colocar(nPos);
-                        this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : " + this.Ficha[i].Valores[0] + " | " + this.Ficha[i].Valores[1]);                        
+                        this.MostrarMensaje(this.JugadorActual, "Jugador" + (this.JugadorActual + 1) + " tira : <img src='./SVG/Domino.svg#Ficha_" + this.Ficha[i].Valores[1] + "-" + this.Ficha[i].Valores[0] +"' />");
                         
                         // Compruebo si se ha terminado la mano
                         if (this.ComprobarManoTerminada() === true) return;

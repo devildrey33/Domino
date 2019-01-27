@@ -9,6 +9,17 @@
         Ultima modificación el 26/01/2019
 */
 
+@import url('https://fonts.googleapis.com/css?family=Baloo+Thambi');
+/*@import url('https://fonts.googleapis.com/css?family=Baloo+Thambi|Merienda|Righteous|ZCOOL+KuaiLe');*/
+
+* {
+    font-family: 'Baloo Thambi', cursive;
+/*    font-family: 'Righteous', cursive;              /* queda chula */
+/*    font-family: 'ZCOOL KuaiLe', cursive;           /* curiosa i no queda malament */
+/*    font-family: 'Merienda', cursive;              /* queda prou be */
+    line-height: 1em;
+}
+
 #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado {
     position:fixed;
     border:1px solid #000;
@@ -32,7 +43,7 @@
     border:2px solid rgb(234, 80, 78);
 }*/
 
-#BotonEmpezar, #BotonContinuar, #BotonContinuar2 {
+#BotonEmpezar, #BotonContinuar, #BotonContinuar2, #BotonTerminar {
     font-size:48px;
     padding:10px;
     display:table;
@@ -69,7 +80,7 @@ button:hover {
 #Msg1, #Msg2, #Msg3, #Msg4 {
     position:fixed;
     font-size:32px;
-    transition:0.4s ease-out;
+    transition:top 0.4s ease-out, left 0.4s ease-out, bottom 0.4s ease-out, right 0.4s ease-out;
 }
 
 #Msg1[ColorFondo="rojo"], #Msg2[ColorFondo="rojo"], #Msg3[ColorFondo="rojo"], #Msg4[ColorFondo="rojo"] {
@@ -144,8 +155,12 @@ button:hover {
 #DatosJuego {
     margin:0px;
     display:none;    
-    width:10em;
+    width:7em;
     font-size:1.5em;
+}
+
+#DatosJuego td[id] {
+    padding-left:10px;
 }
 
 /*#DatosJuego #Turno, #DatosJuego #Jugador, #DatosJuego #Partida {
@@ -225,11 +240,72 @@ hr {
     margin:auto;
 }
 
-#MarcoEmpate > p, #MarcoEmpate > h1 {
+#MarcoEmpate > p, h1 {
     display: table;
     margin:auto;
 }
 
+h1 {
+    margin:10px auto;
+}
+
 #DatosJuego td { 
     text-align:right;
+}
+
+
+
+
+/* Zoom para las fichas svg */
+#Msg1 img, #Msg2 img, #Msg3 img, #Msg4 img {
+    zoom:0.6;
+    position: relative;
+    top: 6px;    
+}
+
+#Historial img {
+    position: relative;
+    top: 3px;    
+    zoom:0.30;
+}
+
+
+#Victoria, #Derrota {
+    position:fixed;
+    z-index:100;
+    zoom:0.5;
+    filter:drop-shadow(3px 3px 3px #333);
+    left:60%;
+    top:100%;
+}
+
+#Victoria {
+    transform:rotateX(180deg);
+    animation:AniVictoria 5s ease 0s 1 normal;
+}
+
+#Derrota {
+    animation:AniDerrota 5s ease 0s 1 normal;
+}
+
+@keyframes AniVictoria {
+    0%   { opacity:0.0; top:60%; }
+    80%  { opacity:1.0; top:20%; }
+    100% { opacity:0.0; top:20%; }
+}
+
+
+@keyframes AniDerrota {
+    0%   { opacity:0.0; top:20%; transform:rotateZ(0deg); }
+    30%  { opacity:1.0; top:35%; transform:rotateZ(10deg); }
+    70%  { opacity:1.0; top:20%; transform:rotateZ(0deg); }
+    100% { opacity:0.0; top:40%; transform:rotateZ(10deg); }
+}
+
+#ME_J3, #ME_J4, #ME_E1 > td:nth-child(7), #ME_E2 > td:nth-child(7) {
+    margin-left:20px;
+}
+
+#ME_P1, #ME_P2, #ME_P3, #ME_P4 {
+    margin-left:10px;
 }

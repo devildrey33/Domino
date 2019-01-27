@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X8 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100px" height="50px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+ viewBox="0 0 100 50" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <style type="text/css">
+            <![CDATA[
+                .str0 {stroke:#2B2A29;stroke-width:1.88977}
+                .str1 {stroke:#C5C6C6;stroke-width:1.51182}
+                .fil1 {fill:none}
+                .fil0 {fill:#FEFEFE}
+                .fil2 {fill:#C5C6C6}
+                .fil3 {fill:#2B2A29}
+             
+                g        { display: none; position:absolute; }
+                g:target { display:inline; }
+                          
+            ]]>
+        </style>
+    </defs>
+    
+    
+    <!-- ___________
+        |     |     |
+        |  0  |  0  |
+        |_____|_____|    -->
+    <g id="Ficha_0-0">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+    </g>
+
+    <!-- ___________
+        |     |     |
+        |  1  |  0  |
+        |_____|_____|    -->
+    <g id="Ficha_1-0">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="25" cy="25" r="5"/>
+    </g>        
+
+    <!-- ___________
+        |     |     |
+        |  2  |  0  |
+        |_____|_____|    -->
+    <g id="Ficha_2-0">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+    </g>
+        
+    <!-- ___________
+        |     |     |
+        |  3  |  0  |
+        |_____|_____|    -->
+    <g id="Ficha_3-0">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="25" r="5"/>
+    </g>        
+
+    <!-- ___________
+        |     |     |
+        |  4  |  0  |
+        |_____|_____|    -->
+    <g id="Ficha_4-0">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+   
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+    </g>        
+    
+    <!-- ___________
+        |     |     |
+        |  5  |  0  |
+        |_____|_____|    -->
+    <g id="Ficha_5-0">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+   
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="25" r="5"/>
+    </g>
+    
+    <!-- ___________
+        |     |     |
+        |  6  |  0  |
+        |_____|_____|    -->
+    <g id="Ficha_6-0">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+   
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="11" r="5"/>
+    </g>
+    
+    <!-- ___________
+        |     |     |
+        |  1  |  1  |
+        |_____|_____|    -->
+    <g id="Ficha_1-1">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="25" cy="25" r="5"/>
+        
+        <circle class="fil3" cx="75" cy="25" r="5"/>
+    </g>        
+
+    <!-- ___________
+        |     |     |
+        |  2  |  1  |
+        |_____|_____|    -->
+    <g id="Ficha_2-1">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        
+        <circle class="fil3" cx="75" cy="25" r="5"/>
+    </g>        
+
+    <!-- ___________
+        |     |     |
+        |  3  |  1  |
+        |_____|_____|    -->
+    <g id="Ficha_3-1">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="25" r="5"/>
+        
+        <circle class="fil3" cx="75" cy="25" r="5"/>
+    </g>        
+
+    <!-- ___________
+        |     |     |
+        |  4  |  1  |
+        |_____|_____|    -->
+    <g id="Ficha_4-1">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        
+        <circle class="fil3" cx="75" cy="25" r="5"/>
+    </g>        
+
+
+    <!-- ___________
+        |     |     |
+        |  5  |  1  |
+        |_____|_____|    -->
+    <g id="Ficha_5-1">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="25" r="5"/>
+        
+        <circle class="fil3" cx="75" cy="25" r="5"/>
+    </g>   
+
+    <!-- ___________
+        |     |     |
+        |  6  |  1  |
+        |_____|_____|    -->
+    <g id="Ficha_6-1">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="11" r="5"/>
+        
+        <circle class="fil3" cx="75" cy="25" r="5"/>
+    </g>        
+
+
+    <!-- ___________
+        |     |     |
+        |  2  |  2  |
+        |_____|_____|    -->
+    <g id="Ficha_2-2">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+    </g>        
+
+    <!-- ___________
+        |     |     |
+        |  3  |  2  |
+        |_____|_____|    -->
+    <g id="Ficha_3-2">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="25" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+    </g>        
+
+    <!-- ___________
+        |     |     |
+        |  4  |  2  |
+        |_____|_____|    -->
+    <g id="Ficha_4-2">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+    </g>        
+
+
+    <!-- ___________
+        |     |     |
+        |  5  |  2  |
+        |_____|_____|    -->
+    <g id="Ficha_5-2">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="25" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+    </g>   
+
+    <!-- ___________
+        |     |     |
+        |  6  |  2  |
+        |_____|_____|    -->
+    <g id="Ficha_6-2">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="11" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+    </g>                    
+    
+    
+    <!-- ___________
+        |     |     |
+        |  3  |  3  |
+        |_____|_____|    -->
+    <g id="Ficha_3-3">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="25" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+        <circle class="fil3" cx="75" cy="25" r="5"/>
+    </g>        
+
+    <!-- ___________
+        |     |     |
+        |  4  |  3  |
+        |_____|_____|    -->
+    <g id="Ficha_4-3">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+        <circle class="fil3" cx="75" cy="25" r="5"/>
+    </g>        
+
+
+    <!-- ___________
+        |     |     |
+        |  5  |  3  |
+        |_____|_____|    -->
+    <g id="Ficha_5-3">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="25" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+        <circle class="fil3" cx="75" cy="25" r="5"/>
+    </g>   
+
+    <!-- ___________
+        |     |     |
+        |  6  |  3  |
+        |_____|_____|    -->
+    <g id="Ficha_6-3">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="11" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+        <circle class="fil3" cx="75" cy="25" r="5"/>
+    </g>                    
+    
+    <!-- ___________
+        |     |     |
+        |  4  |  4  |
+        |_____|_____|    -->
+    <g id="Ficha_4-4">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+        <circle class="fil3" cx="89" cy="39" r="5"/>
+        <circle class="fil3" cx="61" cy="11" r="5"/>
+    </g>        
+
+
+    <!-- ___________
+        |     |     |
+        |  5  |  4  |
+        |_____|_____|    -->
+    <g id="Ficha_5-4">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="25" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+        <circle class="fil3" cx="89" cy="39" r="5"/>
+        <circle class="fil3" cx="61" cy="11" r="5"/>
+    </g>   
+
+    <!-- ___________
+        |     |     |
+        |  6  |  4  |
+        |_____|_____|    -->
+    <g id="Ficha_6-4">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="11" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+        <circle class="fil3" cx="89" cy="39" r="5"/>
+        <circle class="fil3" cx="61" cy="11" r="5"/>
+    </g>      
+    
+    <!-- ___________
+        |     |     |
+        |  5  |  5  |
+        |_____|_____|    -->
+    <g id="Ficha_5-5">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+        
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="25" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+        <circle class="fil3" cx="89" cy="39" r="5"/>
+        <circle class="fil3" cx="61" cy="11" r="5"/>
+        <circle class="fil3" cx="75" cy="25" r="5"/>
+    </g>   
+
+    <!-- ___________
+        |     |     |
+        |  6  |  5  |
+        |_____|_____|    -->
+    <g id="Ficha_6-5">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="11" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+        <circle class="fil3" cx="89" cy="39" r="5"/>
+        <circle class="fil3" cx="61" cy="11" r="5"/>
+        <circle class="fil3" cx="75" cy="25" r="5"/>        
+    </g>     
+     
+    <!-- ___________
+        |     |     |
+        |  6  |  6  |
+        |_____|_____|    -->
+    <g id="Ficha_6-6">
+        <rect class="fil0 str0" width="99.9919" height="50.1017" rx="3" ry="3"/>
+        <line class="fil1 str0" x1="50" y1="46" x2="50" y2= "4" />
+        <circle class="fil2 str1" cx="50" cy="25" r="1"/>
+
+        <circle class="fil3" cx="39" cy="39" r="5"/>
+        <circle class="fil3" cx="11" cy="11" r="5"/>
+        <circle class="fil3" cx="39" cy="11" r="5"/>
+        <circle class="fil3" cx="11" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="39" r="5"/>
+        <circle class="fil3" cx="25" cy="11" r="5"/>
+        
+        <circle class="fil3" cx="89" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="39" r="5"/>
+        <circle class="fil3" cx="89" cy="39" r="5"/>
+        <circle class="fil3" cx="75" cy="11" r="5"/>
+        <circle class="fil3" cx="61" cy="11" r="5"/>
+        <circle class="fil3" cx="75" cy="39" r="5"/>
+    </g>      
+</svg>
