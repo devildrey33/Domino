@@ -27,7 +27,7 @@ var DominoThree = function() {
     }) === false) { return false; }
     
     // VERSIÓN DEL JUEGO A MANO
-    document.getElementById("VersionDomino").innerHTML = "0.94";
+    document.getElementById("VersionDomino").innerHTML = "0.95";
     
     // Se ha creado el canvas, inicio los valores de la animación ... 
     this.Iniciar();    
@@ -152,30 +152,36 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
         }
         var PosX = 0;
         var PosZ = 0;
+        var RotZ = 0;
         switch (NumJugador) {
             case 0 :    // Abajo
-                PosZ = -10;
+                PosZ = -25;
                 PosX = 0;
                 break;
             case 1 :    // Derecha
-                PosZ = -20;
+                PosZ = -30;
                 PosX = 30;
+                RotZ = -Math.PI / 128;
                 break;
             case 2 :    // Arriba
                 PosZ = -50;
                 PosX = 0;
                 break;
             case 3 :    // Izquierda
-                PosZ = -20;
+                PosZ = -30;
                 PosX = -30;
+                RotZ = Math.PI / 128;
                 break;
         }
         
+        console.log(this.Camara.rotation);
+        
         this.AniLuz = Animaciones.CrearAnimacion([
-                    { Paso : { PX : this.DirLight.position.x , PZ : this.DirLight.position.z  } },
-                    { Paso : { PX : PosX,                      PZ : PosZ  }, Tiempo : 300, FuncionTiempo : FuncionesTiempo.Lineal }
+                    { Paso : { PX : this.DirLight.position.x , PZ : this.DirLight.position.z, RZ : this.Camara.rotation.y  } },
+                    { Paso : { PX : PosX,                      PZ : PosZ                    , RZ : RotZ  }, Tiempo : 400, FuncionTiempo : FuncionesTiempo.SinInOut }
             ], { FuncionActualizar : function(Valores) { 
                     this.DirLight.position.set(Valores.PX, 40, Valores.PZ);                    
+                    this.Camara.rotation.y = Valores.RZ;
                     //this.DirLight.needUpdate = true;
 //                    this.DirLight.position.multiplyScalar( 20 );
             }.bind(this) });

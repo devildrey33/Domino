@@ -119,6 +119,10 @@ var Domino_Ficha = function() {
         this.Ficha.rotation.x = Math.PI / 2;
     };
     
+    this.RotarBocaArriba = function() {
+        this.Ficha.rotation.x = -Math.PI / 2;
+    };
+    
     this.RotarV = function() {
         this.Ficha.rotation.z = Math.PI / 2;
     };
@@ -183,7 +187,7 @@ var Domino_Ficha = function() {
     
     
     
-    this.Colocar = function(FichaOrigen) {
+    this.Colocar = function(FichaOrigen, Jugador1) {
         var Ret = { PosX : 0, PosZ : -2, RotZ : 0 };
         // Es la primera ficha (6 doble)
         if (FichaOrigen === false) {
@@ -309,9 +313,11 @@ var Domino_Ficha = function() {
         
         this.Colocada = true;
         
+        var Retraso = (typeof(Jugador1) === "undefined") ? 400 : 0;
+        
         this.AniColocar = Animaciones.CrearAnimacion([
                 { Paso : { Escala : this.Escala,    x : this.Ficha.position.x,  z : this.Ficha.position.z,  rx : this.Ficha.rotation.x, rz : this.Ficha.rotation.z  } },
-                { Paso : { Escala : 1.0,            x : Ret.PosX,               z : Ret.PosZ,               rx : -Math.PI / 2, rz : Ret.RotZ  }, Tiempo : 400, FuncionTiempo : FuncionesTiempo.SinInOut }
+                { Paso : { Escala : 1.0,            x : Ret.PosX,               z : Ret.PosZ,               rx : -Math.PI / 2,          rz : Ret.RotZ  }, Tiempo : 400, Retraso : Retraso, FuncionTiempo : FuncionesTiempo.SinInOut }
             ], {
             FuncionActualizar : function(Valores) { 
                 this.Ficha.scale.set(Valores.Escala, Valores.Escala, Valores.Escala);

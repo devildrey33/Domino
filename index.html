@@ -55,7 +55,57 @@
         <!-- Marco para mostrar los datos del Empate -->
         <div id="MarcoEmpate" class='MarcoCanvas'>
             <h1>EMPATE!</h1>
-            <p>El equipo que sume menos puntos gana, en caso de empate no hay puntos para nadie.</p>
+            <p>El equipo que suma menos puntos gana.</p>
+            <p>Si los dos equipos tienen la misma cantidad de puntos, nadie gana.</p>
+            <br />
+            <div class="TablaPuntos">
+                <table>
+                    <tr>
+                        <td id="ME_E1">Equipo 1</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 1</td>
+                        <td>=</td>
+                        <td id="ME_P1">x</td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 3</td>
+                        <td>=</td>
+                        <td id="ME_P3">x</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td id="ME_P13">x</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td id="ME_E2">Equipo 2</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 2</td>
+                        <td>=</td>
+                        <td id="ME_P2">x</td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 4</td>
+                        <td>=</td>
+                        <td id="ME_P4">x</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td id="ME_P24">x</td>
+                    </tr>
+                </table>
+            </div>
+            <!--
             <table>
                 <tr id ="ME_E1" class="Empate_Victoria">
                     <td id="ME_J1">Jugador 1</td>
@@ -77,9 +127,10 @@
                     <td>=</td>
                     <td id="ME_P24">x</td>
                 </tr>                
-            </table>
+            </table> -->
+            <br />
             <!-- Texto para la victoria por puntos despues de un bloqueo (al quedarse todos los jugadores sin posibilidad de tirar, antes de quedarse sin fichas) -->
-            <p id="TxtVictoria">Ha ganado el Equipo <span id="TxtVictoriaEquipo">x</span>, y suma <span id="TxtVictoriaPuntos"></span> puntos.</p>
+            <p id="TxtVictoria">Ha ganado el Equipo <span id="TxtVictoriaEquipo">x</span>, y suma <span id="TxtVictoriaPuntos">x</span> puntos.</p>
             <!-- Texto para el empate, al quedarse todos los jugadores sin poder tirar, y que los dos equipos sumen los mismos puntos -->
             <p id="TxtEmpate">EMPATE, no se reparten puntos</p>
             <br />

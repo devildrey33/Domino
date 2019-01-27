@@ -96,7 +96,7 @@ button:hover {
 }
 
 #Msg1 {
-    bottom:-20%;    
+    bottom:-50%;    
     left:50%;
     transform: translate(-50%, 0%);    
 }
@@ -106,7 +106,7 @@ button:hover {
 }
 
 #Msg2 {
-    right:-20%;
+    right:-50%;
     top:50%;
     transform: translate(0%, -50%);    
 }
@@ -116,7 +116,7 @@ button:hover {
 }
 
 #Msg3 {
-    top:-20%;
+    top:-50%;
     left:50%;
     transform: translate(-50%, 0%);
 }
@@ -126,7 +126,7 @@ button:hover {
 }
 
 #Msg4 {
-    left:-20%;
+    left:-50%;
     top:50%;
     transform: translate(0%, -50%);    
 }
@@ -192,6 +192,27 @@ hr {
     padding:2px;
     margin:0px;
     font-size:1em;
+}
+
+
+#Historial img {
+    position: absolute;
+    top: 2px;
+    zoom:0.30;
+    left:20em;
+}
+
+.Historial_negro, .Historial_rojo, .Historial_verde {
+    position:relative;
+/*    min-height:23px;*/
+    height:19px;
+    display:table;    
+/*    vertical-align:middle;*/
+}
+
+.Historial_negro > span, .Historial_rojo > span, .Historial_verde > span {
+    display:table-cell;
+    vertical-align: middle;
 }
 
 .Historial_negro {
@@ -263,13 +284,8 @@ h1 {
     top: 6px;    
 }
 
-#Historial img {
-    position: relative;
-    top: 3px;    
-    zoom:0.30;
-}
 
-
+/* Svg's con el pulgar arriba / abajo para hacer una aniamción de victoria / derrota */
 #Victoria, #Derrota {
     position:fixed;
     z-index:100;
@@ -302,10 +318,29 @@ h1 {
     100% { opacity:0.0; top:40%; transform:rotateZ(10deg); }
 }
 
-#ME_J3, #ME_J4, #ME_E1 > td:nth-child(7), #ME_E2 > td:nth-child(7) {
-    margin-left:20px;
+/*#ME_J3, #ME_J4, #ME_E1 > td:nth-child(7), #ME_E2 > td:nth-child(7) {
+    padding-left:20px;
+}*/
+
+/* Puntuaciones */
+#ME_P1, #ME_P2, #ME_P3, #ME_P4, #ME_P13, #ME_P24  {
+    padding-left:10px;
+    text-align:right;
 }
 
-#ME_P1, #ME_P2, #ME_P3, #ME_P4 {
-    margin-left:10px;
+#ME_P13, #ME_P24 {
+    border-top: 2px solid #FFF;
+}
+
+.TablaPuntos {
+    display:flex;
+    width:65%;
+    margin:auto;
+}
+
+.TablaPuntos > * {
+    flex-basis: auto; /* default value */
+    flex-grow: 1;
+    flex:30%;
+    margin: 0 20px;
 }
