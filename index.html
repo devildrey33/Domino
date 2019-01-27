@@ -48,14 +48,63 @@
         
         <!-- Victoria de un equipo (un jugador se ha quedado sin fichas) -->
         <div id="MarcoContinuar"  class='MarcoCanvas'>
-            <h3>El <b>Equipo <span id="PG_Equipo">x</span></b> ha ganado! y suma <span id ="PG_Puntos">x</span> puntos.</h3>
+            <h1>Mano terminada</h1>
+            <div class="TablaPuntos2">
+                <table>
+                    <tr>
+                        <td id="MV_E1">Equipo 1</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 1</td>
+                        <td>=</td>
+                        <td id="MV_P1">x</td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 3</td>
+                        <td>=</td>
+                        <td id="MV_P3">x</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td id="MV_P13">x</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td id="MV_E2">Equipo 2</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 2</td>
+                        <td>=</td>
+                        <td id="MV_P2">x</td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 4</td>
+                        <td>=</td>
+                        <td id="MV_P4">x</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td id="MV_P24">x</td>
+                    </tr>
+                </table>
+            </div>            
+            
+            <h3>El <span class="AniResaltar">Equipo <span id="PG_Equipo">x</span></span> ha ganado! y suma <span class="AniResaltar" id="PG_Puntos">x</span> puntos.</h3>
             <button id="BotonContinuar">Continuar</button>
         </div>
         
         <!-- Marco para mostrar los datos del Empate -->
         <div id="MarcoEmpate" class='MarcoCanvas'>
             <h1>EMPATE!</h1>
-            <p>El equipo que suma menos puntos gana.</p>
+            <p>El equipo que suma menos puntos, gana.</p>
             <p>Si los dos equipos tienen la misma cantidad de puntos, nadie gana.</p>
             <br />
             <div class="TablaPuntos">
@@ -105,32 +154,9 @@
                     </tr>
                 </table>
             </div>
-            <!--
-            <table>
-                <tr id ="ME_E1" class="Empate_Victoria">
-                    <td id="ME_J1">Jugador 1</td>
-                    <td>:</td>
-                    <td id="ME_P1">x</td>
-                    <td id="ME_J3">Jugador 3</td>
-                    <td>:</td>
-                    <td id="ME_P3">x</td>
-                    <td>=</td>
-                    <td id="ME_P13">x</td>
-                </tr>
-                <tr id ="ME_E2" class="Empate_Derrota">
-                    <td id="ME_J2" >Jugador 2</td>
-                    <td>:</td>
-                    <td id="ME_P2">x</td>
-                    <td id="ME_J4">Jugador 4</td>
-                    <td>:</td>
-                    <td id="ME_P4">x</td>
-                    <td>=</td>
-                    <td id="ME_P24">x</td>
-                </tr>                
-            </table> -->
             <br />
             <!-- Texto para la victoria por puntos despues de un bloqueo (al quedarse todos los jugadores sin posibilidad de tirar, antes de quedarse sin fichas) -->
-            <p id="TxtVictoria">Ha ganado el Equipo <span id="TxtVictoriaEquipo">x</span>, y suma <span id="TxtVictoriaPuntos">x</span> puntos.</p>
+            <p id="TxtVictoria">Ha ganado el <span class="AniResaltar">Equipo <span id="TxtVictoriaEquipo">x</span></span>, y suma <span class="AniResaltar" id="TxtVictoriaPuntos">x</span> puntos.</p>
             <!-- Texto para el empate, al quedarse todos los jugadores sin poder tirar, y que los dos equipos sumen los mismos puntos -->
             <p id="TxtEmpate">EMPATE, no se reparten puntos</p>
             <br />

@@ -23,7 +23,7 @@
 #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado {
     position:fixed;
     border:1px solid #000;
-    top:50%;
+    top:150%;
     left:50%;
     transform: translate(-50%, -50%);
 /*    background:rgba(0, 0, 200, 0.8);
@@ -33,9 +33,14 @@
     padding:0px 10px 10px 10px;
     z-index:1000;
     border:2px solid transparent;
-    font-size:24px;
-    display:none;
+    font-size:24px;    
+    text-shadow:3px 3px 3px #000;
+    transition:1s cubic-bezier(.49,.58,.96,1.56);
 /*    transition:0.4s;*/
+}
+
+#MarcoEmpezar[visible="true"], #MarcoContinuar[visible="true"], #MarcoEmpate[visible="true"], #MarcoTerminado[visible="true"] {
+    top:50%;
 }
 
 /*#Empezar:hover {
@@ -155,7 +160,7 @@ button:hover {
 #DatosJuego {
     margin:0px;
     display:none;    
-    width:7em;
+/*    width:7em; */
     font-size:1.5em;
 }
 
@@ -323,24 +328,42 @@ h1 {
 }*/
 
 /* Puntuaciones */
-#ME_P1, #ME_P2, #ME_P3, #ME_P4, #ME_P13, #ME_P24  {
+#ME_P1, #ME_P2, #ME_P3, #ME_P4, #ME_P13, #ME_P24, #MV_P1, #MV_P2, #MV_P3, #MV_P4, #MV_P13, #MV_P24  {
     padding-left:10px;
     text-align:right;
 }
 
-#ME_P13, #ME_P24 {
+#ME_P13, #ME_P24, #MV_P13, #MV_P24 {
     border-top: 2px solid #FFF;
 }
 
-.TablaPuntos {
+.TablaPuntos, .TablaPuntos2 {
     display:flex;
-    width:65%;
     margin:auto;
+    padding: 4px;
 }
 
-.TablaPuntos > * {
+.TablaPuntos > table, .TablaPuntos2 > table {
+    background: rgba(32,32,32,0.65);
+    padding:4px;
+}
+
+
+/*.TablaPuntos { width:65%; }
+.TablaPuntos2 { width:90%; }*/
+
+.TablaPuntos > *, .TablaPuntos2 > * {
     flex-basis: auto; /* default value */
     flex-grow: 1;
     flex:30%;
     margin: 0 20px;
+}
+
+.AniResaltar {
+    animation:AniResaltado 3s ease-in-out 0s infinite alternate;
+}
+
+@keyframes AniResaltado {
+    0%   { color:#FFF; }
+    100% { color:#FADA5E; }
 }

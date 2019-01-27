@@ -38,33 +38,49 @@ var Domino_UI = function() {
                 this.AsignarPuntuacionPorPartida(Pos * 100);
             }.bind(this, i);
         }
-        document.getElementById("MarcoEmpezar").style.display = "block";        
+        
+        this.MostrarEmpezar();
     };
     
     // Mostrar menu para empezar una partida
     this.MostrarEmpezar = function() {
-        document.getElementById("MarcoEmpezar").style.display = "block";
+        document.getElementById("MarcoEmpezar").setAttribute("visible", "true");
     };
     
     // Mostrar menu para ocultar una partida
     this.OcultarEmpezar = function() {
-        document.getElementById("MarcoEmpezar").style.display = "none";
+        document.getElementById("MarcoEmpezar").setAttribute("visible", "false");
     };
     
     // Mostrar menu para continuar una partida
-    this.MostrarContinuar = function(Equipo, Puntos) {
-        document.getElementById("MarcoContinuar").style.display = "block";
+    this.MostrarContinuar = function(Equipo, Puntos, P1, P2, P3, P4) {
+        document.getElementById("MarcoContinuar").setAttribute("visible", "true");
         document.getElementById("PG_Equipo").innerHTML = Equipo;
         document.getElementById("PG_Puntos").innerHTML = Puntos;
+        document.getElementById("MV_P1").innerHTML = P1;
+        document.getElementById("MV_P2").innerHTML = P2;
+        document.getElementById("MV_P3").innerHTML = P3;
+        document.getElementById("MV_P4").innerHTML = P4;
+        document.getElementById("MV_P13").innerHTML = P1 + P3;
+        document.getElementById("MV_P24").innerHTML = P2 + P4;
+        if (P1 + P3 < P2 + P4) {   // Gana el equipo 1 por sumar menos puntos
+            document.getElementById("MV_E1").className = "Empate_Victoria";
+            document.getElementById("MV_E2").className = "Empate_Derrota";
+        }
+        else {                          // Gana el equipo 2 por sumar menos puntos
+            document.getElementById("MV_E1").className = "Empate_Derrota";
+            document.getElementById("MV_E2").className = "Empate_Victoria";
+        }
+        
     };
         
     this.OcultarContinuar = function() {
-        document.getElementById("MarcoContinuar").style.display = "none";
+        document.getElementById("MarcoContinuar").setAttribute("visible", "false");
     };
     
     // Mostrar menu para continuar una partida
     this.MostrarEmpate = function(P1, P2, P3, P4) {
-        document.getElementById("MarcoEmpate").style.display = "block";
+        document.getElementById("MarcoEmpate").setAttribute("visible", "true");
         document.getElementById("ME_P1").innerHTML = P1;
         document.getElementById("ME_P2").innerHTML = P2;
         document.getElementById("ME_P3").innerHTML = P3;
@@ -100,7 +116,7 @@ var Domino_UI = function() {
     };
         
     this.OcultarEmpate = function() {
-        document.getElementById("MarcoEmpate").style.display = "none";
+        document.getElementById("MarcoEmpate").setAttribute("visible", "false");
     };
     
     this.AsignarPuntuacionPorPartida = function(Puntos) {
@@ -122,41 +138,23 @@ var Domino_UI = function() {
     };
     
     this.MostrarGanador = function (Equipo, Puntos)  {
-        document.getElementById("MarcoTerminado").style.display = "block";
+        document.getElementById("MarcoTerminado").setAttribute("visible", "true");
         document.getElementById("EquipoGanador").innerHTML = Equipo;
         document.getElementById("PuntosGanador").innerHTML = Puntos;
     };
     
     this.OcultarGanador = function ()  {
-        document.getElementById("MarcoTerminado").style.display = "none";        
+        document.getElementById("MarcoTerminado").setAttribute("visible", "false");
     };
     
     this.MostrarVictoria = function() {
-/*        var v = document.getElementById("Victoria");
-        if (v !== null) {
-            v.parentNode.removeChild(v);
-        }*/
         document.getElementById("VictoriaDerrota").innerHTML = "<div id='Victoria'><img src='./SVG/Partida.svg#Ganada' /></div>";
     };
     
     this.MostrarDerrota = function() {
-/*        var d = document.getElementById("Derrota");
-        if (d !== null) {
-            d.parentNode.removeChild(d);
-        }*/
         document.getElementById("VictoriaDerrota").innerHTML = "<div id='Derrota'><img src='./SVG/Partida.svg#Perdida' /></div>";        
     };
     
-    // Función para mostrar un mensaje especifico para un jugador
-    // ColFondo puede ser : "negro", "rojo", "verde"
-    /*this.MostrarMensaje = function(Jugador, Texto, ColFondo) {
-        var ColorFondo = (typeof(ColFondo) === "undefined") ? "negro" : ColFondo;
-        var Msg = document.getElementById("Msg" + (Jugador + 1));
-        Msg.setAttribute("MsgVisible", "true");        
-        Msg.setAttribute("ColorFondo", ColorFondo);
-        setTimeout(function(J) { document.getElementById("Msg" + J).setAttribute("MsgVisible", "false"); }.bind(this, (Jugador + 1)), this.TiempoTurno);
-        Msg.innerHTML = Texto;
-    };*/
     
 };
 

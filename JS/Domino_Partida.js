@@ -20,7 +20,7 @@ var Domino_Partida = function() {
     
     this.Pasado           = 0;
     this.Ficha            = [];
-    this.TiempoTurno      = 1000;
+    this.TiempoTurno      = 1250;
     this.TimerMsg         = [ 0, 0, 0, 0 ];
     this.ManoTerminada    = false;
     this.PuntosEquipo1    = 0; // 
@@ -167,7 +167,7 @@ var Domino_Partida = function() {
         document.getElementById("Equipo1").innerHTML = this.PuntosEquipo1;
         document.getElementById("Equipo2").innerHTML = this.PuntosEquipo2;
         
-        Domino.AnimarLuz(this.JugadorActual);
+//        Domino.AnimarLuz(this.JugadorActual);
         
         // En el primer turno se saca el doble 6
         if (this.TurnoActual === 0) {
@@ -222,6 +222,7 @@ var Domino_Partida = function() {
                 // Turno del jugador
                 else {
                     this.MostrarMensaje(this.JugadorActual, "<span>Tu turno</span>");
+                    this.MostrarAyuda();
                     return;
                 }
             }
@@ -247,12 +248,28 @@ var Domino_Partida = function() {
         }        
     };
     
-/*    this.SiguienteJugador = function () {
-        this.JugadorActual ++;
-        if (this.JugadorActual > 3) {
-            this.JugadorActual = 0;
+    // Resalta las fichas que se pueden tirar en este turno
+    this.MostrarAyuda = function () {
+        this.Ayuda = [];
+        // Determino las posibilidades y las guardo en el array Ayuda
+        for (var i = 0; i < 7; i++) {
+            if (this.Ficha[i].Colocada === false) {
+                if (this.Ficha[i].Valores[0] === this.FichaIzquierda.ValorLibre() || this.Ficha[i].Valores[1] === this.FichaIzquierda.ValorLibre()) {
+                    this.Ayuda.push()(i);
+                }
+            }
+        }
+        var Pos = [ 0, 0, 0, 0, 0, 0, 0 ];
+        for (var i = 0; i < this.Ayuda.length; i++) {
+            
         }        
-    }*/
+    };
+    
+    this.OcultarAyuda = function() {
+        for (var i = 0; i < this.Ayuda.length; i++) {
+            
+        }                
+    };
     
     this.ComprobarManoTerminada = function() {
         if (this.ManoTerminada === true) return true;
@@ -263,6 +280,7 @@ var Domino_Partida = function() {
         }
         
         if (Colocadas === 7) {
+            var P1 = this.ContarPuntos(0), P2 = this.ContarPuntos(1), P3 = this.ContarPuntos(2), P4 = this.ContarPuntos(3);
             this.MostrarMensaje(this.JugadorActual, "<span>Jugador" + (this.JugadorActual + 1) +  " gana la mano!</span>", "verde");
             this.ManoTerminada = true;            
             // Cuento los puntos y muestro los valores
@@ -283,7 +301,7 @@ var Domino_Partida = function() {
             document.getElementById("Equipo2").innerHTML = this.PuntosEquipo2;
             
 //            if (this.PuntosEquipo1 >= UI.PuntuacionPorPartida || this.PuntosEquipo2 >= UI.PuntuacionPorPartida) UI.MostrarGanador(Equipo, (Equipo === "1") ? this.PuntosEquipo1 : this.PuntosEquipo2);
-            UI.MostrarContinuar(Equipo, Puntos);                        
+            UI.MostrarContinuar(Equipo, Puntos, P1, P2, P3, P4);                        
         }
         // Todos los jugadores han pasado
         if (this.Pasado === 4) {
