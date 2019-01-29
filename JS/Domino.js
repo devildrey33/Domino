@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 26/01/2019
+        Ultima modificación el 28/01/2019
 */
 
 // Constructor
@@ -27,7 +27,7 @@ var DominoThree = function() {
     }) === false) { return false; }
     
     // VERSIÓN DEL JUEGO A MANO
-    document.getElementById("VersionDomino").innerHTML = "0.96";
+    document.getElementById("VersionDomino").innerHTML = "0.98";
     
     // Se ha creado el canvas, inicio los valores de la animación ... 
     this.Iniciar();    
@@ -74,6 +74,7 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
     Partida         : new Domino_Partida(this),
     RayCaster       : new THREE.Raycaster(),
     PosMouse        : new THREE.Vector2(),
+//    Opciones        : new Domino_Opciones(),
     
     // Función que inicia el ejemplo
     Iniciar         : function() {       
@@ -113,7 +114,7 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
         Texturas.Iniciar();
 
         this.CrearLuces();
-        
+        this.Partida.Opciones.Iniciar();
         UI.Iniciar();
 //        this.Camara.Rotar();
         setTimeout(this.Partida.CrearFichas.bind(this.Partida), 10);

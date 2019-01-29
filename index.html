@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 26/01/2019
+        Ultima modificación el 28/01/2019
 -->
 <!DOCTYPE html>
 <html>
@@ -27,6 +27,7 @@
         <script src="./JS/Domino_Texturas.js"></script>        
         <script src="./JS/Domino_Ficha.js"></script>        
         <script src="./JS/Domino_UI.js"></script>        
+        <script src="./JS/Domino_Opciones.js"></script>        
         <script src="./JS/Domino_Partida.js"></script>        
         <script src="./JS/Domino.js"></script>        
     </head>
@@ -34,16 +35,74 @@
         <!-- Marco para empezar partida -->
         <div id='MarcoEmpezar' class='MarcoCanvas'>
             <h1>Bienvenido a Dominó <span id="VersionDomino">0.00</span></h1>
-            <button id="BotonEmpezar">Empezar!</button>
-            <p class="Puntos">Puntos para terminar la partida</p>
-            <div class="Puntos">
+            <hr />
+            <h3>Nombres</h3>
+            <div class="TablaPuntos">
+                <table>
+                    <tr>
+                        <td>
+                            <!-- maxlength="16" -->
+                            <input type="text" id="NEquipo1" placeholder="Equipo 1" spellcheck="false">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="NNombre1" placeholder="Jugador 1" spellcheck="false">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="NNombre3" placeholder="Jugador 3" spellcheck="false">
+                        </td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td>
+                            <input type="text" id="NEquipo2" placeholder="Equipo 2" spellcheck="false"> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="NNombre2" placeholder="Jugador 2" spellcheck="false">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="NNombre4" placeholder="Jugador 4" spellcheck="false">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <hr />
+            <h3>Puntos para terminar la partida</h3>
+            <div class="Centrado">
                 <button id="Puntos100">100</button>
                 <button id="Puntos200">200</button>
-                <button id="Puntos300" class="PuntosMarcados">300</button>
+                <button id="Puntos300">300</button>
                 <button id="Puntos400">400</button>
                 <button id="Puntos500">500</button>
                 <button id="Puntos600">600</button>
-            </div>            
+            </div>           
+            <hr />
+            <table class="Centrado">
+                <tr>
+                    <td>Jugar al descubierto</td>
+                    <td><input type="checkbox" id="Opciones_Descubierto"></td>
+                </tr>
+                <tr>
+                    <td>Animar el turno en 3D</td>
+                    <td><input type="checkbox" id="Opciones_AnimarTurno"></td>
+                </tr>
+                <tr>
+                    <td>Ayuda para el jugador</td>
+                    <td><input type="checkbox" id="Opciones_Ayuda"></td>
+                </tr>
+            </table>
+            <br />
+            <button id="BotonEmpezar">Empezar!</button>
+
         </div>
         
         <!-- Victoria de un equipo (un jugador se ha quedado sin fichas) -->
@@ -223,9 +282,11 @@
         <div id='Msg3' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 3 -->
         <div id='Msg4' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 4 -->
         
+        <!-- animaciones para la victoria / derrota --> 
         <div id="VictoriaDerrota">
     <!--    <div id="Victoria"><img src="./SVG/Partida.svg#Ganada" /></div>
-        <div id="Derrota"><img src="./SVG/Partida.svg#Perdida" /></div> -->
+            <div id="Derrota"><img src="./SVG/Partida.svg#Perdida" /></div> 
+            <div id='ParitdaGanada'><img src='./SVG/PartidaGanada.svg' /></div> -->
         </div>
     </body>
 </html>

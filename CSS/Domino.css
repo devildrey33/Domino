@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 26/01/2019
+        Ultima modificación el 28/01/2019
 */
 
 @import url('https://fonts.googleapis.com/css?family=Baloo+Thambi');
@@ -35,7 +35,7 @@
     border:2px solid transparent;
     font-size:24px;    
     text-shadow:3px 3px 3px #000;
-    transition:1s cubic-bezier(.49,.58,.96,1.56);
+    transition:1s cubic-bezier(.49,.58,.56,1.47);
 /*    transition:0.4s;*/
 }
 
@@ -55,14 +55,15 @@
     margin:auto;
 }
 
-.Puntos {
+.Centrado {
     display:table;
     margin:9px auto 0px auto;
 }
 
-.Puntos > button {
-    margin:2px;
-    font-size:20px;
+.Centrado > button {
+    margin: 4px;
+    padding: 8px;
+    font-size: 22px;
 }
 
 button {
@@ -179,7 +180,8 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #777;
+    border-top: 2px solid #FFF;
+    border-bottom: 1px solid #000;
     margin: 0.4em 0;
     padding: 0; 
 }
@@ -266,12 +268,12 @@ hr {
     margin:auto;
 }
 
-#MarcoEmpate > p, h1 {
+#MarcoEmpate > p, h1, h3 {
     display: table;
     margin:auto;
 }
 
-h1 {
+h1, h3 {
     margin:10px auto;
 }
 
@@ -291,7 +293,7 @@ h1 {
 
 
 /* Svg's con el pulgar arriba / abajo para hacer una aniamción de victoria / derrota */
-#Victoria, #Derrota {
+#Victoria, #Derrota, #ParitdaGanada {
     position:fixed;
     z-index:100;
     zoom:0.5;
@@ -309,20 +311,30 @@ h1 {
     animation:AniDerrota 5s ease 0s 1 normal;
 }
 
+#ParitdaGanada {
+    animation:AniPartidaGanada 5s ease 0s 1 normal;    
+    transform:rotateZ(0deg);
+}
+
 @keyframes AniVictoria {
     0%   { opacity:0.0; top:60%; }
     80%  { opacity:1.0; top:20%; }
-    100% { opacity:0.0; top:20%; }
+    100% { opacity:0.0; top:-50%; }
 }
 
 
 @keyframes AniDerrota {
-    0%   { opacity:0.0; top:20%; transform:rotateZ(0deg); }
-    30%  { opacity:1.0; top:35%; transform:rotateZ(10deg); }
-    70%  { opacity:1.0; top:20%; transform:rotateZ(0deg); }
-    100% { opacity:0.0; top:40%; transform:rotateZ(10deg); }
+    0%   { opacity:0.0; top:20%;  transform:rotateZ(0deg);  }
+    30%  { opacity:1.0; top:35%;  transform:rotateZ(10deg); }
+    70%  { opacity:1.0; top:20%;  transform:rotateZ(0deg);  }
+    100% { opacity:0.0; top:150%; transform:rotateZ(10deg); }
 }
 
+@keyframes AniPartidaGanada {
+    0%   { opacity:0.0; top:60%  transform:rotateZ(0deg);  }
+    50%  { opacity:1.0; top:40%  transform:rotateZ(20deg); }
+    100% { opacity:0.0; top:20%; transform:rotateZ(31deg); }
+}
 /*#ME_J3, #ME_J4, #ME_E1 > td:nth-child(7), #ME_E2 > td:nth-child(7) {
     padding-left:20px;
 }*/
@@ -366,4 +378,19 @@ h1 {
 @keyframes AniResaltado {
     0%   { color:#FFF; }
     100% { color:#FADA5E; }
+}
+
+.TablaPuntos input[type="text"] {
+    width:100%;
+    color:#FFF;
+    background:transparent;
+    outline:none;
+    border:1px solid transparent;
+    font-size: 20px;    
+}
+
+input[type="checkbox"] {
+    width:60px;
+    height:30px;
+    transition:0.4s;
 }

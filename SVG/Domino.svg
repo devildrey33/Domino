@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Domino.svg creado por Josep Antoni Bover Comas el 27/01/2019
+
+        Archivo que contiene las fichas 2D en formato svg
+
+        Vista por defecto en el Laboratorio de pruebas  
+		devildrey33_Lab->Opciones->Vista = Filas;
+
+        Ultima modificación el 28/01/2019
+-->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Creator: CorelDRAW X8 -->
 <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100px" height="50px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
  viewBox="0 0 100 50" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>

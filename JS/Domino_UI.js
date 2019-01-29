@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 26/01/2019
+        Ultima modificación el 28/01/2019
 */
 
 var Domino_UI = function() {
@@ -18,18 +18,62 @@ var Domino_UI = function() {
         document.getElementById("BotonEmpezar").onclick = function() {
             Domino.Partida.Empezar();
         };
-        
+        // Boton continuar (victoria / derrota)
         document.getElementById("BotonContinuar").onclick = function() {
             Domino.Partida.Continuar();
         };
-        
+        // Boton continuar empate
         document.getElementById("BotonContinuar2").onclick = function() {
             Domino.Partida.Continuar();
         };
-        
+        // Boton terminar la partida
         document.getElementById("BotonTerminar").onclick = function() {
             UI.OcultarGanador();
             UI.MostrarEmpezar();
+        };
+        // Edit del nombre del equipo 1
+        document.getElementById("NEquipo1").onchange = function() {
+            Domino.Partida.Opciones.AsignarNombreEquipo("1", document.getElementById("NEquipo1").value);
+        };
+
+        // Edit del nombre del equipo 2
+        document.getElementById("NEquipo2").onchange = function() {
+            Domino.Partida.Opciones.AsignarNombreEquipo("2", document.getElementById("NEquipo2").value);
+        };
+        
+        // Edit del nombre del jugador 1
+        document.getElementById("NNombre1").onchange = function() {
+            Domino.Partida.Opciones.AsignarNombreJugador("1", document.getElementById("NNombre1").value);
+        };
+
+        // Edit del nombre del jugador 2
+        document.getElementById("NNombre2").onchange = function() {
+            Domino.Partida.Opciones.AsignarNombreJugador("2", document.getElementById("NNombre2").value);
+        };
+        
+        // Edit del nombre del jugador 3
+        document.getElementById("NNombre3").onchange = function() {
+            Domino.Partida.Opciones.AsignarNombreJugador("3", document.getElementById("NNombre3").value);
+        };
+        
+        // Edit del nombre del jugador 4
+        document.getElementById("NNombre4").onchange = function() {
+            Domino.Partida.Opciones.AsignarNombreJugador("4", document.getElementById("NNombre4").value);
+        };
+        
+        // Checkbox Jugar al descubierto
+        document.getElementById("Opciones_Descubierto").onclick = function() {
+            Domino.Partida.Opciones.AsignarDescubierto(document.getElementById("Opciones_Descubierto").checked);
+        };
+        
+        // CheckBox animar turno en 3d
+        document.getElementById("Opciones_AnimarTurno").onclick = function() {
+            Domino.Partida.Opciones.AsignarAniTurno(document.getElementById("Opciones_AnimarTurno").checked);
+        };
+        
+        // Checkbox ayuda para el jugador
+        document.getElementById("Opciones_Ayuda").onclick = function() {
+            Domino.Partida.Opciones.AsignarAyuda(document.getElementById("Opciones_Ayuda").checked);
         };
         
         // Botones con las puntuaciones máximas
@@ -63,11 +107,11 @@ var Domino_UI = function() {
         document.getElementById("MV_P4").innerHTML = P4;
         document.getElementById("MV_P13").innerHTML = P1 + P3;
         document.getElementById("MV_P24").innerHTML = P2 + P4;
-        if (P1 + P3 < P2 + P4) {   // Gana el equipo 1 por sumar menos puntos
+        if (Equipo === "1") {   // Gana el equipo 1
             document.getElementById("MV_E1").className = "Empate_Victoria";
             document.getElementById("MV_E2").className = "Empate_Derrota";
         }
-        else {                          // Gana el equipo 2 por sumar menos puntos
+        else {                          // Gana el equipo 2
             document.getElementById("MV_E1").className = "Empate_Derrota";
             document.getElementById("MV_E2").className = "Empate_Victoria";
         }
@@ -125,6 +169,7 @@ var Domino_UI = function() {
         }
         document.getElementById("Puntos" + Puntos).className = "PuntosMarcados";
         this.PuntuacionPorPartida = Puntos;
+        Domino.Partida.Opciones.AsignarPuntosPorPartida(Puntos);
     };
     
     this.MostrarDatosMano = function() {
@@ -155,7 +200,15 @@ var Domino_UI = function() {
         document.getElementById("VictoriaDerrota").innerHTML = "<div id='Derrota'><img src='./SVG/Partida.svg#Perdida' /></div>";        
     };
     
+    this.MostrarPartidaGanada = function() {
+        document.getElementById("VictoriaDerrota").innerHTML = "<div id='ParitdaGanada'><img src='./SVG/PartidaGanada.svg' /></div>";
+    };
     
+    this.MostrarPartidaPerdida = function() {
+        this.MostrarDerrota();
+        //document.getElementById("VictoriaDerrota").innerHTML = "<div id='Derrota'><img src='./SVG/Partida.svg#Perdida' /></div>";
+    };
+            
 };
 
 var UI = new Domino_UI();
