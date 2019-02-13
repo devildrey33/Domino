@@ -1,0 +1,6 @@
+{
+    "short_name"    : "Dominó",
+    "name"          : "Dominó three.js",
+    "display"       :      "standalone", 
+    "orientation"   :  "landscape"
+}

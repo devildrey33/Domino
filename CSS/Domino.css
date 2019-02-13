@@ -17,7 +17,7 @@
 /*    font-family: 'Righteous', cursive;              /* queda chula */
 /*    font-family: 'ZCOOL KuaiLe', cursive;           /* curiosa i no queda malament */
 /*    font-family: 'Merienda', cursive;              /* queda prou be */
-    line-height: 1em;
+    line-height: 1.2rem;
 }
 
 #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado {
@@ -30,13 +30,13 @@
     color:#FFF;
     text-shadow:1px 1px 1px #000;
     border-radius:8px;*/
-    padding:0px 10px 10px 10px;
+/*    padding:0 0.2rem 0.2rem 0.2rem;*/
     z-index:1000;
     border:2px solid transparent;
-    font-size:24px;    
+    font-size:1.5rem;    
     text-shadow:3px 3px 3px #000;
     transition:1s cubic-bezier(.49,.58,.56,1.47);
-/*    transition:0.4s;*/
+    padding: 0.4rem;
 }
 
 #MarcoEmpezar[visible="true"], #MarcoContinuar[visible="true"], #MarcoEmpate[visible="true"], #MarcoTerminado[visible="true"] {
@@ -49,7 +49,7 @@
 }*/
 
 #BotonEmpezar, #BotonContinuar, #BotonContinuar2, #BotonTerminar {
-    font-size:48px;
+    font-size:2rem;
     padding:10px;
     display:table;
     margin:auto;
@@ -61,10 +61,11 @@
 }
 
 .Centrado > button {
-    margin: 4px;
-    padding: 8px;
-    font-size: 22px;
-}
+    margin: 0.2rem;
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    vertical-align: middle;
+    display: table-cell;}
 
 button {
     border:1px solid #000;
@@ -85,7 +86,7 @@ button:hover {
 
 #Msg1, #Msg2, #Msg3, #Msg4 {
     position:fixed;
-    font-size:32px;
+    font-size:2rem;
     transition:top 0.4s ease-out, left 0.4s ease-out, bottom 0.4s ease-out, right 0.4s ease-out;
 }
 
@@ -162,7 +163,7 @@ button:hover {
     margin:0px;
     display:none;    
 /*    width:7em; */
-    font-size:1.5em;
+    font-size:1.5rem;
 }
 
 #DatosJuego td[id] {
@@ -198,7 +199,7 @@ hr {
 /*    margin:4px;*/
     padding:2px;
     margin:0px;
-    font-size:1em;
+    font-size:1rem;
 }
 
 
@@ -206,7 +207,7 @@ hr {
     position: absolute;
     top: 2px;
     zoom:0.30;
-    left:20em;
+    left:12.2rem;
 }
 
 .Historial_negro, .Historial_rojo, .Historial_verde {
@@ -239,7 +240,7 @@ hr {
 }
 
 #Historial::-webkit-scrollbar {
-    width:0.5em;
+    width:0.5rem;
 }
 
 /*#Historial::-webkit-scrollbar-track {
@@ -273,8 +274,10 @@ hr {
     margin:auto;
 }
 
+h1 { font-size:2rem; }
+h3 { font-size:1.7rem; }
 h1, h3 {
-    margin:10px auto;
+    margin:0.3em auto;
 }
 
 #DatosJuego td { 
@@ -283,12 +286,16 @@ h1, h3 {
 
 
 
+#Msg1 span, #Msg2 span, #Msg3 span, #Msg4 span {
+/*    position:relative;
+    top: -5px;  */
+}
 
 /* Zoom para las fichas svg */
 #Msg1 img, #Msg2 img, #Msg3 img, #Msg4 img {
     zoom:0.6;
     position: relative;
-    top: 6px;    
+/*    top: 0.5rem;    */
 }
 
 
@@ -341,23 +348,23 @@ h1, h3 {
 
 /* Puntuaciones */
 #ME_P1, #ME_P2, #ME_P3, #ME_P4, #ME_P13, #ME_P24, #MV_P1, #MV_P2, #MV_P3, #MV_P4, #MV_P13, #MV_P24  {
-    padding-left:10px;
+    padding:0.35rem 0.1rem 0.35rem 0.2rem;
     text-align:right;
 }
 
 #ME_P13, #ME_P24, #MV_P13, #MV_P24 {
-    border-top: 2px solid #FFF;
+    border-top: 0.2rem solid #FFF;
 }
 
 .TablaPuntos, .TablaPuntos2 {
     display:flex;
     margin:auto;
-    padding: 4px;
+/*  padding: 0.4rem;*/
 }
 
 .TablaPuntos > table, .TablaPuntos2 > table {
     background: rgba(32,32,32,0.65);
-    padding:4px;
+    padding:0.4rem;
 }
 
 
@@ -368,7 +375,7 @@ h1, h3 {
     flex-basis: auto; /* default value */
     flex-grow: 1;
     flex:30%;
-    margin: 0 20px;
+    margin: 0 0.2rem;
 }
 
 .AniResaltar {
@@ -385,8 +392,8 @@ h1, h3 {
     color:#FFF;
     background:transparent;
     outline:none;
-    border:1px solid transparent;
-    font-size: 20px;    
+    border:0.2rem solid transparent;
+    font-size: 1rem;    
 }
 
 input[type="checkbox"] {

@@ -126,20 +126,20 @@ var Domino_Partida = function() {
         // Coloco las fichas del jugador 1 y 3
         for (i = 0; i < 7; i++) {
             this.Ficha[i].RotarV();
-            this.Ficha[i].Ficha.position.set(-4.5 + (1.5 * i), 0, 6.0);
+            this.Ficha[i].Ficha.position.set(-3.8 + (1.25 * i), 0, 5.5);
             this.Ficha[14 + i].RotarV();
             if (this.Opciones.Descubierto === "false") this.Ficha[14 + i].RotarBocaAbajo();
-            this.Ficha[14 + i].Ficha.position.set(-4.5 + (1.5 * i), 0, -12);
+            this.Ficha[14 + i].Ficha.position.set(-3.8 + (1.25 * i), 0, -12);
         }
         
         // Coloco las fichas del jugador 2 y 4
         for (i = 0; i < 7; i++) {
             this.Ficha[7 + i].RotarH();
             if (this.Opciones.Descubierto === "false") this.Ficha[7 + i].RotarBocaAbajo();
-            this.Ficha[7 + i].Ficha.position.set(15, 0, -6.5 + (1.5 * i));
+            this.Ficha[7 + i].Ficha.position.set(15, 0, -6.5 + (1.25 * i));
             this.Ficha[21 + i].RotarH();
             if (this.Opciones.Descubierto === "false") this.Ficha[21 + i].RotarBocaAbajo();
-            this.Ficha[21 + i].Ficha.position.set(-15, 0, -6.5 + (1.5 * i));
+            this.Ficha[21 + i].Ficha.position.set(-15, 0, -6.5 + (1.25 * i));
         }
         
         // Miro que jugador empieza
@@ -266,9 +266,9 @@ var Domino_Partida = function() {
                 }
             }
         }
-        var Pos = [ 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0 ];
+        var Pos = [ 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5 ];
         for (var i = 0; i < Ayuda.length; i++) {
-            Pos[Ayuda[i]] = 5.5;
+            Pos[Ayuda[i]] = 5.0;
         }        
         
         if (typeof(this.AniAyuda) !== "undefined") {
@@ -298,7 +298,7 @@ var Domino_Partida = function() {
         }
         this.AniAyuda = Animaciones.CrearAnimacion([
                 { Paso : { P0 : this.Ficha[0].Ficha.position.z, P1 : this.Ficha[1].Ficha.position.z, P2 : this.Ficha[2].Ficha.position.z, P3 : this.Ficha[3].Ficha.position.z, P4 : this.Ficha[4].Ficha.position.z, P5 : this.Ficha[5].Ficha.position.z, P6 : this.Ficha[6].Ficha.position.z  } },
-                { Paso : { P0 : 6.0, P1 : 6.0, P2 : 6.0, P3 : 6.0, P4 : 6.0, P5 : 6.0, P6 : 6.0  }, Tiempo : 400, FuncionTiempo : FuncionesTiempo.SinInOut }
+                { Paso : { P0 : 5.5, P1 : 5.5, P2 : 5.5, P3 : 5.5, P4 : 5.5, P5 : 5.5, P6 : 5.5  }, Tiempo : 400, FuncionTiempo : FuncionesTiempo.SinInOut }
             ], {
             FuncionActualizar : function(Valores) { 
                 if (this.Ficha[0].Colocada === false) this.Ficha[0].Ficha.position.set(this.Ficha[0].Ficha.position.x, this.Ficha[0].Ficha.position.y, Valores.P0);
@@ -324,7 +324,7 @@ var Domino_Partida = function() {
         
         if (Colocadas === 7) {
             var P1 = this.ContarPuntos(0), P2 = this.ContarPuntos(1), P3 = this.ContarPuntos(2), P4 = this.ContarPuntos(3);
-            this.MostrarMensaje(this.JugadorActual, "<span>" +  + this.Opciones.NombreJugador[this.JugadorActual] +  " gana la mano!</span>", "verde");
+            this.MostrarMensaje(this.JugadorActual, "<span>" + this.Opciones.NombreJugador[this.JugadorActual] + " gana la mano!</span>", "verde");
             this.ManoTerminada = true;            
             // Cuento los puntos y muestro los valores
             var Puntos = 0;

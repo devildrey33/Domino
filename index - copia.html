@@ -1,0 +1,294 @@
+<!-- 
+    Domino ThreeJS creado por Josep Antoni Bover Comas el 16/01/2019
+
+        Indice
+
+        Vista por defecto en el Laboratorio de pruebas  
+		devildrey33_Lab->Opciones->Vista = Filas;
+
+        Ultima modificación el 28/01/2019
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+        <title>Dominó Three.js</title>
+        <!-- Manifest para que la WebApp se mantenga siempre en modo landscape -->
+        <link rel="manifest" href="/manifest.json">
+        <!-- Estilos CSS para el objeto canvas -->
+        <link rel='stylesheet' href='./CSS/ObjetoCanvas.css' />        
+        <link rel='stylesheet' href='./CSS/Domino.css' />        
+                
+        <!-- Three.JS -->
+        <script src="./JS/three.min.js"></script>
+
+        <!-- ObjetoCanvas similar al ObjetoBanner para testear Banners -->
+        <script src="./JS/ObjetoCanvas.js"></script>
+        <script src="./JS/ObjetoAnimacion.js"></script>
+
+        <script src="./JS/Domino_Texturas.js"></script>        
+        <script src="./JS/Domino_Ficha.js"></script>        
+        <script src="./JS/Domino_UI.js"></script>        
+        <script src="./JS/Domino_Opciones.js"></script>        
+        <script src="./JS/Domino_Partida.js"></script>        
+        <script src="./JS/Domino.js"></script>        
+    </head>
+    <body>
+        <!-- Marco para empezar partida -->
+        <div id='MarcoEmpezar' class='MarcoCanvas'>
+            <h1>Bienvenido a Dominó <span id="VersionDomino">0.00</span></h1>
+            <hr />
+            <h3>Nombres</h3>
+            <div class="TablaPuntos">
+                <table>
+                    <tr>
+                        <td>
+                            <!-- maxlength="16" -->
+                            <input type="text" id="NEquipo1" placeholder="Equipo 1" spellcheck="false">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="NNombre1" placeholder="Jugador 1" spellcheck="false">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="NNombre3" placeholder="Jugador 3" spellcheck="false">
+                        </td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td>
+                            <input type="text" id="NEquipo2" placeholder="Equipo 2" spellcheck="false"> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="NNombre2" placeholder="Jugador 2" spellcheck="false">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="NNombre4" placeholder="Jugador 4" spellcheck="false">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <hr />
+            <h3>Puntos para terminar la partida</h3>
+            <div class="Centrado">
+                <button id="Puntos100">100</button>
+                <button id="Puntos200">200</button>
+                <button id="Puntos300">300</button>
+                <button id="Puntos400">400</button>
+                <button id="Puntos500">500</button>
+                <button id="Puntos600">600</button>
+            </div>           
+            <hr />
+            <table class="Centrado">
+                <tr>
+                    <td>Jugar al descubierto</td>
+                    <td><input type="checkbox" id="Opciones_Descubierto"></td>
+                </tr>
+                <tr>
+                    <td>Animar el turno en 3D</td>
+                    <td><input type="checkbox" id="Opciones_AnimarTurno"></td>
+                </tr>
+                <tr>
+                    <td>Ayuda para el jugador</td>
+                    <td><input type="checkbox" id="Opciones_Ayuda"></td>
+                </tr>
+            </table>
+            <br />
+            <button id="BotonEmpezar">Empezar!</button>
+
+        </div>
+        
+        <!-- Victoria de un equipo (un jugador se ha quedado sin fichas) -->
+        <div id="MarcoContinuar"  class='MarcoCanvas'>
+            <h1>Mano terminada</h1>
+            <div class="TablaPuntos2">
+                <table>
+                    <tr>
+                        <td id="MV_E1">Equipo 1</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 1</td>
+                        <td>=</td>
+                        <td id="MV_P1">x</td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 3</td>
+                        <td>=</td>
+                        <td id="MV_P3">x</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td id="MV_P13">x</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td id="MV_E2">Equipo 2</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 2</td>
+                        <td>=</td>
+                        <td id="MV_P2">x</td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 4</td>
+                        <td>=</td>
+                        <td id="MV_P4">x</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td id="MV_P24">x</td>
+                    </tr>
+                </table>
+            </div>            
+            
+            <h3>El <span class="AniResaltar">Equipo <span id="PG_Equipo">x</span></span> ha ganado! y suma <span class="AniResaltar" id="PG_Puntos">x</span> puntos.</h3>
+            <button id="BotonContinuar">Continuar</button>
+        </div>
+        
+        <!-- Marco para mostrar los datos del Empate -->
+        <div id="MarcoEmpate" class='MarcoCanvas'>
+            <h1>EMPATE!</h1>
+            <p>El equipo que suma menos puntos, gana.</p>
+            <p>Si los dos equipos tienen la misma cantidad de puntos, nadie gana.</p>
+            <br />
+            <div class="TablaPuntos">
+                <table>
+                    <tr>
+                        <td id="ME_E1">Equipo 1</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 1</td>
+                        <td>=</td>
+                        <td id="ME_P1">x</td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 3</td>
+                        <td>=</td>
+                        <td id="ME_P3">x</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td id="ME_P13">x</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td id="ME_E2">Equipo 2</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 2</td>
+                        <td>=</td>
+                        <td id="ME_P2">x</td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 4</td>
+                        <td>=</td>
+                        <td id="ME_P4">x</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td id="ME_P24">x</td>
+                    </tr>
+                </table>
+            </div>
+            <br />
+            <!-- Texto para la victoria por puntos despues de un bloqueo (al quedarse todos los jugadores sin posibilidad de tirar, antes de quedarse sin fichas) -->
+            <p id="TxtVictoria">Ha ganado el <span class="AniResaltar">Equipo <span id="TxtVictoriaEquipo">x</span></span>, y suma <span class="AniResaltar" id="TxtVictoriaPuntos">x</span> puntos.</p>
+            <!-- Texto para el empate, al quedarse todos los jugadores sin poder tirar, y que los dos equipos sumen los mismos puntos -->
+            <p id="TxtEmpate">EMPATE, no se reparten puntos</p>
+            <br />
+            <button id="BotonContinuar2">Continuar</button>
+        </div>
+        
+        <!-- Marco para cuando se termina la parida -->
+        <div id="MarcoTerminado" class='MarcoCanvas'>
+            <h1>Partida TERMINADA</h1>
+            <p>El Equipo <span id="EquipoGanador">x</span> ha ganado la partida con <span id="PuntosGanador">x</span> puntos.</p>
+            <button id="BotonTerminar">Terminar</button>
+        </div>
+        
+        <div class='MarcoCanvas' id="Historial">
+            
+        </div>
+        
+        <div class='MarcoCanvas' id="DatosJuego">
+            <table>
+                <tr>
+                    <td>Mano</td>
+                    <td>:</td>
+                    <td id="Mano">0</td>
+                </tr>
+                <tr>
+                    <td>Turno</td>
+                    <td>:</td>
+                    <td id="Turno">0</td>
+                </tr>
+                <tr>
+                    <td>Jugador</td>
+                    <td>:</td>
+                    <td id="Jugador">0</td>
+                </tr>                
+            </table>
+            <hr />
+            <table>
+                <tr>
+                    <td>Equipo 1</td>
+                    <td>:</td>
+                    <td id="Equipo1">0</td>
+                </tr>
+                <tr>
+                    <td>Equipo 2</td>
+                    <td>:</td>
+                    <td id="Equipo2">0</td>
+                </tr>
+            </table>
+        </div>
+        
+<!--        <div id ="MarcoPartida" class='MarcoCanvas'> 
+            <table id="TablaDatos">
+                <tr>
+                    <td id="Partida">Partida 1</td>
+                    <td id="Turno">Turno 1</td>
+                    <td id="Jugador">Jugador 1</td>
+                </tr>                
+            </table>
+            
+        </div> -->
+        
+        <div id='Msg1' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 1 -->
+        <div id='Msg2' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 2 -->
+        <div id='Msg3' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 3 -->
+        <div id='Msg4' class='MarcoCanvas' ></div>   <!-- Mensaje Jugador 4 -->
+        
+        <!-- animaciones para la victoria / derrota --> 
+        <div id="VictoriaDerrota">
+    <!--    <div id="Victoria"><img src="./SVG/Partida.svg#Ganada" /></div>
+            <div id="Derrota"><img src="./SVG/Partida.svg#Perdida" /></div> 
+            <div id='ParitdaGanada'><img src='./SVG/PartidaGanada.svg' /></div> -->
+        </div>
+    </body>
+</html>

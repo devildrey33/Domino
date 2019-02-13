@@ -15,7 +15,7 @@ body { margin:0px; padding:0px; }
             
 /* Estilos para los marcos informativos */
 #ObjetoCanvas {
-    margin:0px;
+    margin:0;
     height:100%;
     border-top:none;
     color:#FFFFFF;
@@ -25,9 +25,9 @@ body { margin:0px; padding:0px; }
     width:100%;
     overflow:hidden;
     position:fixed;
-    top:0px;
-    bottom:0px;
-    left: 0px;
+    top:0;
+    bottom:0;
+    left:0;
 }        
 
 #ObjetoCanvas, #ObjetoCanvas * {
@@ -40,10 +40,10 @@ body { margin:0px; padding:0px; }
     width:100%;
     height:100%;
     position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
 /*    filter:grayscale(0%);
     transition:filter 2s;*/
 }
@@ -59,7 +59,7 @@ body { margin:0px; padding:0px; }
 #ObjetoCanvas > #Cabecera_Cargando, #ObjetoCanvas > #Cabecera_Iniciar {
     bottom: 50%;
     /* height: 50px; */
-    font-size: 42px;
+    font-size: 3em;
     transform:perspective(600px) rotateX(-90deg) translateX(-50%);
 }        
             
@@ -72,8 +72,8 @@ body { margin:0px; padding:0px; }
 #ObjetoCanvas > #Cabecera_PausaAni {
     transform-origin: top center;
     transform:perspective(600px) rotateX(-90deg);
-    top:0px;
-    right:0px;    
+    top:0;
+    right:0;    
 }
 
 /* Sobra nomes s'utilitza en el banner */         
@@ -115,9 +115,9 @@ body { margin:0px; padding:0px; }
     min-height:100%;    
     z-index:1000;
     display:none;
-    margin:0px;
-    padding:20px;
-    font-size:20px;
+    margin:0;
+    padding:1.8em;
+    font-size:1.8em;
 }
 
 #Cabecera_Error[visible=true] {

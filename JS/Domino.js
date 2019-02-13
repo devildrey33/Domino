@@ -27,7 +27,7 @@ var DominoThree = function() {
     }) === false) { return false; }
     
     // VERSIÓN DEL JUEGO A MANO
-    document.getElementById("VersionDomino").innerHTML = "0.98";
+    document.getElementById("VersionDomino").innerHTML = "0.98.6";
     
     // Se ha creado el canvas, inicio los valores de la animación ... 
     this.Iniciar();    
@@ -58,6 +58,29 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
     MouseEnter      : function(Evento) { },
     // Función que se llama al salir con el mouse del canvas
     MouseLeave      : function(Evento) { },
+    // Función que se llama al presionar la pantalla
+    TouchStart      : function(Evento) { 
+        this.MouseMovido = true;
+        this.PosMouse.x =   ( Evento.touches[0].clientX / window.innerWidth ) * 2 - 1;
+	this.PosMouse.y = - ( Evento.touches[0].clientY / window.innerHeight ) * 2 + 1;        
+//        this.ComprobarMouse();
+    },
+    
+    // Función que se llama al mover la presión sobre la pantalla
+    TouchMove      : function(Evento) { 
+        this.MouseMovido = true;
+        this.PosMouse.x =   ( Evento.touches[0].clientX / window.innerWidth ) * 2 - 1;
+	this.PosMouse.y = - ( Evento.touches[0].clientY / window.innerHeight ) * 2 + 1;        
+//        this.ComprobarMouse();
+    },    
+    
+    TouchEnd      : function(Evento) { 
+        this.MouseMovido = true;
+        this.PosMouse.x =   ( Evento.touches[0].clientX / window.innerWidth ) * 2 - 1;
+	this.PosMouse.y = - ( Evento.touches[0].clientY / window.innerHeight ) * 2 + 1;        
+        this.Partida.JugadorColocar();
+//        this.ComprobarMouse();
+    },    
     // Función que se llama al presionar una tecla
     TeclaPresionada : function(Evento) { },
     // Función que se llama al soltar una tecla
