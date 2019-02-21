@@ -9,6 +9,12 @@
         Ultima modificación el 28/01/2019
 */
 
+/* 
+    TODO :
+        - Nivell de dificultat (facil rand / normal)
+        - Idiomes (Catalá, Castellano, English)
+*/
+
 // Constructor
 var DominoThree = function() {
     // Llamo al constructor del ObjetoBanner
@@ -27,7 +33,7 @@ var DominoThree = function() {
     }) === false) { return false; }
     
     // VERSIÓN DEL JUEGO A MANO
-    document.getElementById("VersionDomino").innerHTML = "0.98.6";
+    document.getElementById("VersionDomino").innerHTML = "0.98.7";
     
     // Se ha creado el canvas, inicio los valores de la animación ... 
     this.Iniciar();    
