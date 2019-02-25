@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 28/01/2019
+        Ultima modificación el 25/02/2019
 */
 
 var Domino_UI = function() {
@@ -114,8 +114,7 @@ var Domino_UI = function() {
         else {                          // Gana el equipo 2
             document.getElementById("MV_E1").className = "Empate_Derrota";
             document.getElementById("MV_E2").className = "Empate_Victoria";
-        }
-        
+        }        
     };
         
     this.OcultarContinuar = function() {
@@ -174,7 +173,9 @@ var Domino_UI = function() {
     
     this.MostrarDatosMano = function() {
         document.getElementById("DatosJuego").setAttribute("Visible", "true");
-        document.getElementById("Historial").setAttribute("Visible", "true");
+        if (ObjetoNavegador.EsMovil() === false) {
+            document.getElementById("Historial").setAttribute("Visible", "true");
+        }
     };
     
     this.OcultarDatosMano = function() {

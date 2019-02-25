@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 28/01/2019
+        Ultima modificación el 25/02/2019
 */
 
 @import url('https://fonts.googleapis.com/css?family=Baloo+Thambi');
@@ -20,10 +20,45 @@
     line-height: 1.2rem;
 }
 
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+    html {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+}
+
+@media  only screen and (orientation:landscape) and (min-resolution: 1.2dppx) {
+    * {
+        line-height: 1rem;
+    }
+    #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #DatosJuego {
+        zoom:0.75;
+        font-size:1.2rem !important;
+    }
+    
+    #Msg1, #Msg2, #Msg3, #Msg4, #Victoria, #Derrota, #PartidaGanada {
+        zoom:0.5;
+    }
+    
+    #BotonEmpezar, #BotonContinuar, #BotonContinuar2, #BotonTerminar, h1, h3 {
+        font-size:1.5rem !important;
+    }
+    
+    input[type='checkbox'] {
+        width: 40px !important;
+        height:20px !important;
+    }
+}
+
 #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado {
     position:fixed;
     border:1px solid #000;
-    top:150%;
+    top:250%;
     left:50%;
     transform: translate(-50%, -50%);
 /*    background:rgba(0, 0, 200, 0.8);
@@ -114,7 +149,7 @@ button:hover {
 }
 
 #Msg2 {
-    right:-50%;
+    right:-100%;
     top:50%;
     transform: translate(0%, -50%);    
 }
@@ -134,7 +169,7 @@ button:hover {
 }
 
 #Msg4 {
-    left:-50%;
+    left:-100%;
     top:50%;
     transform: translate(0%, -50%);    
 }

@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 28/01/2019
+        Ultima modificación el 25/02/2019
 */
 
 /* 
@@ -108,6 +108,9 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
     
     // Función que inicia el ejemplo
     Iniciar         : function() {       
+        // Fijo el modo landscape
+//        screen.orientation.lock("landscape");
+        
         // Activo el mapeado de sombras
         this.Context.shadowMap.enabled	= true;
         // Creo la escena
