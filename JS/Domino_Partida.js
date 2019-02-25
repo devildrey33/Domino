@@ -68,6 +68,7 @@ var Domino_Partida = function() {
         this.Mano = 0;
         this.PuntosEquipo1 = 0;
         this.PuntosEquipo2 = 0;
+        this.Opciones.PuntosPorPartida = UI.PuntuacionPorPartida;
         this.Continuar();
     };
     
@@ -236,17 +237,18 @@ var Domino_Partida = function() {
                 console.log("Jugador" + (this.JugadorActual + 1) + " pasa");
                 this.MostrarMensaje(this.JugadorActual, "<span>" + this.Opciones.NombreJugador[this.JugadorActual] +  " Pasa...</span>", "rojo");
                 this.Pasado++;
+                this.TurnoActual ++;
+                this.JugadorActual ++;
+                if (this.JugadorActual > 3) {
+                    this.JugadorActual = 0;
+                }
+                
             }
         }
         
         // Compruebo si se ha terminado la mano
         if (this.ComprobarManoTerminada() === true) return;
         
-        this.TurnoActual ++;
-        this.JugadorActual ++;
-        if (this.JugadorActual > 3) {
-            this.JugadorActual = 0;
-        }
         // Se ha pasado, 
         if (this.Pasado > 0) {
             setTimeout(function() { this.Turno(); }.bind(this), this.TiempoTurno);
@@ -472,8 +474,8 @@ var Domino_Partida = function() {
                         // Compruebo si se ha terminado la mano
                         if (this.ComprobarManoTerminada() === true) return;
                         
-                        this.TurnoActual ++;
-                        this.JugadorActual ++;
+/*                        this.TurnoActual ++;
+                        this.JugadorActual ++;*/
                         this.OcultarAyuda();
                         setTimeout(function() { this.Turno(); }.bind(this), this.TiempoTurno);
                     }

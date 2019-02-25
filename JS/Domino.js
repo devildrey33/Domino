@@ -14,8 +14,12 @@
         - Nivell de dificultat (facil rand / normal)
         V Les finestres de victoria i derrota no posen els noms dels equips i dels jugadors guardats en el localstorage...
         - Idiomes (Catalá, Castellano, English)
+            - El tema de les traduccions el veig complicat (sobretot pels spans que han de mostrar el nom del equip en mig d'una frase)
+            - Lo millor seria crear un HTML per cada idioma??
         V Revisar tema movil, sobretot el touch, i veure que tots els menus no sobresurten de la pantalla
             V Touch revisat, ara sembla que funciona simulant desde el chrome.
+        - Tinc 2 puntuacions per partida... en el UI i en Opciones.... i hi ha lio (si el poso a 100 i recarrego la pagina, mostra el 100, pero realment conta fins a 300)
+        V Entre el moment que hi ha l'animació al colocar la ficha es pot posar una ficha com si no s'haques colocat la que s'esta animant
 */
 
 // Constructor
@@ -27,7 +31,7 @@ var DominoThree = function() {
         'Alto'                      : 'Auto',
         'Entorno'                   : 'Normal',
         'MostrarFPS'                : false,
-        'BotonLogo'                 : false,
+        'BotonLogo'                 : true,
         'BotonPantallaCompleta'     : true,
         'ElementoRaiz'              : document.body,
         'Pausar'                    : false,             // Pausa el canvas si la pestaña no tiene el foco del teclado
@@ -108,8 +112,14 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
     
     // Función que inicia el ejemplo
     Iniciar         : function() {       
-        // Fijo el modo landscape
+        // Fijo el modo landscape (NO VA...)
 //        screen.orientation.lock("landscape");
+
+        // Fuerzo a recargar todo el contenido (NO VA...)
+        // Al StackOverflow es comenta que si fas "Request desktop site" es fa un hard reload inclus dels CSS
+        // I si no.. amb el movil enxufat al PC Cmd+Shift+R...
+        // Una altre solucio es afegir/modificar un parámetre get al link : ej: www.url.com/?a=1
+        //window.location.reload(true);
         
         // Activo el mapeado de sombras
         this.Context.shadowMap.enabled	= true;
@@ -227,6 +237,7 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
         if (this.MouseMovido === false) return;
         if (typeof(this.Partida.Ficha[0]) === "undefined") return;
         
+        
         this.RayCaster.setFromCamera(this.PosMouse, this.Camara);
         var intersects = this.RayCaster.intersectObjects( this.Escena.children, true );        
         var Hover = [ 0, 0, 0, 0, 0, 0, 0 ];
@@ -247,13 +258,14 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
             }        
         }
         
-        // Miro si hay algun cambio respecto los hovers
-        for (var f = 0; f < 7; f++) {
-            if (Hover[f] !== this.Partida.Ficha[f].Hover) {
-                this.Partida.Ficha[f].AsignarHover(Hover[f]);
+        // Miro si hay algun cambio respecto los hovers (siempre que sea el jugador 1)
+        if (this.Partida.JugadorActual === 0) {        
+            for (var f = 0; f < 7; f++) {
+                if (Hover[f] !== this.Partida.Ficha[f].Hover) {
+                    this.Partida.Ficha[f].AsignarHover(Hover[f]);
+                }
             }
         }
-        
     },
         
     

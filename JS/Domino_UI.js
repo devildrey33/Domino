@@ -82,7 +82,7 @@ var Domino_UI = function() {
                 this.AsignarPuntuacionPorPartida(Pos * 100);
             }.bind(this, i);
         }
-        
+                
         this.MostrarEmpezar();
     };
     

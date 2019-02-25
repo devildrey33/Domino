@@ -333,7 +333,14 @@ var Domino_Ficha = function() {
                 }
                 else if (this.Rama === "izquierda") Domino.Partida.FichaIzquierda = this;
                 else                                Domino.Partida.FichaDerecha   = this;
-                    
+                
+                // Una vez se ha colocado la ficha paso al siguiente turno y jugador
+                Domino.Partida.JugadorActual ++;
+                if (Domino.Partida.JugadorActual > 3) {
+                    Domino.Partida.JugadorActual = 0;
+                }
+                Domino.Partida.TurnoActual ++;
+                
             }.bind(this)
             
         });            

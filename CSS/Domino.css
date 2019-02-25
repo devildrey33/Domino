@@ -12,13 +12,12 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo+Thambi');
 /*@import url('https://fonts.googleapis.com/css?family=Baloo+Thambi|Merienda|Righteous|ZCOOL+KuaiLe');*/
 
-* {
-    font-family: 'Baloo Thambi', cursive;
+/** {    
 /*    font-family: 'Righteous', cursive;              /* queda chula */
 /*    font-family: 'ZCOOL KuaiLe', cursive;           /* curiosa i no queda malament */
 /*    font-family: 'Merienda', cursive;              /* queda prou be */
-    line-height: 1.2rem;
-}
+/*    line-height: 1.2rem;
+}*/
 
 @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
     html {
@@ -32,8 +31,14 @@
     }
 }
 
+#MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #Msg1, #Msg2, #Msg3, #Msg4, button, input, #DatosJuego, #Historial {
+    font-family: 'Baloo Thambi', cursive;
+    line-height: 1.2rem;
+}
+
+
 @media  only screen and (orientation:landscape) and (min-resolution: 1.2dppx) {
-    * {
+    #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #Msg1, #Msg2, #Msg3, #Msg4, button, input, #DatosJuego, #Historial {
         line-height: 1rem;
     }
     #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #DatosJuego {
@@ -55,7 +60,8 @@
     }
 }
 
-#MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado {
+
+#MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado {    
     position:fixed;
     border:1px solid #000;
     top:250%;
