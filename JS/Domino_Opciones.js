@@ -1,3 +1,13 @@
+/* 
+    Domino ThreeJS creado por Josep Antoni Bover Comas el 16/01/2019
+
+        Objeto que controla las variables que requieren ser guardadas en disco
+
+        Vista por defecto en el Laboratorio de pruebas  
+		devildrey33_Lab->Opciones->Vista = Filas;
+
+        Ultima modificación el 26/02/2019
+*/
 
 
 var Domino_Opciones = function () {

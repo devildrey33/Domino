@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 25/02/2019
+        Ultima modificación el 26/02/2019
 */
 
 /* 
@@ -18,8 +18,9 @@
             - Lo millor seria crear un HTML per cada idioma??
         V Revisar tema movil, sobretot el touch, i veure que tots els menus no sobresurten de la pantalla
             V Touch revisat, ara sembla que funciona simulant desde el chrome.
-        - Tinc 2 puntuacions per partida... en el UI i en Opciones.... i hi ha lio (si el poso a 100 i recarrego la pagina, mostra el 100, pero realment conta fins a 300)
+        - Tinc 2 puntuacions per partida... en el UI i en Partida.Opciones.... i hi ha lio (si el poso a 100 i recarrego la pagina, mostra el 100, pero realment conta fins a 300)
         V Entre el moment que hi ha l'animació al colocar la ficha es pot posar una ficha com si no s'haques colocat la que s'esta animant
+        - Hi ha algo raro amb les opcions, per exemple activa el AniTurno quan está desactivat (aquest cop no funcionará, pero si fas un refresh a la pagina, funciona...)
 */
 
 // Constructor
