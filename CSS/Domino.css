@@ -73,6 +73,7 @@ button {
     color:#FFFFFF;
     background: rgba(37,35,40, 1.0);    
     transition:0.4s;
+    outline:0;
 }
 
 button:hover {

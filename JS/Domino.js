@@ -12,7 +12,10 @@
 /* 
     TODO :
         - Nivell de dificultat (facil rand / normal)
+        - Les finestres de victoria i derrota no posen els noms dels equips i dels jugadors guardats en el localstorage...
         - Idiomes (Catalá, Castellano, English)
+        - Revisar tema movil, sobretot el touch, i veure que tots els menus no sobresurten de la pantalla
+            V Touch revisat, ara sembla que funciona simulant desde el chrome.
 */
 
 // Constructor
@@ -33,7 +36,7 @@ var DominoThree = function() {
     }) === false) { return false; }
     
     // VERSIÓN DEL JUEGO A MANO
-    document.getElementById("VersionDomino").innerHTML = "0.98.7";
+    document.getElementById("VersionDomino").innerHTML = "0.98.8";
     
     // Se ha creado el canvas, inicio los valores de la animación ... 
     this.Iniciar();    
@@ -53,6 +56,7 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
         this.MouseMovido = true;
         this.PosMouse.x = ( Evento.clientX / window.innerWidth ) * 2 - 1;
 	this.PosMouse.y = - ( Evento.clientY / window.innerHeight ) * 2 + 1;
+        this.ComprobarMouse();
     },
     // Función que se llama al presionar un botón del mouse por el canvas
     MousePresionado : function(Evento) { },
@@ -69,6 +73,7 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
         this.MouseMovido = true;
         this.PosMouse.x =   ( Evento.touches[0].clientX / window.innerWidth ) * 2 - 1;
 	this.PosMouse.y = - ( Evento.touches[0].clientY / window.innerHeight ) * 2 + 1;        
+//        this.Partida.JugadorColocar();
 //        this.ComprobarMouse();
     },
     
@@ -81,9 +86,9 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
     },    
     
     TouchEnd      : function(Evento) { 
-        this.MouseMovido = true;
+/*        this.MouseMovido = true;
         this.PosMouse.x =   ( Evento.touches[0].clientX / window.innerWidth ) * 2 - 1;
-	this.PosMouse.y = - ( Evento.touches[0].clientY / window.innerHeight ) * 2 + 1;        
+	this.PosMouse.y = - ( Evento.touches[0].clientY / window.innerHeight ) * 2 + 1;        */
         this.Partida.JugadorColocar();
 //        this.ComprobarMouse();
     },    
@@ -91,10 +96,6 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
     TeclaPresionada : function(Evento) { },
     // Función que se llama al soltar una tecla
     TeclaSoltada    : function(Evento) { },
-    // Función que se llama al presionar la pantalla
-    TouchStart      : function(Evento) { },
-    // Función que se llama al soltar el dedo de la pantalla
-    TouchEnd        : function(Evento) { },    
     // Función que se llama al pausar el banner
     Pausa           : function() { },
     // Función que se llama al reanudar el banner

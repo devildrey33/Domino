@@ -438,6 +438,7 @@ var Domino_Partida = function() {
             }
             
             for (var i = 0; i < 7; i++) {
+                // Es muy importante saber si la ficha está hover o no
                 if (this.Ficha[i].Hover > 0 && this.Ficha[i].Colocada === false) {
                     // Si la ficha se puede colocar en las dos ramas
                     var nPos = -1;
