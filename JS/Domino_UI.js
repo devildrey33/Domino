@@ -98,8 +98,7 @@ var Domino_UI = function() {
     
     // Mostrar menu para continuar una partida
     this.MostrarContinuar = function(Equipo, Puntos, P1, P2, P3, P4) {
-        document.getElementById("MarcoContinuar").setAttribute("visible", "true");
-        document.getElementById("PG_Equipo").innerHTML = Equipo;
+        
         document.getElementById("PG_Puntos").innerHTML = Puntos;
         document.getElementById("MV_P1").innerHTML = P1;
         document.getElementById("MV_P2").innerHTML = P2;
@@ -107,14 +106,27 @@ var Domino_UI = function() {
         document.getElementById("MV_P4").innerHTML = P4;
         document.getElementById("MV_P13").innerHTML = P1 + P3;
         document.getElementById("MV_P24").innerHTML = P2 + P4;
+        
+        // Nombres de los jugadores y equipos
+        document.getElementById("MV_E1").innerHTML = Domino.Partida.Opciones.NombreEquipo[0];
+        document.getElementById("MV_E2").innerHTML = Domino.Partida.Opciones.NombreEquipo[1];
+        document.getElementById("MVN_P1").innerHTML = Domino.Partida.Opciones.NombreJugador[0];
+        document.getElementById("MVN_P2").innerHTML = Domino.Partida.Opciones.NombreJugador[1];
+        document.getElementById("MVN_P3").innerHTML = Domino.Partida.Opciones.NombreJugador[2];
+        document.getElementById("MVN_P4").innerHTML = Domino.Partida.Opciones.NombreJugador[3];
+        
         if (Equipo === "1") {   // Gana el equipo 1
+            document.getElementById("PG_Equipo").innerHTML = Domino.Partida.Opciones.NombreEquipo[0];
             document.getElementById("MV_E1").className = "Empate_Victoria";
             document.getElementById("MV_E2").className = "Empate_Derrota";
         }
         else {                          // Gana el equipo 2
+            document.getElementById("PG_Equipo").innerHTML = Domino.Partida.Opciones.NombreEquipo[1];
             document.getElementById("MV_E1").className = "Empate_Derrota";
             document.getElementById("MV_E2").className = "Empate_Victoria";
         }        
+
+        document.getElementById("MarcoContinuar").setAttribute("visible", "true");        
     };
         
     this.OcultarContinuar = function() {
@@ -123,13 +135,22 @@ var Domino_UI = function() {
     
     // Mostrar menu para continuar una partida
     this.MostrarEmpate = function(P1, P2, P3, P4) {
-        document.getElementById("MarcoEmpate").setAttribute("visible", "true");
         document.getElementById("ME_P1").innerHTML = P1;
         document.getElementById("ME_P2").innerHTML = P2;
         document.getElementById("ME_P3").innerHTML = P3;
         document.getElementById("ME_P4").innerHTML = P4;
         document.getElementById("ME_P13").innerHTML = P1 + P3;
         document.getElementById("ME_P24").innerHTML = P2 + P4;
+        
+        // Nombres de los jugadores y equipos
+        document.getElementById("ME_E1").innerHTML = Domino.Partida.Opciones.NombreEquipo[0];
+        document.getElementById("ME_E2").innerHTML = Domino.Partida.Opciones.NombreEquipo[1];
+        document.getElementById("MEN_P1").innerHTML = Domino.Partida.Opciones.NombreJugador[0];
+        document.getElementById("MEN_P2").innerHTML = Domino.Partida.Opciones.NombreJugador[1];
+        document.getElementById("MEN_P3").innerHTML = Domino.Partida.Opciones.NombreJugador[2];
+        document.getElementById("MEN_P4").innerHTML = Domino.Partida.Opciones.NombreJugador[3];
+        
+        
         var Equipo = 0;
         if (P1 + P3 === P2 + P4) {
             document.getElementById("ME_E1").className = "Empate_Derrota";
@@ -152,10 +173,13 @@ var Domino_UI = function() {
         }
         else { // Victoria de un equipo
             document.getElementById("TxtVictoriaPuntos").innerHTML = P1 + P2 + P3 + P4;
-            document.getElementById("TxtVictoriaEquipo").innerHTML = Equipo;  
+            document.getElementById("TxtVictoriaEquipo").innerHTML = Domino.Partida.Opciones.NombreEquipo[Equipo - 1];  
             document.getElementById("TxtVictoria").style.display = "table";
             document.getElementById("TxtEmpate").style.display = "none";  
         }
+        
+        document.getElementById("MarcoEmpate").setAttribute("visible", "true");
+        
     };
         
     this.OcultarEmpate = function() {
@@ -173,6 +197,9 @@ var Domino_UI = function() {
     
     this.MostrarDatosMano = function() {
         document.getElementById("DatosJuego").setAttribute("Visible", "true");
+        document.getElementById("NombreEquipo1").innerHTML = Domino.Partida.Opciones.NombreEquipo[0];
+        document.getElementById("NombreEquipo2").innerHTML = Domino.Partida.Opciones.NombreEquipo[1];
+        
         if (ObjetoNavegador.EsMovil() === false) {
             document.getElementById("Historial").setAttribute("Visible", "true");
         }
@@ -185,7 +212,7 @@ var Domino_UI = function() {
     
     this.MostrarGanador = function (Equipo, Puntos)  {
         document.getElementById("MarcoTerminado").setAttribute("visible", "true");
-        document.getElementById("EquipoGanador").innerHTML = Equipo;
+        document.getElementById("EquipoGanador").innerHTML = (Equipo === "1") ? Domino.Partida.Opciones.NombreEquipo[0] : Domino.Partida.Opciones.NombreEquipo[2];
         document.getElementById("PuntosGanador").innerHTML = Puntos;
     };
     

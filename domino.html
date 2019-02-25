@@ -117,12 +117,12 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td>Jugador 1</td>
+                        <td id="MVN_P1">Jugador 1</td>
                         <td>=</td>
                         <td id="MV_P1">x</td>
                     </tr>
                     <tr>
-                        <td>Jugador 3</td>
+                        <td id="MVN_P3">Jugador 3</td>
                         <td>=</td>
                         <td id="MV_P3">x</td>
                     </tr>
@@ -140,12 +140,12 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td>Jugador 2</td>
+                        <td id="MVN_P2">Jugador 2</td>
                         <td>=</td>
                         <td id="MV_P2">x</td>
                     </tr>
                     <tr>
-                        <td>Jugador 4</td>
+                        <td id="MVN_P4">Jugador 4</td>
                         <td>=</td>
                         <td id="MV_P4">x</td>
                     </tr>
@@ -157,7 +157,7 @@
                 </table>
             </div>            
             
-            <h3>El <span class="AniResaltar">Equipo <span id="PG_Equipo">x</span></span> ha ganado! y suma <span class="AniResaltar" id="PG_Puntos">x</span> puntos.</h3>
+            <h3>El <span class="AniResaltar" id="PG_Equipo">x</span> ha ganado! y suma <span class="AniResaltar" id="PG_Puntos">x</span> puntos.</h3>
             <button id="BotonContinuar">Continuar</button>
         </div>
         
@@ -175,12 +175,12 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td>Jugador 1</td>
+                        <td id="MEN_P1">Jugador 1</td>
                         <td>=</td>
                         <td id="ME_P1">x</td>
                     </tr>
                     <tr>
-                        <td>Jugador 3</td>
+                        <td id="MEN_P3">Jugador 3</td>
                         <td>=</td>
                         <td id="ME_P3">x</td>
                     </tr>
@@ -198,12 +198,12 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td>Jugador 2</td>
+                        <td id="MEN_P2">Jugador 2</td>
                         <td>=</td>
                         <td id="ME_P2">x</td>
                     </tr>
                     <tr>
-                        <td>Jugador 4</td>
+                        <td id="MEN_P4">Jugador 4</td>
                         <td>=</td>
                         <td id="ME_P4">x</td>
                     </tr>
@@ -216,7 +216,7 @@
             </div>
             <br />
             <!-- Texto para la victoria por puntos despues de un bloqueo (al quedarse todos los jugadores sin posibilidad de tirar, antes de quedarse sin fichas) -->
-            <p id="TxtVictoria">Ha ganado el <span class="AniResaltar">Equipo <span id="TxtVictoriaEquipo">x</span></span>, y suma <span class="AniResaltar" id="TxtVictoriaPuntos">x</span> puntos.</p>
+            <p id="TxtVictoria">Ha ganado el <span class="AniResaltar" id="TxtVictoriaEquipo">x</span>, y suma <span class="AniResaltar" id="TxtVictoriaPuntos">x</span> puntos.</p>
             <!-- Texto para el empate, al quedarse todos los jugadores sin poder tirar, y que los dos equipos sumen los mismos puntos -->
             <p id="TxtEmpate">EMPATE, no se reparten puntos</p>
             <br />
@@ -226,7 +226,7 @@
         <!-- Marco para cuando se termina la parida -->
         <div id="MarcoTerminado" class='MarcoCanvas'>
             <h1>Partida TERMINADA</h1>
-            <p>El Equipo <span id="EquipoGanador">x</span> ha ganado la partida con <span id="PuntosGanador">x</span> puntos.</p>
+            <p>El <span id="EquipoGanador">x</span> ha ganado la partida con <span id="PuntosGanador">x</span> puntos.</p>
             <button id="BotonTerminar">Terminar</button>
         </div>
         
@@ -251,16 +251,20 @@
                     <td>:</td>
                     <td id="Jugador">0</td>
                 </tr>                
-            </table>
-            <hr />
-            <table>
+                    
                 <tr>
-                    <td>Equipo 1</td>
+                    <td style="border-bottom:2px solid #FFF"></td>
+                    <td style="border-bottom:2px solid #FFF"></td>
+                    <td style="border-bottom:2px solid #FFF"></td>
+                </tr>
+                
+                <tr>
+                    <td id="NombreEquipo1">Equipo 1</td>
                     <td>:</td>
                     <td id="Equipo1">0</td>
                 </tr>
                 <tr>
-                    <td>Equipo 2</td>
+                    <td id="NombreEquipo2">Equipo 2</td>
                     <td>:</td>
                     <td id="Equipo2">0</td>
                 </tr>

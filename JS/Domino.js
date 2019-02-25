@@ -12,9 +12,9 @@
 /* 
     TODO :
         - Nivell de dificultat (facil rand / normal)
-        - Les finestres de victoria i derrota no posen els noms dels equips i dels jugadors guardats en el localstorage...
+        V Les finestres de victoria i derrota no posen els noms dels equips i dels jugadors guardats en el localstorage...
         - Idiomes (Catalá, Castellano, English)
-        - Revisar tema movil, sobretot el touch, i veure que tots els menus no sobresurten de la pantalla
+        V Revisar tema movil, sobretot el touch, i veure que tots els menus no sobresurten de la pantalla
             V Touch revisat, ara sembla que funciona simulant desde el chrome.
 */
 
@@ -36,7 +36,7 @@ var DominoThree = function() {
     }) === false) { return false; }
     
     // VERSIÓN DEL JUEGO A MANO
-    document.getElementById("VersionDomino").innerHTML = "0.98.8";
+    document.getElementById("VersionDomino").innerHTML = "0.99";
     
     // Se ha creado el canvas, inicio los valores de la animación ... 
     this.Iniciar();    
