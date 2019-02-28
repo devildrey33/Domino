@@ -37,7 +37,7 @@
 }
 
 /* Landscape móvil */
-@media  only screen and (orientation:landscape) and (min-resolution: 1.2dppx) {
+@media only screen and (orientation:landscape) and (min-resolution: 1.2dppx) {
     #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #Msg1, #Msg2, #Msg3, #Msg4, button, input, #DatosJuego, #Historial {
         line-height: 1rem;
     }
@@ -108,7 +108,7 @@
 
 #BotonEmpezar, #BotonContinuar, #BotonContinuar2, #BotonTerminar {
     font-size:2rem;
-    padding:0.5rem;
+    /*padding:0.5rem; */
     display:table;
     margin:auto;
 }
@@ -120,7 +120,7 @@
 
 .Centrado > button {
     margin: 0.2rem;
-    padding: 0.3rem;
+/*    padding: 0.3rem;*/
     font-size: 1.1rem;
     vertical-align: middle;
     display: table-cell;}
@@ -284,16 +284,16 @@ hr {
 
 .Historial_negro {
     color:#FFF;
-    padding:0.2rem;
+/*    padding:0.2rem;*/
 }
 
 .Historial_verde {
     color : rgb(60, 214, 58);
-    padding:0.2rem;
+/*    padding:0.2rem;*/
 }
 
 .Historial_rojo {
-    padding:0.2rem;
+/*    padding:0.2rem; */
     color: orange;
     /*text-shadow:1px 1px 1px #888;*/
 }

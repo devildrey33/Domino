@@ -11,6 +11,13 @@
 
 /* 
     TODO :
+        - Crec que cal un nou ObjectoCanvas que crei tota la seva parafernalia en el body, ¿o en un  element especificat per la ID?
+            - Es millor un ObjetoCanvas i un ObjecoThree? o seguiexo amb un pels 2 tipus? (mes del 50% del còdi sería el mateix)
+            - D'aquesta forma al carregar-se el javaScript ja pot funcionat tota la App ja que s'ha de crear ella mateixa el còdi)
+              - S'ha d'estructurar molt bé els constructors pels diferents objectes que tinc, per que no demanin dades que encara no existeixen (en previsió pels objectes del dominó)
+        - Acabar de refinar el CSS pel mode desktop ara que l'he ajustat a dispositius mòvils...
+            - Mirar de re-activar el historial en dispositus mòvils.
+
         - Nivell de dificultat (facil rand / normal)
             - Afegir predilecció per tirar una doble si es posible abans de tirar la que major puntuació tingui?
                 - Jo crec que es 99% factible a no ser que em pensi una IA que pugui tancar partides si ho veu posible i necesari.... (maça curru igual per una 2.0)
