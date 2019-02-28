@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 28/01/2019
+        Ultima modificación el 28/02/2019
 */
 
 var Domino_Partida = function() {    
@@ -82,7 +82,7 @@ var Domino_Partida = function() {
         UI.OcultarEmpate();   
         
         // Se ha terminado la partida
-        if (this.PuntosEquipo1 >= UI.PuntuacionPorPartida || this.PuntosEquipo2 >= UI.PuntuacionPorPartida) {
+        if (this.PuntosEquipo1 >= this.Opciones.PuntosPorPartida || this.PuntosEquipo2 >= this.Opciones.PuntosPorPartida) {
             var Equipo = (this.PuntosEquipo1 >= this.PuntosEquipo2) ? "1" : "2";
             UI.MostrarGanador(Equipo, (this.PuntosEquipo1 >= this.PuntosEquipo2) ? this.PuntosEquipo1 : this.PuntosEquipo2 );
             if (Equipo === "1") UI.MostrarPartidaGanada();
@@ -270,7 +270,8 @@ var Domino_Partida = function() {
         }
         var Pos = [ 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5 ];
         for (var i = 0; i < Ayuda.length; i++) {
-            Pos[Ayuda[i]] = 5.0;
+            if (this.Ficha[Ayuda[i]].Valores[0] == this.Ficha[Ayuda[i]].Valores[1])     Pos[Ayuda[i]] = 4.75;
+            else                                                                        Pos[Ayuda[i]] = 5.0;
         }        
         
         if (typeof(this.AniAyuda) !== "undefined") {
@@ -345,7 +346,7 @@ var Domino_Partida = function() {
             document.getElementById("Equipo1").innerHTML = this.PuntosEquipo1;
             document.getElementById("Equipo2").innerHTML = this.PuntosEquipo2;
             
-//            if (this.PuntosEquipo1 >= UI.PuntuacionPorPartida || this.PuntosEquipo2 >= UI.PuntuacionPorPartida) UI.MostrarGanador(Equipo, (Equipo === "1") ? this.PuntosEquipo1 : this.PuntosEquipo2);
+//            if (this.PuntosEquipo1 >= this.Opciones.PuntosPorPartida || this.PuntosEquipo2 >= this.Opciones.PuntosPorPartida) UI.MostrarGanador(Equipo, (Equipo === "1") ? this.PuntosEquipo1 : this.PuntosEquipo2);
             UI.MostrarContinuar(Equipo, Puntos, P1, P2, P3, P4);                        
         }
         // Todos los jugadores han pasado
@@ -386,7 +387,7 @@ var Domino_Partida = function() {
             for (var i = 0; i < this.Ficha.length; i++) {
                 this.Ficha[i].RotarBocaArriba();
             }
-/*            if (this.PuntosEquipo1 >= UI.PuntuacionPorPartida || this.PuntosEquipo2 >= UI.PuntuacionPorPartida) { // Se ha terminado la partida
+/*            if (this.PuntosEquipo1 >= this.Opciones.PuntosPorPartida || this.PuntosEquipo2 >= this.Opciones.PuntosPorPartida) { // Se ha terminado la partida
                 // Oculto el menu para continuar la siguiente mano (desde una victoria)
                 UI.OcultarContinuar();           
                 // Oculto el menu para continuar la siguiente mano (desde un empate)
@@ -474,14 +475,10 @@ var Domino_Partida = function() {
                         // Compruebo si se ha terminado la mano
                         if (this.ComprobarManoTerminada() === true) return;
                         
-/*                        this.TurnoActual ++;
-                        this.JugadorActual ++;*/
                         this.OcultarAyuda();
                         setTimeout(function() { this.Turno(); }.bind(this), this.TiempoTurno);
                     }
                     
-                    //if (this.Colocar(this.Jugador[0][i]) === true) {
-//                    }
                 }
             }
         }        

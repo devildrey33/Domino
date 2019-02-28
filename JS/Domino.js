@@ -6,21 +6,32 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 26/02/2019
+        Ultima modificación el 28/02/2019
 */
 
 /* 
     TODO :
         - Nivell de dificultat (facil rand / normal)
+            - Afegir predilecció per tirar una doble si es posible abans de tirar la que major puntuació tingui?
+                - Jo crec que es 99% factible a no ser que em pensi una IA que pugui tancar partides si ho veu posible i necesari.... (maça curru igual per una 2.0)
         V Les finestres de victoria i derrota no posen els noms dels equips i dels jugadors guardats en el localstorage...
         - Idiomes (Catalá, Castellano, English)
             - El tema de les traduccions el veig complicat (sobretot pels spans que han de mostrar el nom del equip en mig d'una frase)
             - Lo millor seria crear un HTML per cada idioma??
         V Revisar tema movil, sobretot el touch, i veure que tots els menus no sobresurten de la pantalla
             V Touch revisat, ara sembla que funciona simulant desde el chrome.
-        - Tinc 2 puntuacions per partida... en el UI i en Partida.Opciones.... i hi ha lio (si el poso a 100 i recarrego la pagina, mostra el 100, pero realment conta fins a 300)
+        V Tinc 2 puntuacions per partida... en el UI i en Partida.Opciones.... i hi ha lio (si el poso a 100 i recarrego la pagina, mostra el 100, pero realment conta fins a 300)
         V Entre el moment que hi ha l'animació al colocar la ficha es pot posar una ficha com si no s'haques colocat la que s'esta animant
-        - Hi ha algo raro amb les opcions, per exemple activa el AniTurno quan está desactivat (aquest cop no funcionará, pero si fas un refresh a la pagina, funciona...)
+        V Hi ha algo raro amb les opcions, per exemple activa el AniTurno quan está desactivat (aquest cop no funcionará, pero si fas un refresh a la pagina, funciona...)
+        - Com no he aconseguit limitar la vista a landscape, he habilitat el modo portrait amb les seves mides... falta ajustar la càmara 3d de l'escena
+            - Una solució podria ser girar tot 45º de forma que es vegi tot, i tiris desde l'esquerra (pilotaço al canto amb els msgs de la UI) però m'agrada la idea.
+        - Implementar espai / intro per continuar / acabar / començar (dels menús)
+        - Fer animació per sumar els punts de l'equip un cop acabada la ma
+
+
+        0.999
+            - Netejar / pulir / ampliar comentaris
+        
 */
 
 // Constructor
@@ -41,7 +52,7 @@ var DominoThree = function() {
     }) === false) { return false; }
     
     // VERSIÓN DEL JUEGO A MANO
-    document.getElementById("VersionDomino").innerHTML = "0.99";
+    document.getElementById("VersionDomino").innerHTML = "0.99.2";
     
     // Se ha creado el canvas, inicio los valores de la animación ... 
     this.Iniciar();    
@@ -53,7 +64,18 @@ var DominoThree = function() {
 DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
     constructor     : DominoThree, 
     // Función que se llama al redimensionar el documento
-    Redimensionar   : function() {    },
+    Redimensionar   : function() {  
+        if (typeof(this.Camara) === "undefined") return;
+        if (window.screen.availHeight > window.screen.availWidth) { // portrait
+            this.Camara.Rotacion.Distancia = 18;
+        }
+        else { // landscape (por defecto)
+            this.Camara.Rotacion.Distancia = 10;
+            
+        }
+        this.Camara.position.set(0, 10, this.Camara.Rotacion.Distancia);
+        this.Camara.lookAt(this.Camara.Rotacion.MirarHacia);
+    },
     // Función que se llama al hacer scroll en el documento    
     Scroll          : function() {    },
     // Función que se llama al mover el mouse por el canvas
@@ -132,14 +154,14 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
         this.Camara.position.set(0, 10, this.Camara.Rotacion.Distancia);        
         
         // Función para que la cámara rote alrededor de la escena
-        this.Camara.Rotar = function() {
+/*        this.Camara.Rotar = function() {
             if (this.Rotacion.Animacion === true) {
                 this.Rotacion.Grados += this.Rotacion.Avance;
                 this.position.x = this.Rotacion.Distancia * Math.cos(this.Rotacion.Grados);
                 this.position.z = this.Rotacion.Distancia * Math.sin(this.Rotacion.Grados);
                 this.lookAt(this.Rotacion.MirarHacia); 
             }
-        };
+        };*/
         this.Escena.add(this.Camara);
         this.Camara.lookAt(this.Camara.Rotacion.MirarHacia); 
 
@@ -160,6 +182,8 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
         this.CrearLuces();
         this.Partida.Opciones.Iniciar();
         UI.Iniciar();
+        
+        this.Redimensionar();
 //        this.Camara.Rotar();
         setTimeout(this.Partida.CrearFichas.bind(this.Partida), 10);
     },
@@ -190,7 +214,7 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
         this.Escena.add( this.HemiLight );                 
     },
         
-    // Mueve la luz al jugador especificado
+    // Mueve la luz y la cámara al jugador especificado
     AnimarLuz       : function(NumJugador) {
         if (typeof(this.AniLuz) !== "undefined") {
             this.AniLuz.Terminar();
@@ -226,7 +250,9 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
                     { Paso : { PX : PosX,                      PZ : PosZ                    , RZ : RotZ  }, Tiempo : 400, FuncionTiempo : FuncionesTiempo.SinInOut }
             ], { FuncionActualizar : function(Valores) { 
                     this.DirLight.position.set(Valores.PX, 40, Valores.PZ);                    
+                    this.DirLight.lookAt(this.Camara.Rotacion.MirarHacia);
                     this.Camara.rotation.y = Valores.RZ;
+                    this.Camara.lookAt(this.Camara.Rotacion.MirarHacia);
                     //this.DirLight.needUpdate = true;
 //                    this.DirLight.position.multiplyScalar( 20 );
             }.bind(this) });

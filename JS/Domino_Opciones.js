@@ -1,12 +1,12 @@
 /* 
     Domino ThreeJS creado por Josep Antoni Bover Comas el 16/01/2019
 
-        Objeto que controla las variables que requieren ser guardadas en disco
+        Objeto que controla las variables que requieren ser guardadas en disco (nombres de equipo y jugadores, opciones varias)
 
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificación el 26/02/2019
+        Ultima modificación el 28/02/2019
 */
 
 
@@ -69,21 +69,21 @@ var Domino_Opciones = function () {
     this.AsignarDescubierto = function(Descubierto) {
         window.localStorage.setItem("Descubierto", Descubierto);
         if (Descubierto === false)      this.Descubierto = "false";
-        else if (Descubierto === false) this.Descubierto = "true";
+        else if (Descubierto === true)  this.Descubierto = "true";
         else                            this.Descubierto = Descubierto;
     };
     
     this.AsignarAniTurno = function(AniTurno) {
         window.localStorage.setItem("AniTurno", AniTurno);
         if (AniTurno === false)      this.AniTurno = "false";
-        else if (AniTurno === false) this.AniTurno = "true";
+        else if (AniTurno === true)  this.AniTurno = "true";
         else                         this.AniTurno = AniTurno;
     };
     
     this.AsignarAyuda = function(Ayuda) {
         window.localStorage.setItem("Ayuda", Ayuda);
         if (Ayuda === false)      this.Ayuda = "false";
-        else if (Ayuda === false) this.Ayuda = "true";
+        else if (Ayuda === true)  this.Ayuda = "true";
         else                      this.Ayuda = Ayuda;
     };
     

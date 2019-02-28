@@ -1,6 +1,6 @@
 /* Fusión del ObjetoCanvas (originalmente destinado a tests de banners) con el ObjetoBanner 
     Creado el 14/10/2016 por Josep Antoni Bover Comas para devildrey33.es 
-    Ultima modificación :  30/08/2017 
+    Ultima modificación :  28/02/2019 
  */
 
 /* NOTA Importante, inicialmente este objeto se creo con la finalidad de probar banners para mi web, pero con el tiempo lo he estado enriqueciendo y adaptando para poder crear
@@ -75,8 +75,9 @@ var ObjetoCanvas = function(Opciones) {
         // Creo las etiquetas que contienen información adicional sobre la animación
         this.Cabecera = document.getElementById("ObjetoCanvas");
         this.Textos = { 
-            en : ["Loading..." , "Paused"  , "Start"  , "Frames per second" , "Full Screen"      , "Restore Screen"    , "devildrey33 home page", "Error loading WebGL" ],
-            es : ["Cargando...", "En Pausa", "Iniciar", "Frames por segundo", "Pantalla Completa", "Restaurar Pantalla", "Página de devildrey33", "Error iniciando WebGL" ] 
+            en  : [ "Loading..." , "Paused"  , "Start"  , "Frames per second" , "Full Screen"      , "Restore Screen"    , "devildrey33 home page", "Error loading WebGL"   ],
+            es  : [ "Cargando...", "En Pausa", "Iniciar", "Frames por segundo", "Pantalla Completa", "Restaurar Pantalla", "Página de devildrey33", "Error iniciando WebGL" ],
+            cat : [ "Carregan...", "En Pausa", "Iniciar", "Frames per segon"  , "Pantalla Completa", "Restaurar Pantalla", "Página de devildrey33", "Error inician WebGL"   ] 
         };
         var StrHtml = '<div id="Cabecera_Cargando" class="MarcoCanvas"><span>' + this.Textos[this.OpcionesCanvas.Idioma][0] + '</span></div>' +
             "<canvas id='Cabecera_Canvas'></canvas>" +
@@ -408,12 +409,13 @@ ObjetoCanvas.prototype.EventoTouchEnd = function(event) {
 
 // Función que obtiene el tamaño del canvas una vez redimensionado.
 ObjetoCanvas.prototype.EventoRedimensionar = function() {
+    console.log("Evento Resize : ", window.innerWidth, window.innerHeight, window.devicePixelRatio, window.screen.availWidth, window.screen.availHeight);
 //    console.log("esmovil" + ObjetoNavegador.EsMovil());
     // portrait
     if (this.OpcionesCanvas.ForzarLandscape === true && ObjetoNavegador.EsMovil() === true && window.innerWidth < window.innerHeight) {
         // Invierto el nuevo ancho y la nueva altura (si no son fijas) para forzar el modo landscape
-        if (this.OpcionesCanvas.Ancho === "Auto") { this.Ancho  = window.innerHeight;  }
-        if (this.OpcionesCanvas.Alto === "Auto")  { this.Alto   = window.innerWidth; }        
+        if (this.OpcionesCanvas.Ancho === "Auto") { this.Ancho  = window.screen.availHeight;  }
+        if (this.OpcionesCanvas.Alto === "Auto")  { this.Alto   = window.screen.availWidth; }        
         this.Cabecera.style.left = -(this.Ancho - this.Alto) / 2 + "px";
         this.Cabecera.style.top = (this.Ancho - this.Alto) / 2 + "px";
         this.Cabecera.style.width = this.Ancho + "px";

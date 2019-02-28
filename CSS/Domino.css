@@ -18,25 +18,25 @@
 /*    font-family: 'Merienda', cursive;              /* queda prou be */
 /*    line-height: 1.2rem;
 }*/
-
+/*
 @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
     html {
         transform: rotate(-90deg);
         transform-origin: left top;
-        width: 100vh;
+        width: 100vh; /*  100% height */ /*
         overflow-x: hidden;
         position: absolute;
         top: 100%;
         left: 0;
     }
-}
+}*/
 
 #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #Msg1, #Msg2, #Msg3, #Msg4, button, input, #DatosJuego, #Historial {
     font-family: 'Baloo Thambi', cursive;
-    line-height: 1.2rem;
+/*    line-height: 1.2rem; */
 }
 
-
+/* Landscape móvil */
 @media  only screen and (orientation:landscape) and (min-resolution: 1.2dppx) {
     #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #Msg1, #Msg2, #Msg3, #Msg4, button, input, #DatosJuego, #Historial {
         line-height: 1rem;
@@ -54,16 +54,33 @@
         font-size:1.5rem !important;
     }
     
-    input[type='checkbox'] {
-        width: 40px !important;
-        height:20px !important;
-    }
 }
+
+/* Portrait móvil */
+@media  only screen and (orientation:portrait) and (min-resolution: 1.2dppx) {
+    #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #Msg1, #Msg2, #Msg3, #Msg4, button, input, #DatosJuego, #Historial {
+        line-height: 1.5rem;
+    }
+    #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #DatosJuego {
+        zoom:0.95;
+        font-size:1.3rem !important;
+    }
+    
+    #Msg1, #Msg2, #Msg3, #Msg4, #Victoria, #Derrota, #PartidaGanada {
+        zoom:0.5;
+    }
+    
+    #BotonEmpezar, #BotonContinuar, #BotonContinuar2, #BotonTerminar, h1, h3 {
+        font-size:2rem !important;
+    }
+    
+}
+
 
 
 #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado {    
     position:fixed;
-    border:1px solid #000;
+    border:0.1rem solid #000;
     top:250%;
     left:50%;
     transform: translate(-50%, -50%);
@@ -73,9 +90,9 @@
     border-radius:8px;*/
 /*    padding:0 0.2rem 0.2rem 0.2rem;*/
     z-index:1000;
-    border:2px solid transparent;
+    border:0.2rem solid transparent;
     font-size:1.5rem;    
-    text-shadow:3px 3px 3px #000;
+    text-shadow:0.3rem 0.3rem 0.3rem #000;
     transition:1s cubic-bezier(.49,.58,.56,1.47);
     padding: 0.4rem;
 }
@@ -91,14 +108,14 @@
 
 #BotonEmpezar, #BotonContinuar, #BotonContinuar2, #BotonTerminar {
     font-size:2rem;
-    padding:10px;
+    padding:0.5rem;
     display:table;
     margin:auto;
 }
 
 .Centrado {
     display:table;
-    margin:9px auto 0px auto;
+    margin:0.5rem auto 0 auto;
 }
 
 .Centrado > button {
@@ -109,7 +126,7 @@
     display: table-cell;}
 
 button {
-    border:1px solid #000;
+    border:0.1rem solid #000;
     cursor: pointer;    
     color:#FFFFFF;
     background: rgba(37,35,40, 1.0);    
@@ -202,14 +219,14 @@ button:hover {
 }*/
 
 #DatosJuego {
-    margin:0px;
+    margin:0;
     display:none;    
 /*    width:7em; */
     font-size:1.5rem;
 }
 
 #DatosJuego td[id] {
-    padding-left:10px;
+    padding-left:1rem;
 }
 
 /*#DatosJuego #Turno, #DatosJuego #Jugador, #DatosJuego #Partida {
@@ -221,33 +238,33 @@ button:hover {
 
 hr {
     display: block;
-    height: 1px;
+    height: 0.1rem;
     border: 0;
-    border-top: 2px solid #FFF;
-    border-bottom: 1px solid #000;
+    border-top: 0.2rem solid #FFF;
+    border-bottom: 0.1rem solid #000;
     margin: 0.4em 0;
     padding: 0; 
 }
 
 #Historial {
     display:none;
-    width: 15em;
+    width: 15rem;
     right:0px;
 /*    min-height : 15em;
     max-height : 200px;*/
-    height:15em;
+    height:15rem;
     overflow-y:scroll;
-    border:1px solid #000;
-/*    margin:4px;*/
-    padding:2px;
-    margin:0px;
+    border:0.1rem solid #000;
+/*    margin:0.4rem;*/
+    padding:0.2rem;
+    margin:0;
     font-size:1rem;
 }
 
 
 #Historial img {
     position: absolute;
-    top: 2px;
+    top: 0.2rem;
     zoom:0.30;
     left:12.2rem;
 }
@@ -255,7 +272,7 @@ hr {
 .Historial_negro, .Historial_rojo, .Historial_verde {
     position:relative;
 /*    min-height:23px;*/
-    height:19px;
+    height:1.9rem;
     display:table;    
 /*    vertical-align:middle;*/
 }
@@ -267,16 +284,16 @@ hr {
 
 .Historial_negro {
     color:#FFF;
-    padding:2px;
+    padding:0.2rem;
 }
 
 .Historial_verde {
     color : rgb(60, 214, 58);
-    padding:2px;
+    padding:0.2rem;
 }
 
 .Historial_rojo {
-    padding:2px;
+    padding:0.2rem;
     color: orange;
     /*text-shadow:1px 1px 1px #888;*/
 }
@@ -346,7 +363,7 @@ h1, h3 {
     position:fixed;
     z-index:100;
     zoom:0.5;
-    filter:drop-shadow(3px 3px 3px #333);
+    filter:drop-shadow(0.3rem 0.3rem 0.3rem #333);
     left:60%;
     top:100%;
 }
@@ -439,7 +456,7 @@ h1, h3 {
 }
 
 input[type="checkbox"] {
-    width:60px;
-    height:30px;
+    width:2rem;
+    height:1rem;
     transition:0.4s;
 }
