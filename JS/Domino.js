@@ -11,12 +11,11 @@
 
 /* 
     TODO :
-        - Crec que cal un nou ObjectoCanvas que crei tota la seva parafernalia en el body, ¿o en un  element especificat per la ID?
-            - Es millor un ObjetoCanvas i un ObjecoThree? o seguiexo amb un pels 2 tipus? (mes del 50% del còdi sería el mateix)
-            - D'aquesta forma al carregar-se el javaScript ja pot funcionat tota la App ja que s'ha de crear ella mateixa el còdi)
-              - S'ha d'estructurar molt bé els constructors pels diferents objectes que tinc, per que no demanin dades que encara no existeixen (en previsió pels objectes del dominó)
-        - Acabar de refinar el CSS pel mode desktop ara que l'he ajustat a dispositius mòvils...
-            - Mirar de re-activar el historial en dispositus mòvils.
+        - Renovat el ObjetoCanvas, ara s'ha de crear abans del event load, i ell mateix ja es carrega en el load.
+        
+        - Puc posar ficha al acabar la má )no estic segur si es nomes en el meu torn o sempre... xd) no influeix en la puntuació del equip (per que es calcula abans) pero es un bug curiós
+        - Ara veig que he DES-ajustat la llum, i al mostrar 2 posibilitats en una fitxa es segueix veient la ficha practivament blanca... (hauria de ser groga)
+            - Deu tenir que veure amb l'ajustament que li he fet per portrait / landscape / desktop
 
         - Nivell de dificultat (facil rand / normal)
             - Afegir predilecció per tirar una doble si es posible abans de tirar la que major puntuació tingui?
@@ -49,23 +48,26 @@ var DominoThree = function() {
         'Ancho'                     : 'Auto',
         'Alto'                      : 'Auto',
         'Entorno'                   : 'Normal',
-        'MostrarFPS'                : false,
+        'MostrarFPS'                : true,
+        'BotonesPosicion'           : "derecha",         // Puede ser 'derecha' o 'izquierda'
+        'BotonPantallaCompleta'     : true,        
         'BotonLogo'                 : true,
-        'BotonPantallaCompleta'     : true,
-        'ElementoRaiz'              : document.body,
+        'BotonExtraHTML'            : "",                // Contenido extra para los botones del lateral inferior izquierdo (solo se usa en el ejemplo sinusoidal y cyberparasit)
+        'ElementoRaiz'              : "",                // ID de la etiqueta que se usara como raíz para todo el HTML del objeto canvas. Si no se especifica ninguna, se usara el body.
         'Pausar'                    : false,             // Pausa el canvas si la pestaña no tiene el foco del teclado
         'ColorFondo'                : 0xFFFFFF,
-        'CapturaEjemplo'            : ""                 // Captura de pantalla para el ejemplo a "NuevoCanvas2D.png" se le añadirá "https://devildrey33.es/Web/Graficos/250x200_"
+        'CapturaEjemplo'            : "",                // Captura de pantalla para el ejemplo a "NuevoCanvas2D.png" se le añadirá "https://devildrey33.es/Web/Graficos/250x200_"
+        'ForzarLandscape'           : true               // Fuerza al dispositivo movil para que se muestre solo apaisado
     }) === false) { return false; }
     
     // VERSIÓN DEL JUEGO A MANO
-    document.getElementById("VersionDomino").innerHTML = "0.99.2";
+    this.VersionDomino = "0.99.2";
     
     // Se ha creado el canvas, inicio los valores de la animación ... 
-    this.Iniciar();    
+//    this.Iniciar();    
     
     // Esconde la ventana que informa al usuario de que se está cargando la animación. (REQUERIDO)
-    this.Cargando(false);
+//    this.Cargando(false);
 };
 
 DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
@@ -142,6 +144,12 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
     
     // Función que inicia el ejemplo
     Iniciar         : function() {       
+        // Esconde la ventana que informa al usuario de que se está cargando la animación. (REQUERIDO)
+        this.Cargando(false);        
+        
+        // VERSIÓN DEL JUEGO A MANO
+        document.getElementById("VersionDomino").innerHTML = this.VersionDomino;
+        
         // Fijo el modo landscape (NO VA...)
 //        screen.orientation.lock("landscape");
 
@@ -315,5 +323,7 @@ DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
 });
 
 // Inicialización del canvas en el Load de la página
-var Domino = {};
-window.addEventListener('load', function() { Domino = new DominoThree; });
+//var Domino = {};
+//window.addEventListener('load', function() { Domino = new DominoThree; });
+
+var Domino = new DominoThree;

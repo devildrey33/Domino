@@ -16,14 +16,14 @@
         <!-- Manifest para que la WebApp se mantenga siempre en modo landscape (NO VA?!?!?!) -->
         <link rel="manifest" href="./manifest.json">
         <!-- Estilos CSS para el objeto canvas -->
-        <link rel='stylesheet' href='./CSS/ObjetoCanvas.css' />        
+        <link rel='stylesheet' href='https://devildrey33.github.io/ObjetoCanvas/CSS/ObjetoCanvas.css' />        
         <link rel='stylesheet' href='./CSS/Domino.css' />        
                 
         <!-- Three.JS -->
-        <script src="./JS/three.min.js"></script>
-
+        <script src="https://devildrey33.github.io/ObjetoCanvas/JS/three.min.js"></script>
         <!-- ObjetoCanvas similar al ObjetoBanner para testear Banners -->
-        <script src="./JS/ObjetoCanvas.js"></script>
+        <script src="https://devildrey33.github.io/ObjetoCanvas/JS/ObjetoCanvas.js"></script>
+        <!-- Objeto para crear animaciones de tiempo -->
         <script src="./JS/ObjetoAnimacion.js"></script>
 
         <script src="./JS/Domino_Texturas.js"></script>        
@@ -157,7 +157,7 @@
                 </table>
             </div>            
             
-            <h3>El <span class="AniResaltar" id="PG_Equipo">x</span> ha ganado! y suma <span class="AniResaltar" id="PG_Puntos">x</span> puntos.</h3>
+            <h3><span class="AniResaltar" id="PG_Equipo">x</span> ha ganado! y suma <span class="AniResaltar" id="PG_Puntos">x</span> puntos.</h3>
             <button id="BotonContinuar">Continuar</button>
         </div>
         
@@ -216,7 +216,7 @@
             </div>
             <br />
             <!-- Texto para la victoria por puntos despues de un bloqueo (al quedarse todos los jugadores sin posibilidad de tirar, antes de quedarse sin fichas) -->
-            <p id="TxtVictoria">Ha ganado el <span class="AniResaltar" id="TxtVictoriaEquipo">x</span>, y suma <span class="AniResaltar" id="TxtVictoriaPuntos">x</span> puntos.</p>
+            <p id="TxtVictoria"><span class="AniResaltar" id="TxtVictoriaEquipo">x</span> ha ganado, y suma <span class="AniResaltar" id="TxtVictoriaPuntos">x</span> puntos.</p>
             <!-- Texto para el empate, al quedarse todos los jugadores sin poder tirar, y que los dos equipos sumen los mismos puntos -->
             <p id="TxtEmpate">EMPATE, no se reparten puntos</p>
             <br />
@@ -226,7 +226,7 @@
         <!-- Marco para cuando se termina la parida -->
         <div id="MarcoTerminado" class='MarcoCanvas'>
             <h1>Partida TERMINADA</h1>
-            <p>El <span id="EquipoGanador">x</span> ha ganado la partida con <span id="PuntosGanador">x</span> puntos.</p>
+            <p><span id="EquipoGanador">x</span> ha ganado la partida con <span id="PuntosGanador">x</span> puntos.</p>
             <button id="BotonTerminar">Terminar</button>
         </div>
         
