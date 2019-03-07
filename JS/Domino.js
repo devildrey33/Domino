@@ -48,7 +48,7 @@ var DominoThree = function() {
         'Ancho'                     : 'Auto',
         'Alto'                      : 'Auto',
         'Entorno'                   : 'Normal',
-        'MostrarFPS'                : true,
+        'MostrarFPS'                : false,
         'BotonesPosicion'           : "derecha",         // Puede ser 'derecha' o 'izquierda'
         'BotonPantallaCompleta'     : true,        
         'BotonLogo'                 : true,
@@ -57,11 +57,11 @@ var DominoThree = function() {
         'Pausar'                    : false,             // Pausa el canvas si la pestaña no tiene el foco del teclado
         'ColorFondo'                : 0xFFFFFF,
         'CapturaEjemplo'            : "",                // Captura de pantalla para el ejemplo a "NuevoCanvas2D.png" se le añadirá "https://devildrey33.es/Web/Graficos/250x200_"
-        'ForzarLandscape'           : true               // Fuerza al dispositivo movil para que se muestre solo apaisado
+        'ForzarLandscape'           : false              // Fuerza al dispositivo movil para que se muestre solo apaisado
     }) === false) { return false; }
     
     // VERSIÓN DEL JUEGO A MANO
-    this.VersionDomino = "0.99.2";
+    this.VersionDomino = "0.99.3b";
     
     // Se ha creado el canvas, inicio los valores de la animación ... 
 //    this.Iniciar();    
