@@ -56,7 +56,7 @@ var DominoThree = function() {
         'ElementoRaiz'              : "",                // ID de la etiqueta que se usara como raíz para todo el HTML del objeto canvas. Si no se especifica ninguna, se usara el body.
         'Pausar'                    : false,             // Pausa el canvas si la pestaña no tiene el foco del teclado
         'ColorFondo'                : 0xFFFFFF,
-        'CapturaEjemplo'            : "",                // Captura de pantalla para el ejemplo a "NuevoCanvas2D.png" se le añadirá "https://devildrey33.es/Web/Graficos/250x200_"
+        'CapturaEjemplo'            : "Domino.png",      // Captura de pantalla para el ejemplo a "NuevoCanvas2D.png" se le añadirá "https://devildrey33.github.io/Graficos/250x200_"
         'ForzarLandscape'           : false              // Fuerza al dispositivo movil para que se muestre solo apaisado
     }) === false) { return false; }
     
