@@ -1,0 +1,13 @@
+- Simplificar menú principal
+	- Opcionsm 
+		- Noms
+		- Dificultat ( Descubert + Ajuda = facil, Ajuda = normal, res = dificil)
+		- Llum animada pel torn
+		- Guardar / Cancelar
+	- Punnts per partida
+	- Començar.
+- Fer mes maco el marc de la puntuació / torn / jugador (algo rottlo expandible al fer hover / click / tap)
+- Posibilitat d'ocultar la finestra que mostra tots els moviments.
+- Posibilitat de tornar enrera (pel nivell facil i normal)
+- Mirar la IA i fer un mode dificil que esculleixi sempre la opcio mes llogica, i no un rand...
+	- O fins i tot fer un rand depenen de le dificultat en cada decisió, ex : facil 25% de llogica, 75% rand, normal 50/50, dificil 80/20
