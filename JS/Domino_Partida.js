@@ -188,21 +188,24 @@ var Domino_Partida = function() {
             }
             
         }
+        // El resto de turnos 
         else {            
             console.log("Izq: " + this.FichaIzquierda.ValorLibre() + " Der: " + this.FichaDerecha.ValorLibre());            
             // Cuento las posibilidades para la izquierda y la derecha
             var Posibilidades = [];
             for (var i = 0; i < 7; i++) {
                 if (this.Ficha[(this.JugadorActual * 7) + i].Colocada === false) {
+                    // posibilidades de la rama izquierda (partiendo del 6 doble hasta el final)
                     if (this.Ficha[(this.JugadorActual * 7) + i].Valores[0] === this.FichaIzquierda.ValorLibre() || this.Ficha[(this.JugadorActual * 7) + i].Valores[1] === this.FichaIzquierda.ValorLibre()) {
                         Posibilidades.push({ Pos : (this.JugadorActual * 7) + i, Rama : "izquierda" });
                     }
+                    // posibilidades de la rama derecha (partiendo del 6 doble hasta el final)
                     if (this.Ficha[(this.JugadorActual * 7) + i].Valores[0] === this.FichaDerecha.ValorLibre() || this.Ficha[(this.JugadorActual * 7) + i].Valores[1] === this.FichaDerecha.ValorLibre()) {
                         Posibilidades.push({ Pos : (this.JugadorActual * 7) + i, Rama : "derecha" });                        
                     }
                 }
             }
-            // Ordeno las posibilidades y dejo arriba las que tienen mas valor (Que son las que se tiene que sacar de encima antes)
+            // Ordeno las posibilidades y dejo arriba las que tienen mas valor (Que son las que se tiene se que sacar de encima antes)
             Posibilidades.sort(function(a, b){                
                 return (this.Ficha[a.Pos].Valores[0] + this.Ficha[a.Pos].Valores[1] > this.Ficha[b.Pos].Valores[0] + this.Ficha[b.Pos].Valores[1]) ? a : b;
             }.bind(this));
@@ -211,9 +214,11 @@ var Domino_Partida = function() {
             if (Posibilidades.length > 0)  {
                 this.Pasado = 0;
 
-                // Turno de la mÃ¡quina
+                // Turno de la maquina
                 if (this.JugadorActual !== 0) {
                     // IA 1.0
+                    // TODO : Segun la dificultad se hace un rand para ver si toca el movimiento lógico, o un movimiento al azar)
+                    // Ej : Facil (20% logica, 80 azar, normal 50%-50%, dificil 90%-10%)
                     var Rnd = 0;//RandInt(this.Posibilidades.length -1, 0);
                     if (Posibilidades[0].Rama === "izquierda") { 
                         this.Ficha[Posibilidades[0].Pos].Colocar(this.FichaIzquierda);

@@ -1,13 +1,34 @@
-- Simplificar menÃº principal
-	- Opcionsm 
-		- Noms
-		- Dificultat ( Descubert + Ajuda = facil, Ajuda = normal, res = dificil)
-		- Llum animada pel torn
-		- Guardar / Cancelar
-	- Punnts per partida
-	- ComenÃ§ar.
-- Fer mes maco el marc de la puntuaciÃ³ / torn / jugador (algo rottlo expandible al fer hover / click / tap)
-- Posibilitat d'ocultar la finestra que mostra tots els moviments.
-- Posibilitat de tornar enrera (pel nivell facil i normal)
-- Mirar la IA i fer un mode dificil que esculleixi sempre la opcio mes llogica, i no un rand...
-	- O fins i tot fer un rand depenen de le dificultat en cada decisiÃ³, ex : facil 25% de llogica, 75% rand, normal 50/50, dificil 80/20
+Versió 1.0 FINAL
+    - Simplificar menú principal
+            - Editar Equips
+                - Noms d'equip
+                - Noms dels 4 jugadors
+                - Butons : Per defecte i sortir.
+
+            - Opcions
+                    - Llògica de la máquina (20% facil, 50% normal, 90% dificil)
+                        - Ajustable amb un slider de 0 a 100, pero amb 3 valors per defecte.
+                            - Posible BarraDesplazamientoMarcas al canto, un control basat amb la barra de des`ñaçament en el que puguis definir una o mes marques de x a x2, i amb un color de fondo diferent.
+                    X Dificultat ( Descubert, + ajuda lógica (100%) - Dificultat lògica ( 20% - 80% )
+                        V o també ho puc definir com a 'llògica' i posar la opcio de descubert i ajuda a part.
+                    - Ajudes visuals basades en la llógica de la màquina (com mes sobresurti una ficha millor)
+                        - Si hi han varies en la mateixa escala, fer una sub-escala per ordenar les escales per puntuació de la ficha, ja que com mes gran, mes ens interesa treure-la
+                            - Aplicar-ho a la IA per fer una dificultat màxima (junt amb la llògica al 100%)
+                    - Opcio per tenir les Fiches al descobert per tothom (per debug bàsicament, pero també es com un cheat, o fins i tot per practicar a nivell PRO++ i veure partides en 1-2 moviments)
+                    - Llum animada pel torn
+                    - Guardar / Cancelar
+            - Info + dedicatoria pel papa amb foto xula
+            ----------------
+            - Punts per partida (un slider currat de 50 a 1000)
+            - Començar.
+    - Fer mes maco el marc de la puntuació / torn / jugador (algo rottlo expandible al fer hover / click / tap)
+    - Posibilitat d'ocultar / encongir la finestra que mostra tots els moviments.
+    - Posibilitat de tornar enrera (pel nivell facil i normal)
+    - Mirar la IA i fer un mode dificil que esculleixi sempre la opcio mes llogica, i no un rand...
+            - O fins i tot fer un rand depenen de le dificultat en cada decisiÃ³, ex : facil 25% de llogica, 75% rand, normal 50/50, dificil 80/20
+    - Adaptació total a móvil
+        - poder amplificar i moure lateral-ment la cámara
+        - determinar su es millor (i si es pot netament) forçar el mode landscape, o no...
+
+    - Idiomes : cat, cas, eng
+
