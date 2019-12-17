@@ -61,7 +61,7 @@ var DominoThree = function() {
     }) === false) { return false; }
     
     // VERSIÓN DEL JUEGO A MANO
-    this.VersionDomino = "0.99.3b";
+    this.VersionDomino = "0.99.4";
     
     // Se ha creado el canvas, inicio los valores de la animación ... 
 //    this.Iniciar();    

@@ -36,10 +36,34 @@
         <script src="./JS/Domino.js"></script>        
     </head>
     <body>
+        
         <!-- Marco para empezar partida -->
         <div id='MarcoEmpezar' class='MarcoCanvas'>
             <h1>Bienvenido a Dominó <span id="VersionDomino">0.00</span></h1>
             <hr />
+            
+            
+            <button id="BotonEquipos">Nombres Equipo</button>
+            <br />
+            <button id="BotonOpciones">Opciones</button>
+            <hr />
+            <h3>Puntos para terminar la partida</h3>
+            <div class="Centrado">
+                <button id="Puntos100">100</button>
+                <button id="Puntos200">200</button>
+                <button id="Puntos300">300</button>
+                <button id="Puntos400">400</button>
+                <button id="Puntos500">500</button>
+                <button id="Puntos600">600</button>
+            </div>           
+            <br />
+            
+            <button id="BotonEmpezar">Empezar!</button>
+
+        </div>
+        <!-- Opciones de los Equipos -->
+        <div id="MarcoEquipos" class='MarcoCanvas'>
+
             <h3>Nombres</h3>
             <div class="TablaPuntos"> 
                 <table>
@@ -79,17 +103,14 @@
                     </tr>
                 </table>
             </div>
-            <hr />
-            <h3>Puntos para terminar la partida</h3>
-            <div class="Centrado">
-                <button id="Puntos100">100</button>
-                <button id="Puntos200">200</button>
-                <button id="Puntos300">300</button>
-                <button id="Puntos400">400</button>
-                <button id="Puntos500">500</button>
-                <button id="Puntos600">600</button>
-            </div>           
-            <hr />
+            <br />
+            <button id="BotonCerrarEquipos">Cerrar</button>            
+        </div>
+        
+        <!-- Opciones generales -->
+        <div id="MarcoOpciones" class='MarcoCanvas'>
+
+            
             <table class="Centrado">
                 <tr>
                     <td>Jugar al descubierto</td>
@@ -103,10 +124,11 @@
                     <td>Ayuda para el jugador</td>
                     <td><input type="checkbox" id="Opciones_Ayuda"></td>
                 </tr>
-            </table>
-            <button id="BotonEmpezar">Empezar!</button>
-
+            </table>  
+            <br />
+            <button id="BotonCerrarOpciones">Cerrar</button>
         </div>
+        
         
         <!-- Victoria de un equipo (un jugador se ha quedado sin fichas) -->
         <div id="MarcoContinuar"  class='MarcoCanvas'>

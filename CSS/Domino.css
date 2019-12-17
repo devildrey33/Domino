@@ -36,7 +36,7 @@
 /*    line-height: 1.2rem; */
 }
 
-/* Landscape mÃ³vil */
+/* Landscape móvil */
 @media only screen and (orientation:landscape) and (min-resolution: 1.2dppx) {
     #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #Msg1, #Msg2, #Msg3, #Msg4, button, input, #DatosJuego, #Historial {
         line-height: 1rem;
@@ -56,7 +56,7 @@
     
 }
 
-/* Portrait mÃ³vil */
+/* Portrait mòvil */
 @media  only screen and (orientation:portrait) and (min-resolution: 1.2dppx) {
     #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #Msg1, #Msg2, #Msg3, #Msg4, button, input, #DatosJuego, #Historial {
         line-height: 1.5rem;
@@ -77,8 +77,8 @@
 }
 
 
-
-#MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado {    
+/* Marcos con interfaz de usuario para el juego */
+#MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #MarcoOpciones, #MarcoEquipos {    
     position:fixed;
     border:0.1rem solid #000;
     top:250%;
@@ -97,7 +97,7 @@
     padding: 0.4rem;
 }
 
-#MarcoEmpezar[visible="true"], #MarcoContinuar[visible="true"], #MarcoEmpate[visible="true"], #MarcoTerminado[visible="true"] {
+#MarcoEmpezar[visible="true"], #MarcoContinuar[visible="true"], #MarcoEmpate[visible="true"], #MarcoTerminado[visible="true"], #MarcoOpciones[visible="true"], #MarcoEquipos[visible="true"] {
     top:50%;
 }
 
@@ -106,7 +106,7 @@
     border:2px solid rgb(234, 80, 78);
 }*/
 
-#BotonEmpezar, #BotonContinuar, #BotonContinuar2, #BotonTerminar {
+#BotonEmpezar, #BotonContinuar, #BotonContinuar2, #BotonTerminar, #BotonEquipos, #BotonOpciones,  #BotonCerrarEquipos, #BotonCerrarOpciones {
     font-size:2rem;
     /*padding:0.5rem; */
     display:table;
