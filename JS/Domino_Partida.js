@@ -146,7 +146,12 @@ var Domino_Partida = function() {
         // Miro que jugador empieza
         this.JugadorInicio();
         
-        this.MostrarMensaje(this.JugadorActual, "<span>" + this.Opciones.NombreJugador[this.JugadorActual] + " empieza.</span>");
+        this.MostrarMensaje(this.JugadorActual, "<span>" + this.Opciones.NombreJugador[this.JugadorActual] + " </span> " +
+                                                "<span" +
+                                                    "data-idioma-en='starts'" +
+                                                    "data-idioma-cat='comença'" +
+                                                    "data-idioma-es='empieza'></span>");
+                                            
         
         this.TurnoActual = 0;        
         window.ContadorDerecha      = 0;
@@ -232,7 +237,7 @@ var Domino_Partida = function() {
                         this.Ficha[Posibilidades[0].Pos].Colocar(this.FichaDerecha);
                     }                    
                     this.MostrarMensaje(this.JugadorActual, "<span>" + 
-                                        this.Opciones.NombreJugador[this.JugadorActual] + "</span>" + 
+                                        this.Opciones.NombreJugador[this.JugadorActual] + "</span> " + 
                                         "<span " + 
                                                "data-idioma-en=' throws : '" + 
                                                "data-idioma-cat=' tira : '"  + 
@@ -243,9 +248,9 @@ var Domino_Partida = function() {
                 }
                 // Turno del jugador
                 else {
-                    this.MostrarMensaje(this.JugadorActual, "<span   data-idioma-en=' your turn' " +
-                                                                    "data-idioma-cat=' el teu torn' " + 
-                                                                    "data-idioma-es=' tu turno'>" + this.Opciones.NombreJugador[0] + "</span>");
+                    this.MostrarMensaje(this.JugadorActual, "<span  data-idioma-en=' your turn ' " +
+                                                                   "data-idioma-cat=' el teu torn ' " + 
+                                                                   "data-idioma-es=' tu turno '>" + this.Opciones.NombreJugador[0] + "</span>");
                     this.MostrarAyuda();
                     return;
                 }
@@ -253,7 +258,12 @@ var Domino_Partida = function() {
             // No hay posibilidades, paso
             else {
                 console.log("Jugador" + (this.JugadorActual + 1) + " pasa");
-                this.MostrarMensaje(this.JugadorActual, "<span>" + this.Opciones.NombreJugador[this.JugadorActual] +  " Pasa...</span>", "rojo");
+                this.MostrarMensaje(this.JugadorActual, "<span>" + this.Opciones.NombreJugador[this.JugadorActual] +  "</span> " +
+                                                        "<span " +
+                                                            "data-idioma-en='Pass...'" + 
+                                                            "data-idioma-cat='Pasa...'" +
+                                                            "data-idioma-es='Pasa...'" + ">" + 
+                                                        "</span>", "rojo");
                 this.Pasado++;
                 this.TurnoActual ++;
                 this.JugadorActual ++;
@@ -433,7 +443,7 @@ var Domino_Partida = function() {
         return Total;
     };
     
-    // FunciÃ³n para mostrar un mensaje especifico para un jugador
+    // Función para mostrar un mensaje especifico para un jugador
     this.MostrarMensaje = function(Jugador, Texto, ColFondo) {
         var ColorFondo = (typeof(ColFondo) === "undefined") ? "negro" : ColFondo;
         var Msg = document.getElementById("Msg" + (Jugador + 1));
@@ -492,11 +502,11 @@ var Domino_Partida = function() {
                     if (nPos !== -1) {
                         console.log ("Jugador1 tira " + this.Ficha[i].Valores[0] + " | " + this.Ficha[i].Valores[1]);
                         this.Ficha[i].Colocar(nPos, true);
-                        this.MostrarMensaje(this.JugadorActual, "<span>" + this.Opciones.NombreJugador[this.JugadorActual] + "</span>" + 
+                        this.MostrarMensaje(this.JugadorActual, "<span>" + this.Opciones.NombreJugador[this.JugadorActual] + "</span> " + 
                                             " <span " +
-                                                "data-idioma-en='throws : '" + 
-                                                "data-idioma-cat='tira : '" + 
-                                                "data-idioma-cas='tira : '>" + 
+                                                "data-idioma-en=' throws : '" + 
+                                                "data-idioma-cat=' tira : '" + 
+                                                "data-idioma-cas=' tira : '>" + 
                                             "</span>" + 
                                             "<img src='./SVG/Domino.svg#Ficha_" + this.Ficha[i].Valores[1] + "-" + this.Ficha[i].Valores[0] +"' />");
                         
