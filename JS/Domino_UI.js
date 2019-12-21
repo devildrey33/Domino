@@ -244,11 +244,12 @@ var Domino_UI = function() {
         Domino.Partida.Opciones.AsignarPuntosPorPartida(Puntos);
     };
     
+    // Función que refresca los datos de la mano, en el div superior izquierdo.
     this.MostrarDatosMano = function() {
         document.getElementById("DatosJuego").setAttribute("Visible", "true");
         document.getElementById("NombreEquipo1").innerHTML = Domino.Partida.Opciones.NombreEquipo[0];
         document.getElementById("NombreEquipo2").innerHTML = Domino.Partida.Opciones.NombreEquipo[1];
-        
+        // Si no es un dispositivo móvil, muestro el historial de tiradas en un div superior derecho.
         if (ObjetoNavegador.EsMovil() === false) {
             document.getElementById("Historial").setAttribute("Visible", "true");
         }

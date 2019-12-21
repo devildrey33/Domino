@@ -31,6 +31,17 @@
     }
 }*/
 
+/* Idioma automático */ 
+:lang(en) button::after, :lang(en) span::after {
+    content:attr(data-idioma-en);
+}
+:lang(cat) button::after, :lang(cat) span::after {
+    content:attr(data-idioma-cat);
+}
+:lang(es) button::after, :lang(es) span::after {
+    content:attr(data-idioma-es);
+}
+
 #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #Msg1, #Msg2, #Msg3, #Msg4, button, input, #DatosJuego, #Historial {
     font-family: 'Baloo Thambi', cursive;
 /*    line-height: 1.2rem; */
@@ -218,6 +229,10 @@ button:hover {
     width:100%;
 }*/
 
+#DatosJuego > table {
+    line-height: 1.4rem;
+}
+
 #DatosJuego {
     margin:0;
     display:none;    
@@ -225,7 +240,7 @@ button:hover {
     font-size:1.5rem;
 }
 
-#DatosJuego td[id] {
+#DatosJuego table > td[id] {
     padding-left:1rem;
 }
 
@@ -261,18 +276,18 @@ hr {
     font-size:1rem;
 }
 
-
+/* Ficha mini del historial */
 #Historial img {
     position: absolute;
-    top: 0.2rem;
+    top: 1rem;
     zoom:0.30;
-    left:12.2rem;
+    left:40rem;
 }
 
 .Historial_negro, .Historial_rojo, .Historial_verde {
     position:relative;
 /*    min-height:23px;*/
-    height:1.9rem;
+    height:1.5rem;
     display:table;    
 /*    vertical-align:middle;*/
 }
@@ -339,7 +354,7 @@ h1, h3 {
     margin:0.3em auto;
 }
 
-#DatosJuego td { 
+#DatosJuego table > td { 
     text-align:right;
 }
 
@@ -418,6 +433,7 @@ h1, h3 {
 .TablaPuntos, .TablaPuntos2 {
     display:flex;
     margin:auto;
+    line-height:1.4rem;
 /*  padding: 0.4rem;*/
 }
 

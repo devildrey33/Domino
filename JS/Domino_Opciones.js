@@ -23,12 +23,14 @@ var Domino_Opciones = function () {
         if (window.localStorage.Descubierto)        this.Descubierto      = window.localStorage.getItem("Descubierto");
         if (window.localStorage.AniTurno)           this.AniTurno         = window.localStorage.getItem("AniTurno");
         if (window.localStorage.Ayuda)              this.Ayuda            = window.localStorage.getItem("Ayuda");
-        if (window.localStorage.Jugador1)           this.NombreJugador[0] = window.localStorage.getItem("Jugador1");
+        
+        this.NombresPorDefecto();
+/*        if (window.localStorage.Jugador1)           this.NombreJugador[0] = window.localStorage.getItem("Jugador1");
         if (window.localStorage.Jugador2)           this.NombreJugador[1] = window.localStorage.getItem("Jugador2");
         if (window.localStorage.Jugador3)           this.NombreJugador[2] = window.localStorage.getItem("Jugador3");
         if (window.localStorage.Jugador4)           this.NombreJugador[3] = window.localStorage.getItem("Jugador4");
         if (window.localStorage.Equipo1)            this.NombreEquipo[0]  = window.localStorage.getItem("Equipo1");
-        if (window.localStorage.Equipo2)            this.NombreEquipo[1]  = window.localStorage.getItem("Equipo2");
+        if (window.localStorage.Equipo2)            this.NombreEquipo[1]  = window.localStorage.getItem("Equipo2");*/
 
         // Asigno las opciones al UI
         document.getElementById("Puntos" + this.PuntosPorPartida).className = "PuntosMarcados";
@@ -39,6 +41,45 @@ var Domino_Opciones = function () {
 /*        document.getElementById("Opciones_Descubierto").setAttribute("checked", (this.Descubierto === "false") ? "" : "checked");
         document.getElementById("Opciones_AnimarTurno").setAttribute("checked", (this.AniTurno === "false") ? "" : "checked");
         document.getElementById("Opciones_Ayuda").setAttribute("checked", (this.Ayuda === "false") ? "" : "checked");*/
+/*        // Asigno los nombres de los jugadopres en el UI
+        document.getElementById("NNombre1").value = this.NombreJugador[0];
+        document.getElementById("NNombre2").value = this.NombreJugador[1];
+        document.getElementById("NNombre3").value = this.NombreJugador[2];
+        document.getElementById("NNombre4").value = this.NombreJugador[3];
+        // Asigno los nombres de los equipos en el UI
+        document.getElementById("NEquipo1").value = this.NombreEquipo[0];
+        document.getElementById("NEquipo2").value = this.NombreEquipo[1];*/
+    };
+    
+    // Función que asigna los nombres (de equipo i jugadores) por defecto, o los que hay guardados en el local storage
+    this.NombresPorDefecto = function() {
+        var Nombres = { 
+            'en' : { 
+                'j' : 'Player',
+                'e' : 'Team'
+            },
+            'cat' : { 
+                'j' : 'Jugador',
+                'e' : 'Equip'
+            },
+            'cas' : { 
+                'j' : 'Jugador',
+                'e' : 'Equipo'
+            }
+        };
+        if (window.localStorage.Jugador1)           this.NombreJugador[0] = window.localStorage.getItem("Jugador1");
+        else                                        this.NombreJugador[0] = Nombres[document.documentElement.lang]['j'] + "1";
+        if (window.localStorage.Jugador2)           this.NombreJugador[1] = window.localStorage.getItem("Jugador2");
+        else                                        this.NombreJugador[1] = Nombres[document.documentElement.lang]['j'] + "2";
+        if (window.localStorage.Jugador3)           this.NombreJugador[2] = window.localStorage.getItem("Jugador3");
+        else                                        this.NombreJugador[2] = Nombres[document.documentElement.lang]['j'] + "3";
+        if (window.localStorage.Jugador4)           this.NombreJugador[3] = window.localStorage.getItem("Jugador4");
+        else                                        this.NombreJugador[3] = Nombres[document.documentElement.lang]['j'] + "4";
+        if (window.localStorage.Equipo1)            this.NombreEquipo[0]  = window.localStorage.getItem("Equipo1");
+        else                                        this.NombreEquipo[0]  = Nombres[document.documentElement.lang]['e'] + "1";
+        if (window.localStorage.Equipo2)            this.NombreEquipo[1]  = window.localStorage.getItem("Equipo2");        
+        else                                        this.NombreEquipo[1]  = Nombres[document.documentElement.lang]['e'] + "2";
+        
         // Asigno los nombres de los jugadopres en el UI
         document.getElementById("NNombre1").value = this.NombreJugador[0];
         document.getElementById("NNombre2").value = this.NombreJugador[1];
@@ -46,7 +87,7 @@ var Domino_Opciones = function () {
         document.getElementById("NNombre4").value = this.NombreJugador[3];
         // Asigno los nombres de los equipos en el UI
         document.getElementById("NEquipo1").value = this.NombreEquipo[0];
-        document.getElementById("NEquipo2").value = this.NombreEquipo[1];
+        document.getElementById("NEquipo2").value = this.NombreEquipo[1];        
     };
     
     this.AsignarPuntosPorPartida = function(Puntos) {

@@ -9,7 +9,7 @@
         Ultima modificación el 28/02/2019
 -->
 <!DOCTYPE html>
-<html>
+<html lang='en'>
     <head>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
         <title>Dominó Three.js</title>
@@ -39,15 +39,31 @@
         
         <!-- Marco para empezar partida -->
         <div id='MarcoEmpezar' class='MarcoCanvas'>
-            <h1>Bienvenido a Dominó <span id="VersionDomino">0.00</span></h1>
-            <hr />
+            <h1>
+                <span data-idioma-en='Welcome to Domino ' 
+                      data-idioma-cat="Benvingut a Dominó " 
+                      data-idioma-es='Bienvenido a Dominó '></span> 
+                <span id="VersionDomino">0.00</span>
+            </h1>
+            <hr />            
             
-            
-            <button id="BotonEquipos">Nombres Equipo</button>
+            <button id="BotonEquipos" 
+                    data-idioma-en='Team names' 
+                    data-idioma-cat="Noms d'equips" 
+                    data-idioma-es='Nombres de equipos'></button>
             <br />
-            <button id="BotonOpciones">Opciones</button>
+            <button id="BotonOpciones"
+                    data-idioma-en='Options' 
+                    data-idioma-cat="Opcions" 
+                    data-idioma-es='Opciones'></button>
             <hr />
-            <h3>Puntos para terminar la partida</h3>
+            
+            <h3>
+                <span data-idioma-en='Points to finish the game' 
+                      data-idioma-cat="Punts per acabar el joc" 
+                      data-idioma-es='Puntos para terminar la partida'></span>
+            </h3>
+            
             <div class="Centrado">
                 <button id="Puntos100">100</button>
                 <button id="Puntos200">200</button>
@@ -58,13 +74,21 @@
             </div>           
             <br />
             
-            <button id="BotonEmpezar">Empezar!</button>
+            <button id="BotonEmpezar"
+                    data-idioma-en='Start!' 
+                    data-idioma-cat="Començar!" 
+                    data-idioma-es='Empezar!'></button>
 
         </div>
         <!-- Opciones de los Equipos -->
         <div id="MarcoEquipos" class='MarcoCanvas'>
 
-            <h3>Nombres</h3>
+            <h3>
+                <span
+                    data-idioma-en='Team names' 
+                    data-idioma-cat="Noms dels equips" 
+                    data-idioma-es='Nombres de los equipos'></span>
+            </h3>
             <div class="TablaPuntos"> 
                 <table>
                     <tr>
@@ -104,7 +128,10 @@
                 </table>
             </div>
             <br />
-            <button id="BotonCerrarEquipos">Cerrar</button>            
+            <button id="BotonCerrarEquipos"
+                    data-idioma-en='Close' 
+                    data-idioma-cat="Tancar" 
+                    data-idioma-es='Cerrar'></button>            
         </div>
         
         <!-- Opciones generales -->
@@ -113,26 +140,48 @@
             
             <table class="Centrado">
                 <tr>
-                    <td>Jugar al descubierto</td>
+                    <td>
+                        <span 
+                            data-idioma-en='Play uncovered' 
+                            data-idioma-cat='Jugar al descobert' 
+                            data-idioma-es='Jugar al descubierto'></span>
+                        </td>
                     <td><input type="checkbox" id="Opciones_Descubierto"></td>
                 </tr>
                 <tr>
-                    <td>Animar el turno en 3D</td>
+                    <td>    
+                        <span 
+                            data-idioma-en='Animate light for actual player' 
+                            data-idioma-cat='Animar llum pel jugador actual' 
+                            data-idioma-es='Animar luz para el jugador actual'></span>
+                        </td>
                     <td><input type="checkbox" id="Opciones_AnimarTurno"></td>
                 </tr>
                 <tr>
-                    <td>Ayuda para el jugador</td>
+                    <td>
+                        <span 
+                            data-idioma-en='Help for player' 
+                            data-idioma-cat='Ajuda pel jugador' 
+                            data-idioma-es='Ayuda para el jugador'></span>
+                        </td>
                     <td><input type="checkbox" id="Opciones_Ayuda"></td>
                 </tr>
             </table>  
             <br />
-            <button id="BotonCerrarOpciones">Cerrar</button>
+            <button id="BotonCerrarOpciones"
+                    data-idioma-en='Close' 
+                    data-idioma-cat="Tancar" 
+                    data-idioma-es='Cerrar'></button>            
         </div>
         
         
         <!-- Victoria de un equipo (un jugador se ha quedado sin fichas) -->
         <div id="MarcoContinuar"  class='MarcoCanvas'>
-            <h1>Mano terminada</h1>
+            <h1>
+                <span data-idioma-en='Hand over' 
+                      data-idioma-cat="Mà finalitzada" 
+                      data-idioma-es='Mano terminada'></span>
+            </h1>
             <div class="TablaPuntos2">
                 <table>
                     <tr>
@@ -181,8 +230,23 @@
                 </table>
             </div>            
             
-            <h3><span class="AniResaltar" id="PG_Equipo">x</span> ha ganado! y suma <span class="AniResaltar" id="PG_Puntos">x</span> puntos.</h3>
-            <button id="BotonContinuar">Continuar</button>
+            <h3>
+                <span class="AniResaltar" id="PG_Equipo">x</span>
+                <span
+                    data-idioma-en=' has won! and gets ' 
+                    data-idioma-cat=" ha guanyat! i suma " 
+                    data-idioma-es=' ha ganado! y suma '></span>
+                
+                <span class="AniResaltar" id="PG_Puntos">x</span>
+                <span
+                    data-idioma-en=' points.' 
+                    data-idioma-cat=" punts." 
+                    data-idioma-es=' puntos.'></span>
+            </h3>
+            <button id="BotonContinuar"
+                    data-idioma-en='Next game' 
+                    data-idioma-cat="Continuar" 
+                    data-idioma-es='Continuar'></button>
         </div>
         
         <!-- Marco para mostrar los datos del Empate -->
@@ -239,19 +303,60 @@
                 </table>
             </div>
             <br />
+            
             <!-- Texto para la victoria por puntos despues de un bloqueo (al quedarse todos los jugadores sin posibilidad de tirar, antes de quedarse sin fichas) -->
-            <p id="TxtVictoria"><span class="AniResaltar" id="TxtVictoriaEquipo">x</span> ha ganado, y suma <span class="AniResaltar" id="TxtVictoriaPuntos">x</span> puntos.</p>
+            <p id="TxtVictoria">
+                <span class="AniResaltar" id="TxtVictoriaEquipo">x</span>                 
+                <span 
+                    data-idioma-en=' has won! and gets ' 
+                    data-idioma-cat=" ha guanyat! i suma " 
+                    data-idioma-es=' ha ganado! y suma '></span> 
+                <span class="AniResaltar" id="TxtVictoriaPuntos">x</span>
+                <span
+                    data-idioma-en=' points.' 
+                    data-idioma-cat=" punts." 
+                    data-idioma-es=' puntos.'></span>
+            </p>
+            
             <!-- Texto para el empate, al quedarse todos los jugadores sin poder tirar, y que los dos equipos sumen los mismos puntos -->
-            <p id="TxtEmpate">EMPATE, no se reparten puntos</p>
+            <p id="TxtEmpate"><span 
+               data-idioma-en='TIE, no one get points' 
+               data-idioma-cat="EMPAT, no es reparteixen punts" 
+               data-idioma-es='EMPATE, no se reparten puntos'
+               ></span>
+            </p>
             <br />
-            <button id="BotonContinuar2">Continuar</button>
+            <button id="BotonContinuar2"
+                    data-idioma-en='Continue' 
+                    data-idioma-cat="Continuar" 
+                    data-idioma-es='Continuar'></button>
         </div>
         
         <!-- Marco para cuando se termina la parida -->
         <div id="MarcoTerminado" class='MarcoCanvas'>
-            <h1>Partida TERMINADA</h1>
-            <p><span id="EquipoGanador">x</span> ha ganado la partida con <span id="PuntosGanador">x</span> puntos.</p>
-            <button id="BotonTerminar">Terminar</button>
+            <h1>
+                <span
+                    data-idioma-en='Game finished' 
+                    data-idioma-cat="Partida Finalitzada" 
+                    data-idioma-es='Partida TERMINADA'></span>
+            </h1>
+            <p>
+                <span id="EquipoGanador">x</span>
+                <span
+                    data-idioma-en=' has won the game with ' 
+                    data-idioma-cat=" ha guanyat la partida amb " 
+                    data-idioma-es=' ha ganado la partida con '></span>
+                <span id="PuntosGanador">x</span>
+                
+                <span 
+                    data-idioma-en=' points.' 
+                    data-idioma-cat=" punts." 
+                    data-idioma-es=' puntos.'></span>
+            </p>
+            <button id="BotonTerminar"
+                    data-idioma-en='End game' 
+                    data-idioma-cat="Finalitzar" 
+                    data-idioma-es='Terminar'></button>
         </div>
         
         <div class='MarcoCanvas' id="Historial">
@@ -261,34 +366,52 @@
         <div class='MarcoCanvas' id="DatosJuego">
             <table>
                 <tr>
-                    <td>Mano</td>
+                    <td>
+                        <span
+                            data-idioma-en='Hand' 
+                            data-idioma-cat="Mà" 
+                            data-idioma-es='Mano'></span>
+                    </td>
                     <td>:</td>
                     <td id="Mano">0</td>
                 </tr>
                 <tr>
-                    <td>Turno</td>
+                    <td>
+                        <span
+                            data-idioma-en='Turn' 
+                            data-idioma-cat="Torn" 
+                            data-idioma-es='Turno'></span>
+                    </td>
                     <td>:</td>
                     <td id="Turno">0</td>
                 </tr>
                 <tr>
-                    <td>Jugador</td>
+                    <td>
+                        <span
+                            data-idioma-en='Player' 
+                            data-idioma-cat="Jugador" 
+                            data-idioma-es='Jugador'></span>
+                    </td>
                     <td>:</td>
                     <td id="Jugador">0</td>
                 </tr>                
+            </table>
+            <hr />
+            <table>
                     
-                <tr>
+<!--                <tr>
                     <td style="border-bottom:2px solid #FFF"></td>
                     <td></td>
                     <td style="border-bottom:2px solid #FFF"></td>
-                </tr>
+                </tr>-->
                 
                 <tr>
-                    <td id="NombreEquipo1">Equipo 1</td>
+                    <td id="NombreEquipo1"></td>
                     <td>:</td>
                     <td id="Equipo1">0</td>
                 </tr>
                 <tr>
-                    <td id="NombreEquipo2">Equipo 2</td>
+                    <td id="NombreEquipo2"></td>
                     <td>:</td>
                     <td id="Equipo2">0</td>
                 </tr>
