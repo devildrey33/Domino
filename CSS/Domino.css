@@ -150,7 +150,7 @@ button:hover {
     /*border:1px solid rgb(234, 80, 78);    */
 }
 
-.PuntosMarcados {
+.PuntosMarcados, .IdiomaMarcado {
     background-color: rgb(214, 60, 58);
 }
 
@@ -475,4 +475,10 @@ input[type="checkbox"] {
     width:2rem;
     height:1rem;
     transition:0.4s;
+}
+
+
+/* Botones para escoger el idioma */
+#Idioma_en, #Idioma_cat, #Idioma_es {
+    font-size:1.5rem;
 }

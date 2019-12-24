@@ -6,7 +6,7 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificaciÃ³n el 28/02/2019
+        Ultima modificación el 14/12/2019
 */
 
 
@@ -17,7 +17,17 @@ var Domino_Opciones = function () {
     this.Descubierto       = "false";
     this.AniTurno          = "true";
     this.Ayuda             = "true";
+    this.Idioma            = 'es';
     this.Iniciar = function() {
+        this.Idioma = this.IdiomaPorDefecto();
+        // Cargo el idioma
+        if (window.localStorage.Idioma)             this.Idioma = window.localStorage.getItem("Idioma");
+        // Asigno el idioma al attributo lang del HTML
+        document.documentElement.setAttribute("lang", this.Idioma);
+        if (this.Idioma === 'en')  document.getElementById("Idioma_en").className = "IdiomaMarcado";
+        if (this.Idioma === 'cat') document.getElementById("Idioma_cat").className = "IdiomaMarcado";
+        if (this.Idioma === 'es')  document.getElementById("Idioma_es").className = "IdiomaMarcado";
+        
         // Cargo las opciones del local storage (si existen)
         if (window.localStorage.PuntosPorPartida)   this.PuntosPorPartida = window.localStorage.getItem("PuntosPorPartida");
         if (window.localStorage.Descubierto)        this.Descubierto      = window.localStorage.getItem("Descubierto");
@@ -31,7 +41,7 @@ var Domino_Opciones = function () {
         if (window.localStorage.Jugador4)           this.NombreJugador[3] = window.localStorage.getItem("Jugador4");
         if (window.localStorage.Equipo1)            this.NombreEquipo[0]  = window.localStorage.getItem("Equipo1");
         if (window.localStorage.Equipo2)            this.NombreEquipo[1]  = window.localStorage.getItem("Equipo2");*/
-
+        
         // Asigno las opciones al UI
         document.getElementById("Puntos" + this.PuntosPorPartida).className = "PuntosMarcados";
         document.getElementById("Opciones_Descubierto").checked = (this.Descubierto === "true") ? true : false;
@@ -51,6 +61,15 @@ var Domino_Opciones = function () {
         document.getElementById("NEquipo2").value = this.NombreEquipo[1];*/
     };
     
+    // Función que determina el idioma por defecto en la primera sesión, si ninguno coincide, se elige Ingles.
+    this.IdiomaPorDefecto = function() {
+        var Idioma = navigator.language || navigator.userLanguage;
+        // Si coincide con uno de los idiomas, lo devuelvo
+        if (Idioma === 'en' || Idioma === 'cat' || Idioma === 'es')    return Idioma;
+        // Si no coincide devuelvo ingles por defecto
+        return 'en';
+    };
+    
     // Función que asigna los nombres (de equipo i jugadores) por defecto, o los que hay guardados en el local storage
     this.NombresPorDefecto = function() {
         var Nombres = { 
@@ -62,11 +81,12 @@ var Domino_Opciones = function () {
                 'j' : 'Jugador',
                 'e' : 'Equip'
             },
-            'cas' : { 
+            'es' : { 
                 'j' : 'Jugador',
                 'e' : 'Equipo'
             }
         };
+        
         if (window.localStorage.Jugador1)           this.NombreJugador[0] = window.localStorage.getItem("Jugador1");
         else                                        this.NombreJugador[0] = Nombres[document.documentElement.lang]['j'] + "1";
         if (window.localStorage.Jugador2)           this.NombreJugador[1] = window.localStorage.getItem("Jugador2");
@@ -126,6 +146,13 @@ var Domino_Opciones = function () {
         if (Ayuda === false)      this.Ayuda = "false";
         else if (Ayuda === true)  this.Ayuda = "true";
         else                      this.Ayuda = Ayuda;
+    };
+    
+    this.AsignarIdioma = function(Idioma) {
+        window.localStorage.setItem("Idioma", Idioma);
+        document.documentElement.setAttribute("lang", Idioma);
+        this.Idioma = Idioma;
+        
     };
     
 };

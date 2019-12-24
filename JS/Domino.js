@@ -64,7 +64,7 @@ var DominoThree = function() {
     }) === false) { return false; }
     
     // VERSIÓN DEL JUEGO A MANO
-    this.VersionDomino = "0.99.5";
+    this.VersionDomino = "0.99.5c";
 };
 
 DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {

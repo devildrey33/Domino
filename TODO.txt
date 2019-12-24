@@ -8,11 +8,12 @@ Versió 1.0 FINAL
                 V Buto tancar
 
             V Opcions
-                  +o- Idioma (per defecte English) (traduit al 95% o mes, falta testejar i veure si falta algo..)
-                        - Fer butons per l'idioma.
-                        V Lo millor es fer tota la traducció en el HTML via CSS (com ho tenia a devildrey33.es) i aixi no hay de fer javascript extra.
-                            X Els textos que necesiti dintre del JavaScript els puc posar amb divs ocults, i consultar el innerHTML del div.
-                                V Al final ho he fet a saco posant els "data-idioma-" dintre dels strings del javascript.
+                V Idioma (per defecte English) (traduit al 95% o mes, falta testejar i veure si falta algo..)
+                    V Fer butons per l'idioma.
+                    V Escollir l'idioma per defecte segons l'idioma del navegador
+                    V Lo millor es fer tota la traducció en el HTML via CSS (com ho tenia a devildrey33.es) i aixi no hay de fer javascript extra.
+                        X Els textos que necesiti dintre del JavaScript els puc posar amb divs ocults, i consultar el innerHTML del div.
+                        V Al final ho he fet a saco posant els "data-idioma-" dintre dels strings del javascript.
                             
                     X Dificultat ( Descubert, + ajuda lógica (100%) - Dificultat lògica ( 20% - 80% )
                         V o també ho puc definir com a 'llògica' i posar la opcio de descubert i ajuda a part.
@@ -35,5 +36,5 @@ Versió 1.0 FINAL
         - poder amplificar i moure lateral-ment la cámara
         - determinar su es millor (i si es pot netament) forçar el mode landscape, o no...
 
-    - Idiomes : cat, cas, eng
+    V Idiomes : cat, cas, eng
 

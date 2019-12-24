@@ -104,6 +104,30 @@ var Domino_UI = function() {
             Domino.Partida.Opciones.AsignarAyuda(document.getElementById("Opciones_Ayuda").checked);
         };
         
+        // Botones para cambiar el idioma
+        // Boton English
+        document.getElementById("Idioma_en").onclick = function() {
+            Domino.Partida.Opciones.AsignarIdioma('en');
+            document.getElementById('Idioma_en').className  = "IdiomaMarcado";
+            document.getElementById('Idioma_cat').className = "";
+            document.getElementById('Idioma_es').className  = "";
+        };
+        // Boton Català
+        document.getElementById("Idioma_cat").onclick = function() {
+            Domino.Partida.Opciones.AsignarIdioma('cat');
+            document.getElementById('Idioma_en').className  = "";
+            document.getElementById('Idioma_cat').className = "IdiomaMarcado";
+            document.getElementById('Idioma_es').className  = "";
+        };
+        // Boton Castellano
+        document.getElementById("Idioma_es").onclick = function() {
+            Domino.Partida.Opciones.AsignarIdioma('es');
+            document.getElementById('Idioma_en').className  = "";
+            document.getElementById('Idioma_cat').className = "";
+            document.getElementById('Idioma_es').className  = "IdiomaMarcado";
+        };
+        
+        
         // Botones con las puntuaciones máximas
         for (var i = 1; i < 7; i++) {
             document.getElementById("Puntos" + i * 100).onclick = function(Pos) {
