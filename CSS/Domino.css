@@ -326,6 +326,11 @@ hr {
 /*  outline: 1px solid slategrey; */
 }
 
+/* Separación entre el nombre del jugador, y la acción en el historial */
+#Historial > div > span + span {
+    padding-left: 0.4rem;
+}
+
 #DatosJuego[Visible="true"], #Historial[Visible="true"] {
     display:block;
 }

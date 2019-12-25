@@ -152,7 +152,7 @@ var Domino_Opciones = function () {
         window.localStorage.setItem("Idioma", Idioma);
         document.documentElement.setAttribute("lang", Idioma);
         this.Idioma = Idioma;
-        
+        this.NombresPorDefecto();
     };
     
 };

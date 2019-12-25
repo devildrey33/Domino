@@ -236,8 +236,7 @@ var Domino_Partida = function() {
                     else {
                         this.Ficha[Posibilidades[0].Pos].Colocar(this.FichaDerecha);
                     }                    
-                    this.MostrarMensaje(this.JugadorActual, "<span>" + 
-                                        this.Opciones.NombreJugador[this.JugadorActual] + "</span> " + 
+                    this.MostrarMensaje(this.JugadorActual, "<span>" + this.Opciones.NombreJugador[this.JugadorActual] + "</span> " + 
                                         "<span " + 
                                                "data-idioma-en=' throws : '" + 
                                                "data-idioma-cat=' tira : '"  + 
@@ -248,9 +247,10 @@ var Domino_Partida = function() {
                 }
                 // Turno del jugador
                 else {
-                    this.MostrarMensaje(this.JugadorActual, "<span  data-idioma-en=' your turn ' " +
-                                                                   "data-idioma-cat=' el teu torn ' " + 
-                                                                   "data-idioma-es=' tu turno '>" + this.Opciones.NombreJugador[0] + "</span>");
+                    this.MostrarMensaje(this.JugadorActual, "<span>" + this.Opciones.NombreJugador[0] + "</span>" + 
+                                                            "<span  data-idioma-en=' your turn ' " +
+                                                               "data-idioma-cat=' el teu torn ' " + 
+                                                               "data-idioma-es=' tu turno '></span>");
                     this.MostrarAyuda();
                     return;
                 }
