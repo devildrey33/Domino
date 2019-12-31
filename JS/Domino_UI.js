@@ -14,6 +14,29 @@ var Domino_UI = function() {
     this.PuntuacionPorPartida = 300; // Por defecto las partidas son de 300 puntos
     
     this.Iniciar = function() {
+        
+        // Boton Equipos
+        document.getElementById("BotonEquipos").onclick = function() {
+            UI.OcultarEmpezar();
+            UI.MostrarEquipos();
+        };
+        // Boton Opciones
+        document.getElementById("BotonOpciones").onclick = function() {
+            UI.OcultarEmpezar();
+            UI.MostrarOpciones();
+        };
+        
+        // Boton Cerrar Equipos
+        document.getElementById("BotonCerrarEquipos").onclick = function() {
+            UI.OcultarEquipos();
+            UI.MostrarEmpezar();
+        };
+        // Boton Cerrar Opciones
+        document.getElementById("BotonCerrarOpciones").onclick = function() {
+            UI.OcultarOpciones();
+            UI.MostrarEmpezar();
+        };
+        
         // Boton empezar
         document.getElementById("BotonEmpezar").onclick = function() {
             Domino.Partida.Empezar();
@@ -31,6 +54,9 @@ var Domino_UI = function() {
             UI.OcultarGanador();
             UI.MostrarEmpezar();
         };
+        
+        
+        // Editar Equipo
         // Edit del nombre del equipo 1
         document.getElementById("NEquipo1").onchange = function() {
             Domino.Partida.Opciones.AsignarNombreEquipo("1", document.getElementById("NEquipo1").value);
@@ -61,6 +87,8 @@ var Domino_UI = function() {
             Domino.Partida.Opciones.AsignarNombreJugador("4", document.getElementById("NNombre4").value);
         };
         
+        
+        // Opciones
         // Checkbox Jugar al descubierto
         document.getElementById("Opciones_Descubierto").onclick = function() {
             Domino.Partida.Opciones.AsignarDescubierto(document.getElementById("Opciones_Descubierto").checked);
@@ -76,7 +104,31 @@ var Domino_UI = function() {
             Domino.Partida.Opciones.AsignarAyuda(document.getElementById("Opciones_Ayuda").checked);
         };
         
-        // Botones con las puntuaciones m√°ximas
+        // Botones para cambiar el idioma
+        // Boton English
+        document.getElementById("Idioma_en").onclick = function() {
+            Domino.Partida.Opciones.AsignarIdioma('en');
+            document.getElementById('Idioma_en').className  = "IdiomaMarcado";
+            document.getElementById('Idioma_cat').className = "";
+            document.getElementById('Idioma_es').className  = "";
+        };
+        // Boton Catal‡
+        document.getElementById("Idioma_cat").onclick = function() {
+            Domino.Partida.Opciones.AsignarIdioma('cat');
+            document.getElementById('Idioma_en').className  = "";
+            document.getElementById('Idioma_cat').className = "IdiomaMarcado";
+            document.getElementById('Idioma_es').className  = "";
+        };
+        // Boton Castellano
+        document.getElementById("Idioma_es").onclick = function() {
+            Domino.Partida.Opciones.AsignarIdioma('es');
+            document.getElementById('Idioma_en').className  = "";
+            document.getElementById('Idioma_cat').className = "";
+            document.getElementById('Idioma_es').className  = "IdiomaMarcado";
+        };
+        
+        
+        // Botones con las puntuaciones m·ximas
         for (var i = 1; i < 7; i++) {
             document.getElementById("Puntos" + i * 100).onclick = function(Pos) {
                 this.AsignarPuntuacionPorPartida(Pos * 100);
@@ -86,7 +138,7 @@ var Domino_UI = function() {
         this.MostrarEmpezar();
     };
     
-    // Mostrar menu para empezar una partida
+    // Mostrar men˙ para empezar una partida
     this.MostrarEmpezar = function() {
         document.getElementById("MarcoEmpezar").setAttribute("visible", "true");
     };
@@ -95,6 +147,27 @@ var Domino_UI = function() {
     this.OcultarEmpezar = function() {
         document.getElementById("MarcoEmpezar").setAttribute("visible", "false");
     };
+
+    // Mostrar menu para editar los equipos
+    this.MostrarEquipos = function() {
+        document.getElementById("MarcoEquipos").setAttribute("visible", "true");
+    };
+    
+    // Mostrar menu para ocultar el men˙ para editar equipos
+    this.OcultarEquipos = function() {
+        document.getElementById("MarcoEquipos").setAttribute("visible", "false");
+    };
+    
+    // Mostrar menu para editar las opciones
+    this.MostrarOpciones = function() {
+        document.getElementById("MarcoOpciones").setAttribute("visible", "true");
+    };
+    
+    // Mostrar menu para ocultar el men˙ de las opciones
+    this.OcultarOpciones = function() {
+        document.getElementById("MarcoOpciones").setAttribute("visible", "false");
+    };
+    
     
     // Mostrar menu para continuar una partida
     this.MostrarContinuar = function(Equipo, Puntos, P1, P2, P3, P4) {
@@ -195,11 +268,12 @@ var Domino_UI = function() {
         Domino.Partida.Opciones.AsignarPuntosPorPartida(Puntos);
     };
     
+    // FunciÛn que refresca los datos de la mano, en el div superior izquierdo.
     this.MostrarDatosMano = function() {
         document.getElementById("DatosJuego").setAttribute("Visible", "true");
         document.getElementById("NombreEquipo1").innerHTML = Domino.Partida.Opciones.NombreEquipo[0];
         document.getElementById("NombreEquipo2").innerHTML = Domino.Partida.Opciones.NombreEquipo[1];
-        
+        // Si no es un dispositivo mÛvil, muestro el historial de tiradas en un div superior derecho.
         if (ObjetoNavegador.EsMovil() === false) {
             document.getElementById("Historial").setAttribute("Visible", "true");
         }

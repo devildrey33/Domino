@@ -31,12 +31,23 @@
     }
 }*/
 
+/* Idioma automático */ 
+:lang(en) button::after, :lang(en) span::after {
+    content:attr(data-idioma-en);
+}
+:lang(cat) button::after, :lang(cat) span::after {
+    content:attr(data-idioma-cat);
+}
+:lang(es) button::after, :lang(es) span::after {
+    content:attr(data-idioma-es);
+}
+
 #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #Msg1, #Msg2, #Msg3, #Msg4, button, input, #DatosJuego, #Historial {
     font-family: 'Baloo Thambi', cursive;
 /*    line-height: 1.2rem; */
 }
 
-/* Landscape mÃ³vil */
+/* Landscape móvil */
 @media only screen and (orientation:landscape) and (min-resolution: 1.2dppx) {
     #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #Msg1, #Msg2, #Msg3, #Msg4, button, input, #DatosJuego, #Historial {
         line-height: 1rem;
@@ -56,7 +67,7 @@
     
 }
 
-/* Portrait mÃ³vil */
+/* Portrait mòvil */
 @media  only screen and (orientation:portrait) and (min-resolution: 1.2dppx) {
     #MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #Msg1, #Msg2, #Msg3, #Msg4, button, input, #DatosJuego, #Historial {
         line-height: 1.5rem;
@@ -77,8 +88,8 @@
 }
 
 
-
-#MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado {    
+/* Marcos con interfaz de usuario para el juego */
+#MarcoEmpezar, #MarcoContinuar, #MarcoEmpate, #MarcoTerminado, #MarcoOpciones, #MarcoEquipos {    
     position:fixed;
     border:0.1rem solid #000;
     top:250%;
@@ -97,7 +108,7 @@
     padding: 0.4rem;
 }
 
-#MarcoEmpezar[visible="true"], #MarcoContinuar[visible="true"], #MarcoEmpate[visible="true"], #MarcoTerminado[visible="true"] {
+#MarcoEmpezar[visible="true"], #MarcoContinuar[visible="true"], #MarcoEmpate[visible="true"], #MarcoTerminado[visible="true"], #MarcoOpciones[visible="true"], #MarcoEquipos[visible="true"] {
     top:50%;
 }
 
@@ -106,7 +117,7 @@
     border:2px solid rgb(234, 80, 78);
 }*/
 
-#BotonEmpezar, #BotonContinuar, #BotonContinuar2, #BotonTerminar {
+#BotonEmpezar, #BotonContinuar, #BotonContinuar2, #BotonTerminar, #BotonEquipos, #BotonOpciones,  #BotonCerrarEquipos, #BotonCerrarOpciones {
     font-size:2rem;
     /*padding:0.5rem; */
     display:table;
@@ -139,7 +150,7 @@ button:hover {
     /*border:1px solid rgb(234, 80, 78);    */
 }
 
-.PuntosMarcados {
+.PuntosMarcados, .IdiomaMarcado {
     background-color: rgb(214, 60, 58);
 }
 
@@ -218,6 +229,10 @@ button:hover {
     width:100%;
 }*/
 
+#DatosJuego > table {
+    line-height: 1.4rem;
+}
+
 #DatosJuego {
     margin:0;
     display:none;    
@@ -225,7 +240,7 @@ button:hover {
     font-size:1.5rem;
 }
 
-#DatosJuego td[id] {
+#DatosJuego table > td[id] {
     padding-left:1rem;
 }
 
@@ -261,18 +276,18 @@ hr {
     font-size:1rem;
 }
 
-
+/* Ficha mini del historial */
 #Historial img {
     position: absolute;
-    top: 0.2rem;
+    top: 1rem;
     zoom:0.30;
-    left:12.2rem;
+    left:40rem;
 }
 
 .Historial_negro, .Historial_rojo, .Historial_verde {
     position:relative;
 /*    min-height:23px;*/
-    height:1.9rem;
+    height:1.5rem;
     display:table;    
 /*    vertical-align:middle;*/
 }
@@ -311,6 +326,11 @@ hr {
 /*  outline: 1px solid slategrey; */
 }
 
+/* Separación entre el nombre del jugador, y la acción en el historial */
+#Historial > div > span + span {
+    padding-left: 0.4rem;
+}
+
 #DatosJuego[Visible="true"], #Historial[Visible="true"] {
     display:block;
 }
@@ -339,7 +359,7 @@ h1, h3 {
     margin:0.3em auto;
 }
 
-#DatosJuego td { 
+#DatosJuego table > td { 
     text-align:right;
 }
 
@@ -418,6 +438,7 @@ h1, h3 {
 .TablaPuntos, .TablaPuntos2 {
     display:flex;
     margin:auto;
+    line-height:1.4rem;
 /*  padding: 0.4rem;*/
 }
 
@@ -459,4 +480,10 @@ input[type="checkbox"] {
     width:2rem;
     height:1rem;
     transition:0.4s;
+}
+
+
+/* Botones para escoger el idioma */
+#Idioma_en, #Idioma_cat, #Idioma_es {
+    font-size:1.5rem;
 }

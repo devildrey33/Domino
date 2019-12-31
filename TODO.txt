@@ -1,0 +1,40 @@
+Versió 1.0 FINAL
+    - Simplificar menú principal
+            V Editar Equips
+                V Noms d'equip
+                V Noms dels 4 jugadors
+                - Llògica de cada jugador de la máquina (20% facil, 50% normal, 90% dificil)
+                    - Ajustable amb un slider de 0 a 100, pero amb 3 valors per defecte.
+                V Buto tancar
+
+            V Opcions
+                V Idioma (per defecte English) (traduit al 95% o mes, falta testejar i veure si falta algo..)
+                    V Fer butons per l'idioma.
+                    V Escollir l'idioma per defecte segons l'idioma del navegador
+                    V Lo millor es fer tota la traducció en el HTML via CSS (com ho tenia a devildrey33.es) i aixi no hay de fer javascript extra.
+                        X Els textos que necesiti dintre del JavaScript els puc posar amb divs ocults, i consultar el innerHTML del div.
+                        V Al final ho he fet a saco posant els "data-idioma-" dintre dels strings del javascript.
+                            
+                    X Dificultat ( Descubert, + ajuda lógica (100%) - Dificultat lògica ( 20% - 80% )
+                        V o també ho puc definir com a 'llògica' i posar la opcio de descubert i ajuda a part.
+                    V Ajudes visuals basades en la llógica de la màquina (com mes sobresurti una ficha millor)
+                        - Si hi han varies en la mateixa escala, fer una sub-escala per ordenar les escales per puntuació de la ficha, ja que com mes gran, mes ens interesa treure-la
+                            - Aplicar-ho a la IA per fer una dificultat màxima (junt amb la llògica al 100%)
+                    V Opció per tenir les Fiches al descobert per tothom (per debug bàsicament, pero també es com un cheat, o fins i tot per practicar a nivell PRO++ i veure partides en 1-2 moviments)
+                    V Llum animada pel torn
+                    V Buto tancar
+            - Info + dedicatoria pel papa amb foto xula
+            ----------------
+            - Punts per partida (un slider currat de 50 a 1000)
+            V Començar.
+    - Fer mes maco el marc de la puntuació / torn / jugador (algo rotllo expandible al fer hover / click / tap)
+    - Posibilitat d'ocultar / encongir la finestra que mostra tots els moviments.
+    - Posibilitat de tornar enrera (pel nivell facil i normal)
+    - Mirar la IA i fer un mode dificil que esculleixi sempre la opcio mes llogica, i no un rand...
+            - O fins i tot fer un rand depenen de le dificultat en cada decisiÃ³, ex : facil 25% de llogica, 75% rand, normal 50/50, dificil 80/20
+    - Adaptació total a móvil
+        - poder amplificar i moure lateral-ment la cámara
+        - determinar su es millor (i si es pot netament) forçar el mode landscape, o no...
+
+    V Idiomes : cat, cas, eng
+

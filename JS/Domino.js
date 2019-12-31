@@ -11,9 +11,12 @@
 
 /* 
     TODO :
-        - Renovat el ObjetoCanvas, ara s'ha de crear abans del event load, i ell mateix ja es carrega en el load.
+        V Renovat el ObjetoCanvas, ara s'ha de crear abans del event load, i ell mateix ja es carrega en el load.
+        V Reajustat el menu inicial, i ara he separat les opcions i els noms dels equips en finestres diferents (mes que res per resolucions petites...)
+        V Traduit al catal‡ i a l'angles.
+            - Falta fer uns butons a les opcions
         
-        - Puc posar ficha al acabar la m√° )no estic segur si es nomes en el meu torn o sempre... xd) no influeix en la puntuaci√≥ del equip (per que es calcula abans) pero es un bug curi√≥s
+        - Puc posar ficha al acabar la m‡ ° no estic segur si es nomes en el meu torn o sempre... xd) no influeix en la puntuaciÛ del equip (per que es calcula abans) pero es un bug curi√≥s
         - Ara veig que he DES-ajustat la llum, i al mostrar 2 posibilitats en una fitxa es segueix veient la ficha practivament blanca... (hauria de ser groga)
             - Deu tenir que veure amb l'ajustament que li he fet per portrait / landscape / desktop
 
@@ -60,14 +63,8 @@ var DominoThree = function() {
         'ForzarLandscape'           : false              // Fuerza al dispositivo movil para que se muestre solo apaisado
     }) === false) { return false; }
     
-    // VERSI√ìN DEL JUEGO A MANO
-    this.VersionDomino = "0.99.3b";
-    
-    // Se ha creado el canvas, inicio los valores de la animaci√≥n ... 
-//    this.Iniciar();    
-    
-    // Esconde la ventana que informa al usuario de que se est√° cargando la animaci√≥n. (REQUERIDO)
-//    this.Cargando(false);
+    // VERSI”N DEL JUEGO A MANO
+    this.VersionDomino = "0.99.5d";
 };
 
 DominoThree.prototype = Object.assign( Object.create(ObjetoCanvas.prototype) , {
