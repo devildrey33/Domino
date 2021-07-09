@@ -6,25 +6,27 @@
         Vista por defecto en el Laboratorio de pruebas  
 		devildrey33_Lab->Opciones->Vista = Filas;
 
-        Ultima modificaci√≥n el 28/02/2019
+        Ultima modificaci√≥n el 29/07/2021
+
+      - Solucionado bug que permitia darle dobleclick al boton para continuar la partida, y ejecutaba 2 partidas simultaneamente....
 */
 
 var Domino_Partida = function() {    
+    this.JugadorActual      = 0;                // Jugador del turno actual
+    this.TurnoActual        = 0;                // Tu7rno actual
+    this.Mano               = 0;                // N√∫mero de mano
+    this.FichaIzquierda     = { };              // Fichas por la izquierda
+    this.FichaDerecha       = { };              // Fichas por la derecha
     
-//    this.Jugador          = [];     // TODO por eliminar
-    this.JugadorActual    = 0;    // Jugador del turno actual
-    this.TurnoActual      = 0; 
-    this.Mano             = 0;
-    this.FichaIzquierda   = { };
-    this.FichaDerecha     = { };
-    
-    this.Pasado           = 0;
-    this.Ficha            = [];
-    this.TiempoTurno      = 1250;
-    this.TimerMsg         = [ 0, 0, 0, 0 ];
-    this.ManoTerminada    = false;
-    this.PuntosEquipo1    = 0; // 
-    this.PuntosEquipo2    = 0;
+    this.Pasado             = 0;                // Veces que se ha pasado
+    this.Ficha              = [];               // Array de fichas
+    this.TiempoTurno        = 1250;
+    this.TimerMsg           = [ 0, 0, 0, 0 ];
+    this.ManoTerminada      = false;            // Si se ha terminado la mano (juego individual)
+    this.PuntosEquipo1      = 0;                // Puntos del primer equipo
+    this.PuntosEquipo2      = 0;                // Puntos del segundo equipo
+
+    this.ContinuandoPartida = false;            // Variable que previene que se inicien 2 manos a la vez
     
     this.Opciones         = new Domino_Opciones;
     //this.Domino           = nDomino;
@@ -73,7 +75,13 @@ var Domino_Partida = function() {
     };
     
     this.Continuar = function() {
+
+        console.log("----------------------------------------");
+        console.log("Partida.Continuar()", this.ContinuandoPartida);
+        if (this.ContinuandoPartida === true) return;
+        this.ContinuandoPartida = true;
         
+
         // Oculto el menu para empezar la partida
         UI.OcultarEmpezar();   
         // Oculto el menu para continuar la siguiente mano (desde una victoria)
@@ -149,7 +157,7 @@ var Domino_Partida = function() {
         this.MostrarMensaje(this.JugadorActual, "<span>" + this.Opciones.NombreJugador[this.JugadorActual] + " </span> " +
                                                 "<span" +
                                                     "data-idioma-en='starts'" +
-                                                    "data-idioma-cat='comenÁa'" +
+                                                    "data-idioma-cat='comen√ßa'" +
                                                     "data-idioma-es='empieza'></span>");
                                             
         
@@ -158,6 +166,7 @@ var Domino_Partida = function() {
         window.ContadorIzquierda    = 0;
         window.FinContadorIzquierda = 5;
         window.FinContadorDerecha   = 5;
+
         
         this.Turno();        
     };
@@ -227,7 +236,7 @@ var Domino_Partida = function() {
                 // Turno de la maquina
                 if (this.JugadorActual !== 0) {
                     // IA 1.0
-                    // TODO : Segun la dificultad se hace un rand para ver si toca el movimiento lÛgico, o un movimiento al azar)
+                    // TODO : Segun la dificultad se hace un rand para ver si toca el movimiento l√≥gico, o un movimiento al azar)
                     // Ej : Facil (20% logica, 80 azar, normal 50%-50%, dificil 90%-10%)
                     var Rnd = 0;//RandInt(this.Posibilidades.length -1, 0);
                     if (Posibilidades[0].Rama === "izquierda") { 
@@ -275,7 +284,10 @@ var Domino_Partida = function() {
         }
         
         // Compruebo si se ha terminado la mano
-        if (this.ComprobarManoTerminada() === true) return;
+        if (this.ComprobarManoTerminada() === true) {
+            this.ContinuandoPartida = false;
+            return;
+        }
         
         // Se ha pasado, 
         if (this.Pasado > 0) {
@@ -358,7 +370,7 @@ var Domino_Partida = function() {
             this.MostrarMensaje(this.JugadorActual, "<span>" + this.Opciones.NombreJugador[this.JugadorActual] + "</span>" + 
                                                     "<span " +
                                                         "data-idioma-en=' wons this hand!'" +
-                                                        "data-idioma-en=' guanya aquesta m‡!'" +
+                                                        "data-idioma-en=' guanya aquesta m√°!'" +
                                                         "data-idioma-en=' gana esta mano!'" + "></span>", "verde");
             this.ManoTerminada = true;            
             // Cuento los puntos y muestro los valores
@@ -443,7 +455,7 @@ var Domino_Partida = function() {
         return Total;
     };
     
-    // FunciÛn para mostrar un mensaje especifico para un jugador
+    // Funci√≥n para mostrar un mensaje especifico para un jugador
     this.MostrarMensaje = function(Jugador, Texto, ColFondo) {
         var ColorFondo = (typeof(ColFondo) === "undefined") ? "negro" : ColFondo;
         var Msg = document.getElementById("Msg" + (Jugador + 1));
